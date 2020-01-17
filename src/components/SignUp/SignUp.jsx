@@ -2,10 +2,9 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class Home extends React.Component {
-    
     render() {
       return (
-        <div className="container">
+        <div className="">
             <section className="form">
                 <h1>Create an account</h1>
                 <form action="">

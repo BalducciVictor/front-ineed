@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import SignUp from './components/SignUp/SignUp.jsx';
+import Home from './pages/Home/Home.jsx';
+import './components/SignUp/SignUp.scss';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Router>
         <Switch>
               <Route exact path='/'>
-                <SignUp />
+                <Home />
               </Route>
         </Switch>
       </Router>

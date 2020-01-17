@@ -1,8 +1,8 @@
 
-import React from './node_modules/react';
-import { BrowserRouter as Router, Switch, Route, Link } from './node_modules/react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './Home.scss';
-import SignUp from '../components/SignUp/SignUp.jsx';
+import SignUp from '../../components/SignUp/SignUp.jsx';
 
 class Home extends React.Component {
   render() {
