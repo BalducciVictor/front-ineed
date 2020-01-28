@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 //Components
 import Home from './pages/Home/Home.jsx';
+import Profile from './pages/Profile/Profile';
 
 //Reset css
 import './styleGlobaux/AppReset.scss';
@@ -21,6 +22,7 @@ function App() {
               <Route exact path='/'>
                 <Home />
               </Route>
+              <Route path='/profile' component={Profile} />
         </Switch>
       </Router>
     </div>

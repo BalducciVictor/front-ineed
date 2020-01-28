@@ -1,0 +1,18 @@
+@import "../../styleGlobaux/graphicalCharter.scss";
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white;
+
+  .blue-map {
+    position: absolute;
+    top: 0px;
+    left: -92px;
+    width: 894px;
+    height: 538px;
+  }
+}

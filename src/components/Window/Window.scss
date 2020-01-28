@@ -1,0 +1,28 @@
+@import "../../styleGlobaux/graphicalCharter.scss";
+
+.s1 {
+  position: absolute;
+  top: 63px;
+  width: 1215px;
+  height: 705px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 10;
+  
+  .s2 {
+  margin : auto;
+  margin-top: 60px;
+  width: 1098px;
+  height: 657px;
+  background-color: #F5F6FA;
+
+    h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #011627;
+    text-transform: uppercase;
+    padding-top: 60px;
+    padding-left: 60px;
+    }
+  }
+}
