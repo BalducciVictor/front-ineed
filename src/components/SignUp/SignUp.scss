@@ -1,0 +1,20 @@
+@import "../../styleGlobaux/graphicalCharter.scss";
+
+.container__SignUp {
+    width: 60vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
+    .form__SignUp{
+        width: 50%;
+        padding: 10px;
+        form{
+            
+        }
+    }
+    .description{
+        width: 50%;
+        padding: 10px;
+    }
+}
