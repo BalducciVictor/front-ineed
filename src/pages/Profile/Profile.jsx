@@ -3,6 +3,8 @@ import './Profile.scss';
 import blueMap from '../../assets/map-background.png';
 import Window from '../../components/Window/Window';
 import CreateProfile from '../../components/CreateProfile/CreateProfile';
+import MapSearch from '../../components/MapSearch/MapSearch';
+
 
 class Profile extends React.Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class Profile extends React.Component {
         <div className="list-profiles">
           <div className="choose-profile">
             <CreateProfile/>
+            <MapSearch/>
           </div>
         </div>
       </div>

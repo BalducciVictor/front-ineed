@@ -1,0 +1,30 @@
+@import "../../styleGlobaux/graphicalCharter.scss";
+
+.map-search {
+  position: absolute;
+  width: 287px;
+  height: 223px;
+  background-color: #FFFFFF;
+  top: 269px;
+  left: 550px;
+
+  .map {
+    position: absolute;
+    width: 209px;
+    height: 142px;
+    padding-top: 20px;
+    padding-left: 35px;
+  }
+
+  .profile-button {
+    position: absolute;
+    background: #0494FA;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: none;
+    color: white;
+    width: 287px;
+    height: 45px;
+    bottom: 0;
+  }
+}
