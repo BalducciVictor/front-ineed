@@ -10,7 +10,7 @@ const CreateProfile = () => (
     <a className="profile-link" href="/"></a>
     {/* <svg className="logo_user"><use xlinkHref="/many_svg.svg#picto-user"/></svg> */}
     <img className="user" src={user} alt="Picto user"/>
-    <button className="profile-button">Add new profile</button>
+    <button className="profile-button" href="#">Add new profile</button>
   </div>
 );
 export default CreateProfile;
