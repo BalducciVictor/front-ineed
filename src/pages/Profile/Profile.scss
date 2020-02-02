@@ -15,4 +15,10 @@
     width: 894px;
     height: 538px;
   }
+
+  .choose-profile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }

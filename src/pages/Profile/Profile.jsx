@@ -1,7 +1,9 @@
 import React from 'react';
 import './Profile.scss';
 import blueMap from '../../assets/map-background.png';
+
 import Window from '../../components/Window/Window';
+import AccountProfile from '../../components/AccountProfile/AccountProfile';
 import CreateProfile from '../../components/CreateProfile/CreateProfile';
 import MapSearch from '../../components/MapSearch/MapSearch';
 
@@ -19,6 +21,7 @@ class Profile extends React.Component {
         <Window/>
         <div className="list-profiles">
           <div className="choose-profile">
+            <AccountProfile/>
             <CreateProfile/>
             <MapSearch/>
           </div>
