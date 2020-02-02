@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './SignUp.scss';
+import map from '../../assets/img/map.png'
 
 class Home extends React.Component {
   changeSign(){
@@ -10,8 +11,8 @@ class Home extends React.Component {
   }  
   render() {
       return (
-        <div className="container__SignUp">
-            <section className="form__SignUp">
+        <div className="container__Sign">
+            <section className="form__Sign">
                 <h1>Create an account</h1>
                 <form action="">
                   <label>Email</label>
@@ -25,9 +26,9 @@ class Home extends React.Component {
                 </form>
             </section>
             <section className="description">
-                <h2>I Need</h2>
+                <h2>I NEED</h2>
                 <p>Your health guide</p>
-                <img src="" alt=""/>
+                <img src={ map } alt="map"/>
             </section>
         </div>
       );

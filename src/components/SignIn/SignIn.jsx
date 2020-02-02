@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import map from '../../assets/img/map.png'
 
 import './SignIn.scss';
 
@@ -15,14 +16,14 @@ class SignIn extends React.Component {
                   <input type="email"/>
                   <label>Password</label>
                   <input type="password"/>
-                  <button>Sign up</button>
-                  <p>Already have a account ?<span onClick={this.props.action}>Sign Up</span></p>
+                  <button>Sign in</button>
+                  <p>You don't have a account ?<span onClick={this.props.action}>Sign Up</span></p>
                 </form>
             </section>
             <section className="description">
-                <h2>I Need</h2>
+                <h2>I NEED</h2>
                 <p>Your health guide</p>
-                <img src="" alt=""/>
+                <img src={ map } alt="map"/>
             </section>
         </div>
       );
