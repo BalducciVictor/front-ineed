@@ -15,17 +15,10 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container_profile">
         <svg className="logo_home"><use xlinkHref="/many_svg.svg#logo"/></svg>
         <img className="blue-map" src={blueMap} alt="Dots map"/>
         <Window/>
-        <div className="list-profiles">
-          <div className="choose-profile">
-            <AccountProfile/>
-            <CreateProfile/>
-            <MapSearch/>
-          </div>
-        </div>
       </div>
     );
   }
