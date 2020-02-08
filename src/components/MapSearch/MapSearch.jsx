@@ -2,7 +2,7 @@ import React from 'react';
 
 import './MapSearch.scss';
 
-import map from '../../assets/map-background.png';
+import map from '../../assets/img/map.png';
 
 
 const MapSearch = () => (

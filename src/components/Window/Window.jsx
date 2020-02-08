@@ -1,5 +1,6 @@
 import React from 'react';
 import './Window.scss';
+
 import AccountProfile from '../../components/AccountProfile/AccountProfile';
 import CreateProfile from '../../components/CreateProfile/CreateProfile';
 import MapSearch from '../../components/MapSearch/MapSearch';
@@ -18,7 +19,7 @@ class Window extends React.Component {
   }
   render(){
     return (
-      <div>
+      <div className='wrapper-profile'>
         <div className='s1'>
           <div className='s2'>
             {this.title()}

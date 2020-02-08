@@ -1,31 +1,29 @@
 @import "../../styleGlobaux/graphicalCharter.scss";
 
 .create-profile {
-  position: absolute;
   width: 287px;
   height: 223px;
   background-color: #FFFFFF;
-  top: 269px;
-  left: 550px;
-  cursor: pointer;
+  position: relative;
 
   .user {
-    position: absolute;
+    display: block;
+    margin: auto;
     height: 121px;
     width: 106px;
-    padding-top: 40px;
-    padding-left: 90px;
+    margin-top: 35px;
   }
 
   .profile-button {
-    position: absolute;
+    cursor: pointer;
     background: #FF8500;
     font-weight: bold;
     font-size: 0.9rem;
     border: none;
     color: white;
-    width: 287px;
+    width: 100%;
     height: 45px;
+    position: absolute;
     bottom: 0;
   }
 }
