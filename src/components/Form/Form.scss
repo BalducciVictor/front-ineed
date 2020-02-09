@@ -1,0 +1,78 @@
+@import "../../components/Window/Window.scss";
+
+.wrap-form {
+  display: flex;
+
+  .back-to-home {
+    width: 30%;
+
+    .arrow-back {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: auto;
+    }
+
+    h2 {
+    text-transform: uppercase;
+    text-align: center;
+    color:#0494FA;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    } 
+  }
+
+.form-profile {
+  width: 70%;
+  padding: 50px 160px 20px;
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: inline-block;
+    margin-bottom: 25px;
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+  }
+
+  input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #0494FA;
+    border-radius: 5px;
+  }
+
+  input[type=text], input[type=number], select, textarea {
+    display: block;
+    width: 400px;
+    height: 45px;
+    border: 2px solid #0494FA;
+    border-radius: 6px;
+    margin-top: 20px;
+  }
+
+  ::placeholder {
+    color: grey;
+    font-size: 16px;
+    padding-left: 10px;
+  }
+
+  input[type=submit] {
+    width: 400px;
+    height: 45px;
+    background: #0494FA;
+    border: 0;
+    border-radius: 6px;
+    color: #FFFFFF;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+}
+
+
+

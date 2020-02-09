@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 //Components
-import Home from './pages/Home/Home.jsx';
+import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
+import NewProfile from './pages/NewProfile/NewProfile';
 
 //Reset css
 import './styleGlobaux/AppReset.scss';
@@ -19,10 +20,11 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-              <Route exact path='/'>
-                <Home />
-              </Route>
-              <Route path='/profile' component={Profile} />
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route path='/profile' component={Profile} />
+          <Route path='/:new' component={NewProfile} />        
         </Switch>
       </Router>
     </div>

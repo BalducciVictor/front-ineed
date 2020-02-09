@@ -7,7 +7,6 @@ import paul from '../../assets/paul.jpg';
 
 const AccountProfile = () => (
   <div className="profile">
-    {/* <a className="profile-link" href="/"></a> */}
     <div className="remove-profile">
       <a>Remove</a>
     </div>
