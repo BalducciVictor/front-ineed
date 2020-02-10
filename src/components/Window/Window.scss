@@ -1,27 +1,41 @@
 @import "../../styleGlobaux/graphicalCharter.scss";
 
-.s1 {
-  position: absolute;
-  bottom: 0;
+.wrapper-profile {
   width: 90vw;
   height: 90vh;
-  background-color: #FFFFFF;
-  box-shadow: 0px 3px 6px #00000029;
   
-  .s2 {
-  margin : auto;
-  margin-top: 4rem;
-  width: 80vw;
-  height: 80vh;
-  background-color: #F5F6FA;
+  .s1 {
+    width: 90vw;
+    height: 90vh;
+    position: fixed;
+    z-index: 20;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+    .s2 {
+    width: 80vw;
+    height: 80vh;
+    background-color: #F5F6FA;
 
-    h1 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #011627;
-    text-transform: uppercase;
-    padding-top: 60px;
-    padding-left: 60px;
+      h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #011627;
+      padding-top: 60px;
+      padding-left: 70px;
+      }
+      
+      .list-profiles {
+        width: 70vw;
+        padding-top: 60px;
+        padding-left: 70px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
     }
-  }
+  }  
 }

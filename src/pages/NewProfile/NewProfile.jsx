@@ -1,11 +1,10 @@
 import React from 'react';
-import './Profile.scss';
+import './NewProfile.scss';
 
-import Window from '../../components/Window/Window';
+import Form from '../../components/Form/Form';
 import map from '../../assets/img/map.png'
 
-
-class Profile extends React.Component {
+class NewProfile extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,9 +14,10 @@ class Profile extends React.Component {
       <div className="container_profile">
         <svg className="logo_home"><use xlinkHref="/many_svg.svg#logo"/></svg>
         <img className="blue-map" src={map} alt="Dots map"/>
-        <Window/>
+        <Form/>
       </div>
     );
   }
 }
-export default Profile;
+
+export default NewProfile;

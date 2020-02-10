@@ -1,5 +1,6 @@
 import React from 'react';
 import './Window.scss';
+
 import AccountProfile from '../../components/AccountProfile/AccountProfile';
 import CreateProfile from '../../components/CreateProfile/CreateProfile';
 import MapSearch from '../../components/MapSearch/MapSearch';
@@ -10,7 +11,7 @@ class Window extends React.Component {
   }
     title(){
     if (window.location.pathname == '/profile') {
-      return <h1>Welcome</h1>
+      return <h1>WELCOME</h1>
     } else {
       return <p>coucou</p>
     }
@@ -18,16 +19,14 @@ class Window extends React.Component {
   }
   render(){
     return (
-      <div>
+      <div className='wrapper-profile'>
         <div className='s1'>
           <div className='s2'>
             {this.title()}
             <div className="list-profiles">
-              <div className="choose-profile">
-                <AccountProfile/>
-                <CreateProfile/>
-                <MapSearch/>
-              </div>
+              <AccountProfile/>
+              <CreateProfile/>
+              <MapSearch/>
             </div>
           </div>
         </div>

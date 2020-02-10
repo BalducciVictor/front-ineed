@@ -5,25 +5,22 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   background-color: $white;
 
-  .blue-map {
-    position: absolute;
-    top: 0px;
-    left: -92px;
-    width: 894px;
-    height: 538px;
-  }
   .logo_home {
     max-height: "30px";
     position: absolute;
     top: 15px;
     left: 15px;
-}
-  .choose-profile {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  }
+
+  .blue-map {
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    left: -92px;
+    width: 894px;
+    height: 538px;
   }
 }
