@@ -23,8 +23,8 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
-          <Route path='/profile' component={Profile} />
-          <Route path='/:new' component={NewProfile} />        
+          <Route  path='/profile' component={Profile} />
+          <Route path='/new' component={NewProfile} />        
         </Switch>
       </Router>
     </div>

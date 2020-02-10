@@ -1,15 +1,16 @@
 import React from 'react';
 
-import './MapSearch.scss';
+import './Map.scss';
 
 import map from '../../assets/img/map.png';
 
 
-const MapSearch = () => (
+const Map = () => (
   <div className="map-search">
-    <a className="map-link" href="/"></a>
-    <img className="map" src={map} alt="Dots map blue"/>
+    <div className="flex--center">
+      <img className="map" src={map} alt="Dots map blue"/>
+    </div>
     <button className="profile-button" href="#">Search for a specialist</button>
   </div>
 );
-export default MapSearch;
+export default Map;

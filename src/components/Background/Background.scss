@@ -1,0 +1,66 @@
+.background-profiles {
+  background-image: url(../../assets/img/map.png);
+  background-repeat: no-repeat;
+  background-size: 60%;
+  height: 100vh;
+  overflow: hidden;
+
+  @media (max-width: (500px)) {
+    height: auto;
+    overflow: visible;
+    padding-top: 20vh;
+    background-size: 100%;
+    background-position-y: 7%;
+  }
+
+  .logo_home {
+    max-height: "30px";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+  }
+
+  .boxWrapper {
+    background-color: #F5F6FA;
+    border: solid 3vw #fff;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+    @media (max-width: (500px)) {
+      border: none;
+      width: 100%;
+      background-color: #ffffff;
+    }
+  }
+
+  h1 {
+    align-self: flex-start;
+    width: 100%;
+    padding-left: 5%;
+    text-align: left;
+
+    @media (max-width: (500px)) {
+      font-size: 20px;
+      margin-bottom: 50px;
+    }
+  }
+
+  .list-profiles {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+
+    @media (max-width: (500px)) {
+      display: block;
+      width: 88%;
+    }
+  }
+}
+

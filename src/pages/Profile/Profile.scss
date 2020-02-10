@@ -1,26 +1,3 @@
-@import "../../styleGlobaux/graphicalCharter.scss";
-
-.container_profile {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  background-color: $white;
-
-  .logo_home {
-    max-height: "30px";
-    position: absolute;
-    top: 15px;
-    left: 15px;
-  }
-
-  .blue-map {
-    position: absolute;
-    z-index: 10;
-    top: 0px;
-    left: -92px;
-    width: 894px;
-    height: 538px;
-  }
+.container-profile {
+  background: #F5F6FA;
 }

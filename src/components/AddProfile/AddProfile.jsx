@@ -1,11 +1,11 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import './CreateProfile.scss';
+import './AddProfile.scss';
 
 import user from '../../assets/picto-user.png';
 
-class CreateProfile extends React.Component {
+class AddProfile extends React.Component {
 
   state = {
     redirect: false
@@ -17,7 +17,7 @@ class CreateProfile extends React.Component {
   }
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to='/:new' />
+      return <Redirect to='/new' />
     }
   }
 
@@ -25,13 +25,13 @@ class CreateProfile extends React.Component {
       return (
         <div className="create-profile">
           {this.renderRedirect()}
-        <a className="profile-link" href="/"></a>
-        {/* <svg className="logo_user"><use xlinkHref="/many_svg.svg#picto-user"/></svg> */}
-        <img className="user" src={user} alt="Picto user"/>
+          <div className="flex--center">
+            <img className="user" src={user} alt="Picto user"/>
+          </div>
         <button className="profile-button" onClick={this.setRedirect}>Add new profile</button>
       </div>
       );
     }
   }
 
-export default CreateProfile;
+export default AddProfile;
