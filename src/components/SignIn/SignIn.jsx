@@ -16,6 +16,7 @@ class SignIn extends React.Component {
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
   }
+  //change value_input_mail
   handleChangeEmail(event) {
     this.setState({
       value_input_mail: event.target.value,
@@ -23,6 +24,7 @@ class SignIn extends React.Component {
       console.log(`password = ${this.state.value_input_mail}`)
     });
   }
+  //change value_input_password
   handleChangePassword(event) {
     this.setState({
       value_input_password: event.target.value,
@@ -31,6 +33,7 @@ class SignIn extends React.Component {
       }
     );
   }
+  //CallAPI  connexion
   call_signIn(e){
     e.preventDefault();
     const configSend = {'Content-Type': 'application/json'}
@@ -39,7 +42,10 @@ class SignIn extends React.Component {
     console.log(this.state.value_input_password);
     axios.post('http://13.59.220.41/login', data, configSend)
       .then (res => {
-      console.log (res, 'ca marche');
+      console.log (res.data.id, 'ca marche');
+      
+      const id_user = res.data.id;
+      sessionStorage.setItem('id', `${id_user}`);
       //code redirect profil page
       })
       .catch (err => {
@@ -49,30 +55,30 @@ class SignIn extends React.Component {
         }, ()=>{
           console.log(this.state.message_error_user);
         } )
-      });
+    });
   }
-    render() {
-      return (
-        <div className="container__SignIn">
-            <section className="form__SignIn">
-                <h1>Create an account</h1>
-                <form action="">
-                  <label>Email</label>
-                  <input type="email" value={this.state.value_input_mail} onChange={this.handleChangeEmail}/>
-                  <label>Password</label >
-                  <input type="password" value={this.state.value_input_password} onChange={this.handleChangePassword}/>
-                  {this.state.message_error_user == true && <p className="message_error">Email or Password is incorrect.</p>}
-                  <button onClick={this.call_signIn.bind(this)}>Sign in</button>
-                  <p>You don't have an account ?<span onClick={this.props.action}>Sign Up</span></p>
-                </form>
-            </section>
-            <section className="description">
-                <h2>I NEED</h2>
-                <p>Your health guide</p>
-                <img src={ map } alt="map"/>
-            </section>
+  render() {
+    return (
+      <div className="container__SignIn">
+          <section className="form__SignIn">
+              <h1>Create an account</h1>
+              <form action="">
+                <label>Email</label>
+                <input type="email" value={this.state.value_input_mail} onChange={this.handleChangeEmail}/>
+                <label>Password</label >
+                <input type="password" value={this.state.value_input_password} onChange={this.handleChangePassword}/>
+                {this.state.message_error_user == true && <p className="message_error">Email or Password is incorrect.</p>}
+                <button onClick={this.call_signIn.bind(this)}>Sign in</button>
+                <p>You don't have an account ?<span onClick={this.props.action}>Sign Up</span></p>
+              </form>
+          </section>
+          <section className="description">
+              <h2>I NEED</h2>
+              <p>Your health guide</p>
+              <img src={ map } alt="map"/>
+          </section>
         </div>
-      );
+      )
     }
   }
   export default SignIn
