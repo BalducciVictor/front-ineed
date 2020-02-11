@@ -1,0 +1,60 @@
+.personal-information {
+  background: #F5F6FA;
+  background-image: url(../../assets/img/map.png);
+  background-repeat: no-repeat;
+  background-size: 60%;
+  height: 100vh;
+  overflow: hidden;
+
+  @media (max-width: (500px)) {
+    height: auto;
+    overflow: visible;
+    padding-top: 20vh;
+    background-size: 100%;
+    background-position-y: 12%;
+  }
+
+  .logo_home {
+    cursor: pointer;
+    max-height: "30px";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+  }
+
+  .specialty-button {
+    cursor: pointer;
+    position: absolute;
+    background-color: #fff;
+    border: 2px solid #0494FA;
+    border-radius: 6px;
+    color: #0494FA;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    top: 15px;
+    right: 70px;
+
+    @media (max-width: (500px)) {
+      right: 30px;
+    }
+  }
+
+  .boxWrapper-i {
+    background-color: #F5F6FA;
+    border: solid 3vw #fff;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+    @media (max-width: (500px)) {
+      border: none;
+      width: 100%;
+      background-color: #ffffff;
+    }
+  }
+  
+}
