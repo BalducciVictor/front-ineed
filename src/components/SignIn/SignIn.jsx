@@ -11,6 +11,7 @@ class SignIn extends React.Component {
     this.state = {
       value_input_mail : '',
       value_input_password : '',
+      message_error_user: false,
     }
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -41,7 +42,14 @@ class SignIn extends React.Component {
       console.log (res, 'ca marche');
       //code redirect profil page
       })
-      .catch (err => {console.log (err.response.data)});
+      .catch (err => {
+        console.log (err.response.data);
+        this.setState({
+          message_error_user : true,
+        }, ()=>{
+          console.log(this.state.message_error_user);
+        } )
+      });
   }
     render() {
       return (
@@ -53,6 +61,7 @@ class SignIn extends React.Component {
                   <input type="email" value={this.state.value_input_mail} onChange={this.handleChangeEmail}/>
                   <label>Password</label >
                   <input type="password" value={this.state.value_input_password} onChange={this.handleChangePassword}/>
+                  {this.state.message_error_user == true && <p className="message_error">Email or Password is incorrect.</p>}
                   <button onClick={this.call_signIn.bind(this)}>Sign in</button>
                   <p>You don't have an account ?<span onClick={this.props.action}>Sign Up</span></p>
                 </form>
