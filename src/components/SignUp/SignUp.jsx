@@ -16,7 +16,7 @@ class Home extends React.Component {
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleChangeConfirmPassword = this.handleChangeConfirmPassword.bind(this);
-    this.confimPassword = this.confimPassword.bind(this);
+    //this.confimPassword = this.confimPassword.bind(this);
   }
   //change value_input_mail
   handleChangeEmail(event) {
@@ -45,22 +45,22 @@ class Home extends React.Component {
     );
   }
   //change value message_error_password for show message error
-  confimPassword(){
-    if (this.state.value_input_password !== this.state.value_input_confirm_password) {
-      this.setState({message_error_password: true}, ()=>{
-        console.log('change value message_error_password')
-      });
-    }
-  }
+  //confimPassword(){
+  //  if (this.state.value_input_password !== this.state.value_input_confirm_password) {
+  //    this.setState({message_error_password: true}, ()=>{
+  //      console.log('change value message_error_password')
+  //    });
+  //  }
+  //}
   //Call api for creat account
   call_signIn(e){
     //cancel default comportement
     e.preventDefault();
     //change value message_error_password for show message error
-    this.confimPassword();
+    //this.confimPassword();
     console.log(this.state.message_error_password)
     const configSend = {'Content-Type': 'application/json'}
-    let data = {"username": `${this.state.value_input_mail}`, "password": `${this.state.value_input_password}`};
+    let data = {"email": `${this.state.value_input_mail}`, "password": `${this.state.value_input_password}`};
     axios.post('http://13.59.220.41/api/users', data, configSend)
       .then (res => {
       console.log (res, 'ca marche');
