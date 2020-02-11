@@ -1,6 +1,5 @@
 import React from 'react';
 import './Form.scss';
-
 import arrow from '../../assets/img/arrow-back.png';
 
 const Form = () => (
