@@ -6,6 +6,7 @@ import arrow from '../../assets/img/arrow-back.png';
 const Form = () => (
   <div className="background">
     <svg className="logo_home"><use xlinkHref="/many_svg.svg#logo"/></svg>
+    <button className="specialty-button">search a specialty</button>
     <div className="boxWrapper">
       <h1 className="title-form">My new profile</h1>
       <div className="wrap-form">
