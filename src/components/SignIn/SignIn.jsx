@@ -15,6 +15,7 @@ class SignIn extends React.Component {
     }
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
   //change value_input_mail
   handleChangeEmail(event) {
@@ -33,20 +34,23 @@ class SignIn extends React.Component {
       }
     );
   }
+  redirect(){
+    window.location.pathname = '/profile';
+  }
   //CallAPI  connexion
   call_signIn(e){
+    //cancel default comportement
     e.preventDefault();
-    const configSend = {'Content-Type': 'application/json'}
     let data = {"username": `${this.state.value_input_mail}`, "password": `${this.state.value_input_password}`};
-    console.log(this.state.value_input_mail);
-    console.log(this.state.value_input_password);
+    const configSend = {'Content-Type': 'application/json'}
     axios.post('http://13.59.220.41/login', data, configSend)
       .then (res => {
-      console.log (res.data.id, 'ca marche');
-      
-      const id_user = res.data.id;
-      sessionStorage.setItem('id', `${id_user}`);
-      //code redirect profil page
+        console.log (res.data.id, 'ca marche');
+        //Set id in session storage
+        const id_user = res.data.id;
+        sessionStorage.setItem('id', `${id_user}`);
+        //Redirect
+        this.redirect();
       })
       .catch (err => {
         console.log (err.response.data);

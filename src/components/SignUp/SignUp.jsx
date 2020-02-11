@@ -16,55 +16,45 @@ class Home extends React.Component {
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleChangeConfirmPassword = this.handleChangeConfirmPassword.bind(this);
-    //this.confimPassword = this.confimPassword.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
   //change value_input_mail
   handleChangeEmail(event) {
     this.setState({
       value_input_mail: event.target.value,
-    }, ()=>{
-      console.log(`Change email = ${this.state.value_input_mail}`)
-    });
+    }, ()=>{ console.log(`Change email = ${this.state.value_input_mail}`)});
   }
   //change value_input_password
   handleChangePassword(event) {
     this.setState({
       value_input_password: event.target.value,
-    }, ()=>{
-      console.log(`Change password = ${this.state.value_input_password}`)
-      }
-    );
+    }, ()=>{console.log(`Change password = ${this.state.value_input_password}`)});
   }
   //change value_input_confirm_password
   handleChangeConfirmPassword(event) {
     this.setState({
       value_input_confirm_password: event.target.value,
-    }, ()=>{
-      console.log(` change confirm password = ${this.state.value_input_confirm_password}`)
-      }
-    );
+    }, ()=>{console.log(` change confirm password = ${this.state.value_input_confirm_password}`)});
   }
-  //change value message_error_password for show message error
-  //confimPassword(){
-  //  if (this.state.value_input_password !== this.state.value_input_confirm_password) {
-  //    this.setState({message_error_password: true}, ()=>{
-  //      console.log('change value message_error_password')
-  //    });
-  //  }
-  //}
+  redirect(){
+    window.location.pathname = '/profile';
+  }
   //Call api for creat account
   call_signIn(e){
     //cancel default comportement
     e.preventDefault();
-    //change value message_error_password for show message error
-    //this.confimPassword();
     console.log(this.state.message_error_password)
     const configSend = {'Content-Type': 'application/json'}
     let data = {"email": `${this.state.value_input_mail}`, "password": `${this.state.value_input_password}`};
     axios.post('http://13.59.220.41/api/users', data, configSend)
       .then (res => {
-      console.log (res, 'ca marche');
-        
+        console.log (res.data.id, 'ca marche');
+        //Set id in session storage
+        const id_user = res.data.id;
+        console.log(id_user);
+        sessionStorage.setItem('id', `${id_user}`);
+        //Redirect
+        this.redirect();
       })
       .catch (err => {
         console.log (err.response.data);
