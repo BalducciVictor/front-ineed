@@ -17,7 +17,7 @@ class CreateProfile extends React.Component {
   }
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to='/:new' />
+      return <Redirect to='/new' />
     }
   }
 
