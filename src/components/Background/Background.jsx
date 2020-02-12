@@ -36,10 +36,10 @@ class Background extends React.Component {
   }
   clearUserData(profils){
     return profils.map( (profil) => {
-      const {name,picture} = profil
+      const {name,surname} = profil
       return {
         name,
-        picture,
+        surname,
       }
     });
   }
@@ -54,7 +54,7 @@ class Background extends React.Component {
           <h1 className="title-profile">Welcome</h1>
           <div className="list-profiles">
              { profils.length ? profils.map( (profil, i) => {
-                return <ShowProfile key={'profil' + profil.name + i} name={profil.name} picture={profil.picture} /> 
+                return <ShowProfile key={'profil' + profil.name + i} name={profil.name} surname={profil.surname} /> 
              }): ''}
             <AddProfile/>
             <Map/>
