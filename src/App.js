@@ -21,10 +21,18 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route path='/profile' component={Profile} />
-          <Route path='/new' component={NewProfile} />
-          <Route path='/information' component={PersonalInformation} />  
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route exact path='/profile'>
+            <Profile/>
+          </Route>
+          <Route exact path='/profile/new'>
+            <NewProfile/>
+          </Route>    
+          <Route exact path='/information'>
+            <NewProfile/>
+          </Route>   
         </Switch>
       </Router>
     </div>
