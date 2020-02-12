@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
 import NewProfile from './pages/NewProfile/NewProfile';
 import PersonalInformation from './pages/PersonalInformation/PersonalInformation';
+import Datavisualitaion from './pages/Datavisualitaion/Datavisualisation.jsx';
 
 //Reset css
 import './styleGlobaux/AppReset.scss';
@@ -25,6 +26,7 @@ function App() {
           <Route path='/profile' component={Profile} />
           <Route path='/new' component={NewProfile} />
           <Route path='/information' component={PersonalInformation} />  
+          <Route path='/map' component={Datavisualitaion} />  
         </Switch>
       </Router>
     </div>
