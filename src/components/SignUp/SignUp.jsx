@@ -64,7 +64,7 @@ class Home extends React.Component {
     axios.post('http://13.59.220.41/api/users', data, configSend)
       .then (res => {
       console.log (res, 'ca marche');
-      //code redirect profil page
+        
       })
       .catch (err => {
         console.log (err.response.data);
