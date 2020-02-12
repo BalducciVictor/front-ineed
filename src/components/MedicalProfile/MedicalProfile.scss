@@ -1,0 +1,33 @@
+.medical-profile {
+  background-color: #fff;
+  width: 60%;
+
+  h2 {
+    font-family: Roboto, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #011627;
+    padding: 30px;
+  }
+
+  hr{
+    width: 100%;
+    height: 2px;
+    background-color: #F4F4F4;
+    margin: 0;
+    border: none; /*on supprime le style par défaut*/
+  }
+
+  .icons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user {
+    display: block;
+    border-radius: 50%;
+    width: 10%;
+    margin-top: 8%;
+    margin-left: 5%;
+  }
+}
