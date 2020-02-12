@@ -74,8 +74,10 @@
     width: 90%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: stretch;
+    > *{
+      margin-right: 20px;
+    }
 
     @media (max-width: (500px)) {
       display: block;
