@@ -8,9 +8,12 @@ import context from '../../../Store/reactContext'
 const Home = function ({ form, setNewform, setMode, mode }) {
   const signIn = ($SignIn) => {
     $SignIn(form)
-      .catch((err) => {
-        console.log(err, 'ici')
-      })
+    .then((res) => {
+      window.location.pathname = '/profile';
+    })
+    .catch((err) => {
+      console.log(err, 'ici')
+    })
   }
 
   const signUp = ($signUp) => {
