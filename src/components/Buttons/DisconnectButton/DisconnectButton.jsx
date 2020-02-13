@@ -3,7 +3,7 @@ import './DisconnectButton.scss';
 
 const DisconnectButton = () => (
   <div className='wrap-disconnect-button'>
-    <button className="disconnect-button">disconnect</button>
+    <button className="disconnect-button" onclick="#" >disconnect</button>
   </div>
 )
 
