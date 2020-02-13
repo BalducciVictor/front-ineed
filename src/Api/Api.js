@@ -13,15 +13,19 @@ class ApiRequest {
     return axios.get(this.uri + (path || ''), data || {}, this.conf)
   }
 
-  signIn (path, data, a) {
+  post (path, data) {
+    return axios.post(this.uri + (path || ''), data || {}, this.conf)
+  }
+
+  signIn (path, { email, password }) {
     const json = {
-      username: `${data.email}`,
-      password: `${data.password}`
+      email,
+      password
     }
     console.error(json)
 
     return new Promise((resolve, reject) => {
-      this.get(path, json)
+      this.post(path, json)
         .then(res => {
           resolve(res.data.id)
         })
