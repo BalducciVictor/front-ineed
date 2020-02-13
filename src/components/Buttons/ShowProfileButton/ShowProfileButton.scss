@@ -1,0 +1,21 @@
+.wrap-profile-button {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 70px;
+
+  @media (max-width: (500px)) {
+    right: 20px;
+  }
+
+  .show-profile-button {
+    background-color: #fff;
+    border: 2px solid #0494FA;
+    border-radius: 6px;
+    color: #0494FA;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    width: 159px;
+    height: 31px;
+  }
+}

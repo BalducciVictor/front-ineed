@@ -22,23 +22,6 @@
     left: 15px;
   }
 
-  .specialty-button {
-    cursor: pointer;
-    position: absolute;
-    background-color: #fff;
-    border: 2px solid #0494FA;
-    border-radius: 6px;
-    color: #0494FA;
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    top: 15px;
-    right: 70px;
-
-    @media (max-width: (500px)) {
-      right: 30px;
-    }
-  }
-
   .boxWrapper-i {
     background-color: #F5F6FA;
     border: solid 3vw #fff;
@@ -54,6 +37,23 @@
       border: none;
       width: 100%;
       background-color: #ffffff;
+    }
+  }
+
+  .wrap-list {
+    display: flex;
+    width: 100%;
+    margin-top: 6%;
+
+    ///// 
+
+    width: 400px;
+    height: 5880px;
+    display: block;
+    background-color: white;
+    transform: translateX(-100vh);
+    &.active {
+      transform: none;
     }
   }
 

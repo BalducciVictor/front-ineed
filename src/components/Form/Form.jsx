@@ -1,11 +1,14 @@
 import React from 'react';
 import './Form.scss';
+import DisconnectButton from '../Buttons/DisconnectButton/DisconnectButton';
+import ShowProfileButton from '../Buttons/ShowProfileButton/ShowProfileButton';
 import arrow from '../../assets/img/arrow-back.png';
 
 const Form = () => (
   <div className="background">
     <svg className="logo_home"><use xlinkHref="/many_svg.svg#logo"/></svg>
-    <button className="specialty-button">search a specialty</button>
+      <DisconnectButton/>
+      <ShowProfileButton/>
     <div className="boxWrapper">
       <h1 className="title-form">My new profile</h1>
       <div className="wrap-form">
