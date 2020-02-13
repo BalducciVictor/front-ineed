@@ -17,15 +17,29 @@ class ApiRequest {
     return axios.post(this.uri + (path || ''), data || {}, this.conf)
   }
 
-  signIn (path, { email, password }) {
+  signUp ({ email, password }) {
     const json = {
-      email,
-      password
+      username: email,
+      password: password
     }
-    console.error(json)
-
     return new Promise((resolve, reject) => {
-      this.post(path, json)
+      this.post('/users/add', json)
+        .then(res => {
+          resolve(res.data.id)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  }
+
+  signIn ({ email, password }) {
+    const json = {
+      username: email,
+      password: password
+    }
+    return new Promise((resolve, reject) => {
+      this.post('/login', json)
         .then(res => {
           resolve(res.data.id)
         })

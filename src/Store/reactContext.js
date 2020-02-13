@@ -10,9 +10,9 @@ const context = React.createContext({
   $Post: (path, data) => {
     return apiRequest.post(path, data)
   },
-  $SignUp: (path, data) => {
+  $SignUp: (data) => {
     return new Promise((resolve, reject) => {
-      apiRequest.signIn(path, data)
+      apiRequest.signUp(data)
         .then((profile) => {
           context.$profile = profile
           resolve(profile)
@@ -23,9 +23,9 @@ const context = React.createContext({
         })
     })
   },
-  $SignIn: (path, data) => {
+  $SignIn: (data) => {
     return new Promise((resolve, reject) => {
-      apiRequest.signIn(path, data)
+      apiRequest.signIn(data)
         .then((profile) => {
           resolve(profile)
         })

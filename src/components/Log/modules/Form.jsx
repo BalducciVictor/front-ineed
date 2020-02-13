@@ -7,14 +7,14 @@ import context from '../../../Store/reactContext'
 
 const Home = function ({ form, setNewform, setMode, mode }) {
   const signIn = ($SignIn) => {
-    $SignIn('/login', form)
+    $SignIn(form)
       .catch((err) => {
         console.log(err, 'ici')
       })
   }
 
   const signUp = ($signUp) => {
-    $signUp('/users/add', form)
+    $signUp(form)
       .catch((err) => {
         console.log(err, 'ici')
       })
