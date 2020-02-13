@@ -7,7 +7,7 @@ class List extends React.Component {
       return (
         <div className="list">
           <h2>List of Paul</h2>
-          <br/>
+          <hr/>
         </div>
       );
     }

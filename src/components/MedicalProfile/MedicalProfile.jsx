@@ -4,7 +4,6 @@ import paul from '../../assets/paul.jpg';
 import download from '../../assets/icon-download.png';
 import edit from '../../assets/icon-edit.png';
 import share from '../../assets/icon-share.png';
-import { useState } from 'react';
 
 const MedicalProfile = ( { switchState }) => {
   return (

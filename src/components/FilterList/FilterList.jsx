@@ -7,7 +7,7 @@ class FilterList extends React.Component {
       return (
         <div className="filter-list">
           <h2>filter results :</h2>
-          <br/>
+          <hr/>
         </div>
       );
     }
