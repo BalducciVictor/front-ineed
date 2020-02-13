@@ -5,6 +5,8 @@ import Api from '../../Api/Api'
 import ShowProfile from '../ShowProfile/ShowProfile'
 
 function Form() {
+
+  //data form
   const [gender, setGender ] = useState('')
   const [ name, setName ] = useState('');
   const [ firstName, setFirstName ] = useState('');
@@ -13,6 +15,8 @@ function Form() {
   const [ chronicDiseases, setChronicDiseases ] = useState('');
   const [ drugs, setDrugs ] = useState('');
   const [ moreInformation, setMoreInformation ] = useState('');
+
+  //data API
   const [ chronicDisease, setChronicDisease ] = useState([]);
 
   const apiRequest = new Api()
@@ -32,11 +36,38 @@ function Form() {
       })
     }
   }
+  //add chronic disease option in select
   const listItems = chronicDisease.map((data) =>
   <option key={data.name.toString()}>{data.name}</option>
   );
 
-
+  const postDataNewProfil = (e) => {
+      e.preventDefault();
+      alert('caroule')
+      const data = {
+        "name": name,
+        "surname": firstName,
+        "gender": gender,
+        "birthDate": age,
+        "bloodType": bloodType,
+        "picture": "yolo",
+        "information": moreInformation,
+        "User": "string",
+        "medicaments": [
+          drugs
+        ],
+        "maladieChroniques": [
+          chronicDiseases
+        ],
+      }
+      apiRequest.post(`/api/profils/${'coucou'}`, data)
+      .then(res => {
+        console.log(res, 'tout vas bien')
+      })
+       .catch(err => {
+            console.log(err, 'cest la merde')   
+     })
+  }
   
   return (
   <div className="background">
@@ -98,7 +129,7 @@ function Form() {
             <label>More information</label>
               <textarea onChange={(e) => setMoreInformation(e.target.value)} />
             </div>
-            <input type="submit" value="Save"/>
+            <input type="submit" value="Save" onClick={(e) => postDataNewProfil(e)}/>
           </form>
         </div>
       </div>
