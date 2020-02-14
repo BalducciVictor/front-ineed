@@ -1,11 +1,14 @@
 import React from 'react'
 import './Form.scss'
+import DisconnectButton from '../Buttons/DisconnectButton/DisconnectButton'
+import ShowProfileButton from '../Buttons/ShowProfileButton/ShowProfileButton'
 import arrow from '../../assets/img/arrow-back.png'
 
 const Form = () => (
   <div className="background">
     <svg className="logo_home"><use xlinkHref="/many_svg.svg#logo"/></svg>
-    <button className="specialty-button">search a specialty</button>
+    <DisconnectButton/>
+    <ShowProfileButton/>
     <div className="boxWrapper">
       <h1 className="title-form">My new profile</h1>
       <div className="wrap-form">
@@ -19,29 +22,29 @@ const Form = () => (
           <div>
             <label>
             Male
-            <input type="checkbox"/>
+              <input type="checkbox"/>
             </label>
             <label>
             Female
-            <input type="checkbox"/>
+              <input type="checkbox"/>
             </label>
           </div>
           <div>
             <label>
-            Name 
-            <input type="text" placeholder="Dupont" required/>
+            Name
+              <input type="text" placeholder="Dupont" required/>
             </label>
           </div>
           <div>
             <label>
-            First Name 
-            <input type="text" placeholder="Martin" required/>
+            First Name
+              <input type="text" placeholder="Martin" required/>
             </label>
           </div>
           <div>
             <label>
-            Age 
-            <input type="number" placeholder="46" required/>
+            Age
+              <input type="number" placeholder="46" required/>
             </label>
           </div>
           <div>
@@ -60,21 +63,21 @@ const Form = () => (
             </label>
           </div>
           <div>
-          <label>
+            <label>
           More information
-            <textarea />
-          </label>
+              <textarea />
+            </label>
           </div>
           <div>
             <label>
             Chronic disease
-            <input type="text" placeholder="Asthma"/>
+              <input type="text" placeholder="Asthma"/>
             </label>
           </div>
           <div>
             <label>
             Drug
-            <input type="text" placeholder="Acetylleucine mylan 500"/>
+              <input type="text" placeholder="Acetylleucine mylan 500"/>
             </label>
           </div>
           <input type="submit" value="Save" />
@@ -84,4 +87,4 @@ const Form = () => (
   </div>
 )
 
-export default Form;
+export default Form

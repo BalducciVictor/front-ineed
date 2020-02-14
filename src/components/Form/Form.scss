@@ -19,23 +19,6 @@
     left: 15px;
   }
 
-  .specialty-button {
-    cursor: pointer;
-    position: absolute;
-    background-color: #fff;
-    border: 2px solid #0494FA;
-    border-radius: 6px;
-    color: #0494FA;
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    top: 15px;
-    right: 70px;
-
-    @media (max-width: (500px)) {
-      right: 30px;
-    }
-  }
-
   .boxWrapper {
     background-color: #F5F6FA;
     border: solid 3vw #fff;
