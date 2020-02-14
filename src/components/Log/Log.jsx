@@ -6,7 +6,7 @@ import Form from './modules/Form'
 import axios from 'axios'
 
 const Home = function (props) {
-  const [mode, setMode] = useState(0)
+  const [mode, setMode] = useState(1)
   const [form, setform] = useState({
     list: [
       {
