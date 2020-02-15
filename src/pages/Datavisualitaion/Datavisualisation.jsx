@@ -27,7 +27,7 @@ class PersonalInformation extends React.Component {
   render () {
     const { data } = this.state
     return (
-      <div className="boxWrapper-i">
+      <div className="boxWrapper">
         <div className="personal-information datavis">
           <button className="specialty-button">search a specialty</button>
           <h1 className="title-information">My profile</h1>

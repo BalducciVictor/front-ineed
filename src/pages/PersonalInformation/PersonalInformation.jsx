@@ -13,21 +13,15 @@ const PersonalInformation = () => {
   }
 
   return (
-    <div className="personal-information">
-
-      <div className="boxWrapper-i">
+    <div className="boxWrapper">
+      <div className="personal-information">
         <h1 className="title-information">My profile</h1>
         <div className="wrap-information">
-          <div className='back-to-home'>
-            <img className="arrow-back" src={arrow} alt="Arrow back home"/>
-            <h2 className="back">Back to home</h2>
-          </div>
           <SwitchButton setNewSwitch={val => { toogle(val) }} switchState={switchState} />
         </div>
         <MedicalProfile switchState={switchState} />
         <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
-          <FilterList />
-          <List />
+
         </div>
       </div>
     </div>
