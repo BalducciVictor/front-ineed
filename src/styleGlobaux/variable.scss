@@ -4,14 +4,14 @@ $white: #F5F6FA;
 $black: #011627;
 $blue: #0494FA;
 $orange: #FF8500;
-
+$border-clasic: 10px;
 
 @mixin input__clasic {
   display: block;
   height: 40px;
   width:  99%;
   border: 2px solid $blue;
-  border-radius: 6px;
+  border-radius: $border-clasic;
   margin: 2% 0px;
 }
 
@@ -20,12 +20,16 @@ $orange: #FF8500;
   height: 45px;
   width: 100%;
   background-color: $blue;
-  border-radius: 6px;
+  border-radius: $border-clasic;
   font-family: Assistant, roboto, sans-serif;
   font-size: 1.125rem;
   color: $white;
   font-weight: bold;
 }
+
+
+
+
 @mixin label__clasic {
   font-family: Assistant, roboto, sans-serif;
   font-size: 1rem;
