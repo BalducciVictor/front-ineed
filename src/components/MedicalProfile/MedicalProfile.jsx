@@ -11,6 +11,12 @@ const MedicalProfile = ( { switchState, Profil }) => {
   const [MaladieChriniques, setMaladieChriniques] = useState([]);
   const [Meds, setMeds] = useState([]);
 
+  let birthDate = new Date();
+
+  if(typeof Profil.birthDate !== 'undefined'){
+    birthDate = new Date(Profil.birthDate)
+  }
+
   useEffect(() => {
     getMaladieChriniques();
     getMeds();
@@ -60,23 +66,16 @@ const MedicalProfile = ( { switchState, Profil }) => {
       <div className="user-information">
         <img className="user" src={paul} alt="Picture user"/>
         <h3>{Profil.surname} {Profil.name}</h3>
-        <p>{Profil.birthDate}</p>
+        <p>{birthDate.getDate()}/{birthDate.getMonth()}/{birthDate.getFullYear()}</p>
         <h4>blood type</h4>
         <p>{Profil.bloodType}</p>
         <h4>Chronic disease</h4>
         <ul>
-          {
-            // TODO Afficher la liste des maladies chroniques
-            MaladieChriniques
-          }
+          {MaladieChriniques}
         </ul>
         <h4>Drug</h4>
         <ul>
-          {
-            // TODO Afficher la liste des médicaments
-              Meds
-
-          }
+          {Meds}
         </ul>
       </div>
       <div className="icons">
