@@ -24,31 +24,7 @@
   }
 
   .wrap-information {
-    
-  }
 
-  .back-to-home {
-    cursor: pointer;
-    width: 20%;
-    @media (min-width:  $breakpoint-mobile) {
-      display: block;
-      margin: auto;
-      width: 100%;
-    }
-  }
-
-  .arrow-back {
-    display: block;
-    width: 18%;
-    margin: auto;
-  }
-
-  .back {
-    text-transform: uppercase;
-    text-align: center;
-    color:#0494FA;
-    font-size: 16px;
-    font-family: Roboto, sans-serif;
   }
   
 }

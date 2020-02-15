@@ -9,7 +9,7 @@ const ShowProfile = (props) => (
     </div>
     <div className="flex--center">
       <div>
-        <img className="user" src={props.picture} alt="Picture user"/>
+        <img className="user-picture" src={props.picture} alt="Picture user"/>
         <h2 className="profile-name">{props.name} {props.surname}</h2>
       </div>
     </div>

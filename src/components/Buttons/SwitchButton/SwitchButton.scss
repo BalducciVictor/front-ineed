@@ -18,12 +18,13 @@
     height: 100%;
     position: absolute;
     z-index: 0;
-    transition: 1s;
+    transition: .6s;
+    transform: translateX(0px);
   }
 
   &.left {
     &::after {
-    left: 0;
+      transform: translateX(-50%);
     }
     div:nth-child(2) {
       color: $blue;
@@ -33,14 +34,27 @@
 
   &.right {
     &::after {
-    right: 0;
+      transform: translateX(50%);
+    }
+    div:nth-child(1) {
+      color: $blue;
     }
   }
 
+  span {
+    margin: auto;
+    display: block;
+  }
+
   div{
+    transition-delay: .3;
     cursor: pointer;
     color: white;
+    display: flex;
     font-weight: bold;
     z-index: 3;
+    text-align: center;
+    width: 50%;
+    height: 100%;
   }
 }
