@@ -1,6 +1,6 @@
 .medical-profile {
   background-color: #fff;
-  width: 60%;
+  width: 100%;
   transform: translateY(100vh);
   transition: 0.7s;
   margin-top: 5%;
@@ -57,13 +57,7 @@
       color: #0494FA;
     }
   }
-
-  .user {
-    display: block;
-    border-radius: 50%;
-    width: 10%;
-  }
-
+  
   .user-information {
     font-family: Roboto, sans-serif;
     margin: 5%;

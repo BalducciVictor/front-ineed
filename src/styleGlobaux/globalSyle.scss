@@ -47,11 +47,11 @@ input[type=text], input[type=number], select, textarea{
   align-items: center;
   min-height:  90vh;
   background-color: #ffffff;
-
+  
   &--border {
     padding: 0px 20px;
   }
-
+  
   @media (min-width:  $breakpoint-mobile) {
     border: solid 3vw #fff;
     border: none;
@@ -60,3 +60,9 @@ input[type=text], input[type=number], select, textarea{
   }
 }
 
+.user-picture {
+  display: block;
+  border-radius: 50%;
+  width: 20vw;
+  max-width: 150px;
+}

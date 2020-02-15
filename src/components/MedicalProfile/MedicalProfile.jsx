@@ -11,7 +11,7 @@ const MedicalProfile = ({ switchState }) => {
       <hr/>
       <div className="wrap-medical-profile">
         <div className="user-information">
-          <img className="user" src={paul} alt="Picture user"/>
+          <img className="user-picture" src={paul} alt="Picture user"/>
           <h3>Paul Victor</h3>
           <p>march, 14 1954 (65 years)</p>
           <h4>blood type</h4>
