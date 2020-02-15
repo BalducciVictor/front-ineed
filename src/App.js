@@ -18,9 +18,10 @@ function App () {
         <NavBrarre />
         <Switch>
           <Route exact path='/' component={Log}/>
-          <Route path='/new' component={NewProfile} />
-          <Route path='/information' component={PersonalInformation} />
-          <Route path='/map' component={Datavisualitaion} />
+          <Route exact path='/profile' component={Profile} />
+          <Route exact path='/profile/new' component={NewProfile} />
+          <Route exact path='/information' component={PersonalInformation} />
+          <Route exact path='/map' component={Datavisualitaion} />
         </Switch>
       </Router>
     </div>
