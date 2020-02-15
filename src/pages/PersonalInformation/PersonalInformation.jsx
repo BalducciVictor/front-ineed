@@ -7,10 +7,31 @@ import List from '../../components/List/List';
 import DisconnectButton from '../../components/Buttons/DisconnectButton/DisconnectButton';
 import ShowProfileButton from '../../components/Buttons/ShowProfileButton/ShowProfileButton';
 import arrow from '../../assets/img/arrow-back.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {useParams} from 'react-router-dom';
+import ApiRequest from "../../Api/Api";
 
 const PersonalInformation = () => {
-  const [ switchState, setNewSwitch  ]= useState(0)
+  const [ switchState, setNewSwitch  ]= useState(0);
+  const [data, setData] = useState([])
+
+  const Api = new ApiRequest();
+  let { id } = useParams();
+
+  useEffect(() => {
+    getInformationProfile();
+  });
+
+  const getInformationProfile = () => {
+
+    if(data.length === 0){
+      Api.get('/api/profils/' + id)
+          .then((response) => {
+            console.log(response.data);
+            setData(response.data)
+          })
+    }
+  };
 
   const toogle = (value) => {
     setNewSwitch(value)
@@ -30,7 +51,7 @@ const PersonalInformation = () => {
         </div>
         <SwitchButton setNewSwitch={val=>{toogle(val)}}  switchState={switchState} />
       </div>
-      <MedicalProfile switchState={switchState}  />
+      <MedicalProfile switchState={switchState} Profil={data}  />
       <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
         <FilterList />
         <List />

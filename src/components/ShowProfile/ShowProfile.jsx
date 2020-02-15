@@ -16,7 +16,7 @@ const ShowProfile = (props) => (
         <h2 className="profile-name">{props.name} {props.surname}</h2>
       </div>
     </div>
-    <button className="profile-button" href="#">See the profile</button>
+    <button className="profile-button" href={'/profile/information/' + props.id}>See the profile</button>
   </div>
 );
 
