@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import genrateInput from '../../../pluging/inputGenerate'
 import Input from '../../input'
 import Context from '../../../Store/reactContext'
-import context from '../../../Store/reactContext'
 
 const Home = function ({ form, setNewform, setMode, mode }) {
   const signIn = ($SignIn) => {

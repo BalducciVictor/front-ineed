@@ -1,152 +1,36 @@
-.background {
-  background-image: url(../../assets/img/map.png);
-  background-repeat: no-repeat;
-  background-size: 60%;
-  overflow: hidden;
 
-  @media (max-width: (500px)) {
-    height: auto;
-    overflow: visible;
-    padding-top: 20vh;
-    background-size: 100%;
-    background-position-y: 6%;
+
+
+.wrap-form {
+  padding: 20px 20px;
+  max-width: 444px;
+  width: 100vw;
+  background-color: white;
+  input[type="submit"] {
+    @include button__clasic
   }
-
-  .logo_home {
-    max-height: "30px";
-    position: absolute;
-    top: 15px;
-    left: 15px;
+  input[type="radio"] {
+    
   }
+}
 
-  .boxWrapper {
-    background-color: #F5F6FA;
-    border: solid 3vw #fff;
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 5vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @media (max-width: (500px)) {
-      border: none;
-      width: 100%;
-      background-color: #ffffff;
-    }
-  }
+.back-to-home {
+  width: 20%;
+  display: block;
+  margin: auto;
+  width: 100%;
+}
 
 
-  h1 {
-    align-self: flex-start;
-    width: 100%;
-    padding-left: 5%;
-    padding-top: 6%;
-    text-align: left;
-    font-size: 1.375rem;
-    text-transform: none;
+.block-input {
+  padding: 20px 0;
+}
 
-    @media (max-width: (500px)) {
-      margin-bottom: 20px;
-    }
-  }
 
-  .wrap-form {
-    display: flex;
-    width: 100%;
-
-    @media (max-width: (500px)) {
-      flex-direction: column;
-    }
-  }
-
-  .back-to-home {
-    width: 20%;
-    @media (max-width: (500px)) {
-      display: block;
-      margin: auto;
-      width: 100%;
-    }
-  }
-
-  .arrow-back {
-    display: block;
-    width: 18%;
-    margin: auto;
-  }
-
-  .back {
-    text-transform: uppercase;
-    text-align: center;
-    color:#0494FA;
-    font-size: 16px;
-    font-family: Roboto, sans-serif;
-  }
-
-  .form-profile {
-    width: 80%;
-    padding: 50px 160px 10px;
-
-    @media (max-width: (500px)) {
-      width: 100%;
-      padding: 20px 35px 10px;
-    }
-  }
-
-  p {
-    margin-bottom: 20px;
-    font-family: Roboto, sans-serif;
-    color: #011627;
-  }
-
-  label {
-    display: inline-block;
-    margin-bottom: 25px;
-    font-family: Roboto, sans-serif;
-    font-weight: bold;
-  }
-
-  input[type=checkbox] {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #0494FA;
-    border-radius: 5px;
-  }
-
-  input[type=text], input[type=number], select, textarea {
-    display: block;
-    width: 400px;
-    height: 45px;
-    border: 2px solid #0494FA;
-    border-radius: 6px;
-    margin-top: 20px;
-
-    @media (max-width: (500px)) {
-      width: 267px;
-    }
-  }
-
-  ::placeholder {
-    color: grey;
-    font-size: 16px;
-    padding-left: 10px;
-  }
-
-  input[type=submit] {
-    width: 400px;
-    height: 45px;
-    background: #0494FA;
-    border: 0;
-    border-radius: 6px;
-    color: #FFFFFF;
-    font-family: Roboto, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-
-    @media (max-width: (500px)) {
-      width: 161px;
-      display: block;
-      margin: 0 auto;
-    }
-  }
+.back {
+  text-transform: uppercase;
+  text-align: center;
+  color:#0494FA;
+  font-size: 16px;
+  font-family: Roboto, sans-serif;
 }

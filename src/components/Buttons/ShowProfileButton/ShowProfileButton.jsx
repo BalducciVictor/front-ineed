@@ -1,10 +1,9 @@
-import React from 'react';
-import './ShowProfileButton.scss';
+import React from 'react'
 
 const ShowProfileButton = () => (
   <div className='wrap-profile-button'>
-    <button className="show-profile-button" onclick="#" >Show a profile</button>
+    <button className="show-profile-button" onClick="#" >Show a profile</button>
   </div>
 )
 
-export default ShowProfileButton;
+export default ShowProfileButton

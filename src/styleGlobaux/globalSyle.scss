@@ -1,0 +1,61 @@
+.App{
+  background-color: $color-secondary;
+}
+
+.nav-barre {
+  height: 70px;
+}
+
+
+.title-form {
+  padding-left: 60px;
+  padding-top: 60px;
+}
+
+h1{
+  font-family: Assistant, roboto, sans-serif;
+  font-size: 1.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+label{
+  @include label__clasic
+}
+input[type=text], input[type=number], select, textarea{
+  @include input__clasic;
+  font-size: 16px;
+  padding-left: 20px;
+  background-color: white;
+}
+.container {
+  background-color:  $color-secondary;
+  @media (min-width:  $breakpoint-mobile) {
+    padding: 0 3rem;
+    width: 100%;
+  }
+}
+
+.boxWrapper {
+  background-color: #F5F6FA;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height:  90vh;
+  background-color: #ffffff;
+
+  &--border {
+    padding: 0px 20px;
+  }
+
+  @media (min-width:  $breakpoint-mobile) {
+    border: solid 3vw #fff;
+    border: none;
+    width: 90%;
+    background-color: #ffffff;
+  }
+}
+

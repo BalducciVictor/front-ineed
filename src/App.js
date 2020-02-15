@@ -7,20 +7,15 @@ import Profile from './pages/Profile/Profile'
 import NewProfile from './pages/NewProfile/NewProfile'
 import PersonalInformation from './pages/PersonalInformation/PersonalInformation'
 import Datavisualitaion from './pages/Datavisualitaion/Datavisualisation.jsx'
+import NavBrarre from './components/NavBrarre'
 
-// Reset css
-import './styleGlobaux/AppReset.scss'
-
-// Fonts
-import './styleGlobaux/fontFace.scss'
-
-// Graphical Charter
-import './styleGlobaux/graphicalCharter.scss'
+import './styleGlobaux/global.scss'
 
 function App () {
   return (
-    <div className="App">
+    <div className={'App'} >
       <Router>
+        <NavBrarre />
         <Switch>
           <Route exact path='/' component={Log}/>
           <Route path='/profile' component={Profile} />

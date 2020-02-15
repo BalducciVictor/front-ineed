@@ -1,5 +1,4 @@
 import React from 'react'
-import './FilterList.scss'
 
 class FilterList extends React.Component {
   render () {

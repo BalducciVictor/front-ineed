@@ -1,95 +1,68 @@
-@import "../../styleGlobaux/graphicalCharter.scss";
-
 .container__Sign{
-    width: 90vw;
-    height: 90vh;
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-    @media (max-width: (500px)) {
-        width: 100vw;
-        justify-content: center;
-        align-items: center;
-    }
-    .form__Sign{
-        width: 50%;
-        padding: 3%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        @media (max-width: (500px)) {
-            width: 60%;
-        }
-        form{
-        margin-top: 10%;
-            label{
-                font-family: Assistant, roboto, sans-serif;
-                font-size: 1rem;
-                font-weight: bold;
-            }
-            input{
-                display: block;
-                height: 40px;
-                width:  99%;
-                border: 2px solid $blue;
-                border-radius: 6px;
-                margin: 2% 0px;
-            }
-            button{
-                display: block;
-                height: 45px;
-                width: 100%;
-                background-color: $blue;
-                border-radius: 6px;
-                font-family: Assistant, roboto, sans-serif;
-                font-size: 1.125rem;
-                color: $white;
-                font-weight: bold;
-            }
-            p{
-                display: inline-block;
-                font-family: roboto, sans-serif;
-                text-align: center;
-                margin-top: 5%;
-                span{
-                    color: $orange;
-                    margin-left: 5px;
-                    font-weight: bold;
-                    cursor: pointer;
-                };
-            }
-            .message_error{
-                color: red;
-                margin: 2% 0px;
-            }
-        }
-    }
-    .description{
-        @media (max-width: (500px)) {
-            display: none;
-        }
-        width: 50%;
-        padding: 3%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        background-color: $black;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        font-family: Assistant, roboto, sans-serif;
-        color: $orange;
-        h2{
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-        p{
-            font-size: 1.5rem;
-            margin-bottom: 3%;
-        }
-        img{
-            max-width: 100%;
-        }
-    }
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	background-color: white;
+	flex-grow: 1;
+	.form__Sign{
+		width: 100%;
+		max-width: 400px;
+		margin: auto;
+		min-height: 100%;
+		form{
+			margin-top: 10%;
+			input{
+				@include input__clasic;
+			}
+			button{
+				@include button__clasic;
+			}
+			p{
+				display: inline-block;
+				font-family: roboto, sans-serif;
+				text-align: center;
+				margin-top: 5%;
+				span{
+					color: $orange;
+					margin-left: 5px;
+					font-weight: bold;
+					cursor: pointer;
+				};
+			}
+			.message_error{
+				color: red;
+				margin: 2% 0px;
+			}
+		}
+	}
+}
+
+.description{
+	display: none;
+	@media (min-width:  1200px) {
+		h2{
+			font-size: 2.5rem;
+			font-weight: bold;
+		}
+		p{
+			font-size: 1.5rem;
+			margin-bottom: 3%;
+		}
+		img{
+			max-width: 100%;
+		}
+		width: 50%;
+		padding: 3%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		background-color: $black;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		font-family: Assistant, roboto, sans-serif;
+		color: $orange;			
+	}
 }

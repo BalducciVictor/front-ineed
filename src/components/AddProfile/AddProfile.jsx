@@ -1,8 +1,5 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
-import './AddProfile.scss';
-
 import user from '../../assets/picto-user.png';
 
 class AddProfile extends React.Component {

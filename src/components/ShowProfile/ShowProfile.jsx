@@ -1,9 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import './ShowProfile.scss';
-
-import paul from '../../assets/paul.jpg';
-
+import paul from '../../assets/paul.jpg'
 
 const ShowProfile = (props) => (
   <div className="profile">
@@ -18,6 +15,6 @@ const ShowProfile = (props) => (
     </div>
     <button className="profile-button" href="#">See the profile</button>
   </div>
-);
+)
 
-export default ShowProfile;
+export default ShowProfile

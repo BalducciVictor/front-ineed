@@ -4,7 +4,7 @@
   top: 15px;
   right: 70px;
 
-  @media (max-width: (500px)) {
+  @media (min-width:  $breakpoint-mobile) {
     right: 20px;
   }
 

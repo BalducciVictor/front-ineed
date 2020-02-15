@@ -1,16 +1,5 @@
-@import "../../styleGlobaux/graphicalCharter.scss";
-
 .container {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
     background-color: $white;
-    .logo_home {
-        max-height: "30px";
-        position: absolute;
-        top: 15px;
-        left: 15px;
-    }
 }

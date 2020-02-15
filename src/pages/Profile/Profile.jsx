@@ -1,8 +1,6 @@
-import React from 'react';
-import './Profile.scss';
-
-import Background from '../../components/Background/Background';
-import Authentification from '../../components/Authentification/Authentification';
+import React from 'react'
+import Background from '../../components/Background/Background'
+import Authentification from '../../components/Authentification/Authentification'
 
 const Profile = () => (
   <div className='container-profile'>
@@ -11,4 +9,4 @@ const Profile = () => (
   </div>
 )
 
-export default Profile;
+export default Profile
