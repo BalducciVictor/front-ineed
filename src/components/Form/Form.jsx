@@ -14,10 +14,10 @@ function Form () {
   const postDataNewProfil = (e) => {
     e.preventDefault();
 
+    //Data dans le formulaire
     let recupData = e.target.elements;
 
-    console.log(recupData.chronicDiseases.value);
-
+    // tableau de data pour l'ajout de profil
     const data = {
       name: recupData.name.value,
       surname: recupData.surname.value,
@@ -30,49 +30,47 @@ function Form () {
       maladieChroniques: []
     };
 
+    // si des maladies chroniques ont été selectionné
     if(recupData.chronicDiseases.value !== ''){
+
+      //Si il y a plusieurs maladie chronique
       if(typeof recupData.chronicDiseases[0] != 'undefined'){
+
+        // Boucle sur les maladies chroniques pour les ajouter dans le tableau 'data'
         recupData.chronicDiseases.forEach(d => {
           data.maladieChroniques.push('/api/maladie_chroniques/' + d.value);
         })
+      //  Sil il y a qu'une seule maladie chronique
       }else{
         data.maladieChroniques.push('/api/maladie_chroniques/' + recupData.chronicDiseases.value);
       }
     }
-
-
-    console.log('data : ');
-    console.log(data);
-    let idProfil = '';
   //  Envoi du profil dans l'api dans l'api
     apiRequest.post('/api/profils', data)
         .then((response) => {
-          idProfil = response.data.id;
-          console.log(response.data)
+          let idProfil = response.data.id;
 
-          //  TODO création des médicaments
-          if(idProfil !== ''){
+          // Si idProfil et le champs médicaments ne sont pas vide on ajoute les médicaments
+          if(idProfil !== '' && recupData.drug.value !== ''){
             const dataDrugs = {
               name: recupData.drug.value,
               Profil: '/api/profils/' + idProfil
             };
 
+            // Envoi du médicament dans l'api + liaison avec le profil
             apiRequest.post('/api/medicaments', dataDrugs)
                 .then((response) => {
-                  console.log(response.data)
                   window.location.pathname = '/profile'
                 })
                 .catch((error) => {
                   console.log(error)
                 })
-          }else {
-            console.log('pas idProfil')
           }
         })
         .catch((error) => {
           console.log(error)
         });
-    }
+    };
 
 
 
