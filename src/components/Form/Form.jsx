@@ -75,15 +75,6 @@ function Form () {
       <h1 className="title-form">My new profile</h1>
       <div>
         <div className="wrap-form">
-<<<<<<< HEAD
-          <form className="form-profile">
-            <label>Gender</label>
-            <div className='block-input'>
-              <input type="radio" checked={ gender === 'Male'} onChange={() => setGender('h')}/>
-              <label>Male</label>
-              <input type="radio" checked={ gender === 'female'} onChange={() => setGender('f')}/>
-              <label>Female</label>
-=======
           <div className='back-to-home'>
             <img className="arrow-back" src={arrow} alt="Arrow back home"/>
             <h2 className="back">Back to home</h2>
@@ -96,7 +87,6 @@ function Form () {
               <input checked type="radio" name="gender" value="m"/>
               <label>Female</label>
               <input type="radio" name="gender" value="f"/>
->>>>>>> 387de0bf3bb4973daca8eecc5607c4499eeb1486
             </div>
             <div className='block-input'>
               <label>Name</label>
@@ -126,15 +116,7 @@ function Form () {
             </div>
             <div className='block-input'>
               <label>Chronic disease</label>
-<<<<<<< HEAD
-              <Select
-                isMulti
-                className="basic-multi-select"
-                classNamePrefix="select" options={listItems}
-              />
-=======
               <ChronicDiseasesSelect/>
->>>>>>> 387de0bf3bb4973daca8eecc5607c4499eeb1486
             </div>
             <div className='block-input'>
               <label>Drug</label>

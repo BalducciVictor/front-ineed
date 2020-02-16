@@ -7,11 +7,11 @@ import Profile from './pages/Profile/Profile'
 import NewProfile from './pages/NewProfile/NewProfile'
 import PersonalInformation from './pages/PersonalInformation/PersonalInformation'
 import Datavisualitaion from './pages/Datavisualitaion/Datavisualisation.jsx'
-import NavBrarre from './components/NavBrarre'
+import NavBrarre from './components/Nav__barre/NavBrarre'
 
 import './styleGlobaux/global.scss'
 
-function App () {
+const App = () => {
   return (
     <div className={'App'} >
       <Router>

@@ -1,5 +1,4 @@
 import React from 'react';
-import './PersonalInformation.scss';
 import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton';
 import MedicalProfile from '../../components/MedicalProfile/MedicalProfile';
 import FilterList from '../../components/FilterList/FilterList';

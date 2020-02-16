@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import genrateInput from '../../../pluging/inputGenerate'
-import Input from '../../input'
+import Input from '../../Input__primary'
 import Context from '../../../Store/reactContext'
 
 const Home = function ({ form, setNewform, setMode, mode }) {
@@ -42,10 +42,8 @@ const Home = function ({ form, setNewform, setMode, mode }) {
     <div>
       { inputs.map((input) => {
         return <Input
-          label={input.label}
-          value={input.value}
+      {...input}
           setValue={(value) => { setNewform(value, input.name) }}
-          type={input.type}
           key={input.name}
         />
       })}

@@ -3,6 +3,10 @@
     background-color: $color-secondary;
   }
   
+  button {
+    @include button__clasic;
+    width: 170px;
+  }
   .nav-barre {
     height: 70px;
   }

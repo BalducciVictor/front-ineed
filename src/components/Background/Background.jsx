@@ -52,8 +52,8 @@ class Background extends React.Component {
     return (
       <div className="background-profiles">
         <svg className="logo_home"><use xlinkHref="/many_svg.svg#logo"/></svg>
-        <DisconnectButton/>
-        <ShowProfileButton/>
+        {/* <DisconnectButton/>
+        <ShowProfileButton/> */}
         <div className="boxWrapper-p">
           <h1 className="title-profile">Welcome</h1>
           <div className="list-profiles">

@@ -24,10 +24,9 @@ $border-clasic: 10px;
   font-family: Assistant, roboto, sans-serif;
   font-size: 1.125rem;
   color: $white;
+  border: none;
   font-weight: bold;
 }
-
-
 
 
 @mixin label__clasic {
