@@ -9,8 +9,6 @@ function ChronicDiseasesSelect() {
     // data API
     const [chronicDisease, setChronicDisease] = useState([]);
 
-    const apiRequest = new Api();
-
     // modification state chronic disease
     useEffect(() => {
         getDataSchronicDisease()
@@ -19,7 +17,7 @@ function ChronicDiseasesSelect() {
     // get data Chronic Disease
     const getDataSchronicDisease = () => {
         if (!chronicDisease.length) {
-            apiRequest.get('/api/maladie_chroniques')
+            Api.get('/api/maladie_chroniques')
                 .then(res => {
                     const ChronicDiseases = res.data['hydra:member']
                     setChronicDisease(res.data['hydra:member'])

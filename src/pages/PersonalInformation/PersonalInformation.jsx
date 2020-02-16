@@ -8,13 +8,12 @@ import ShowProfileButton from '../../components/Buttons/ShowProfileButton/ShowPr
 import arrow from '../../assets/img/arrow-back.png';
 import { useState, useEffect } from 'react';
 import {useParams} from 'react-router-dom';
-import ApiRequest from "../../Api/Api";
+import Api from "../../Api/Api";
 
 const PersonalInformation = () => {
   const [ switchState, setNewSwitch  ]= useState(0);
   const [data, setData] = useState([])
 
-  const Api = new ApiRequest();
   let { id } = useParams();
 
   useEffect(() => {
@@ -43,11 +42,6 @@ const PersonalInformation = () => {
         <div className="wrap-information">
           <SwitchButton setNewSwitch={val => { toogle(val) }} switchState={switchState} />
         </div>
-        <MedicalProfile switchState={switchState} />
-        <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
-
-        </div>
-        <SwitchButton setNewSwitch={val=>{toogle(val)}}  switchState={switchState} />
       </div>
       <MedicalProfile switchState={switchState} Profil={data}  />
       <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>

@@ -4,7 +4,7 @@ import paul from '../../assets/paul.jpg';
 import download from '../../assets/icon-download.png';
 import edit from '../../assets/icon-edit.png';
 import share from '../../assets/icon-share.png';
-import ApiRequest from "../../Api/Api";
+import Api from "../../Api/Api";
 
 const MedicalProfile = ( { switchState, Profil }) => {
 
@@ -21,8 +21,6 @@ const MedicalProfile = ( { switchState, Profil }) => {
     getMaladieChriniques();
     getMeds();
   });
-
-  const Api = new ApiRequest();
 
   const getMaladieChriniques = () => {
     // Si MaladieChronique est vide

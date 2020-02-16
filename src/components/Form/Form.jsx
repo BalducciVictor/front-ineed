@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import arrow from '../../assets/img/arrow-back.png'
-import apiRequest from '../../Api/Api'
+import Api from '../../Api/Api'
 import ChronicDiseasesSelect from './select/ChronicDiseasesSelect'
 import ShowProfile from '../ShowProfile/ShowProfile'
 import Select from 'react-select'
@@ -42,7 +42,7 @@ function Form () {
       }
     }
   //  Envoi du profil dans l'api dans l'api
-    apiRequest.post('/api/profils', data)
+    Api.post('/api/profils', data)
         .then((response) => {
           let idProfil = response.data.id;
 
@@ -54,7 +54,7 @@ function Form () {
             };
 
             // Envoi du médicament dans l'api + liaison avec le profil
-            apiRequest.post('/api/medicaments', dataDrugs)
+            Api.post('/api/medicaments', dataDrugs)
                 .then((response) => {
                   window.location.pathname = '/profile'
                 })
