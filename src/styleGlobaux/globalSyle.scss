@@ -6,6 +6,7 @@
   button {
     @include button__clasic;
     width: 170px;
+    cursor: pointer;
   }
   .nav-barre {
     height: 70px;
@@ -33,6 +34,13 @@
     font-size: 16px;
     padding-left: 20px;
     background-color: white;
+    position: relative;
+    *{
+      background-color: transparent;
+    }
+    &.error {
+      border:  2px solid $alert-color !important;
+    }
   }
   .container {
     background-color:  $color-secondary;
@@ -69,4 +77,19 @@
     border-radius: 50%;
     width: 20vw;
     max-width: 150px;
+  }
+
+  .error-message {
+    color: $alert-color;
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 4px 0; 
+    &::before {
+      position: absolute;
+      right: 17px;
+      top: -40px;
+      content: url('../assets/pictos/alert@2x.png');
+      display: block;
+    }
   }

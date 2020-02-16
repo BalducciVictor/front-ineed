@@ -1,14 +1,13 @@
 .nav-barre {
-	margin: auto;
 	display: flex;
 	justify-content: center;
 	padding: 0 20px;
 	height: 10vh;
-	margin: auto;
+	justify-content: space-between;
 	nav {
 		display: flex;
-		justify-content: space-between;
 		flex-direction: row-reverse;
+		align-items: center;
 		.connected {
 
 		}
@@ -18,7 +17,13 @@
 			border: solid $orange 2px;
 		}
 	}
+	button {
+		width: initial;
+	}
 	@media (min-width:  $breakpoint-mobile) {
-		width: 90%;
+		width: 96%;
+		button {
+			width: 170px;
+		}
 	}
 }

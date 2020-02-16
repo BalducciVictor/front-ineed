@@ -42,7 +42,7 @@ const Home = function ({ form, setNewform, setMode, mode }) {
     <div>
       { inputs.map((input) => {
         return <Input
-      {...input}
+          {...input}
           setValue={(value) => { setNewform(value, input.name) }}
           key={input.name}
         />
