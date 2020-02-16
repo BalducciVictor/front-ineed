@@ -85,21 +85,21 @@ function Form () {
             </div>
             <div className='block-input'>
               <label>Name</label>
-              <input type="text" name="name" value="Dreidemy" required/>
+              <input type="text" name="name" required/>
             </div>
             <div className='block-input'>
               <label>First Name</label>
-              <input type="text" name="surname" value="Romain" required/>
+              <input type="text" name="surname" required/>
             </div>
             <div className='block-input'>
               <label>Age</label>
-              <input type="date" name="birthDate" value="1999-06-19" placeholder="46" required/>
+              <input type="date" name="birthDate" placeholder="46" required/>
             </div>
             <div className='block-input'>
               <label>Blood type</label>
               <select name="bloodType">
                 <option value=""></option>
-                <option selected value="O-">O-</option>
+                <option value="O-">O-</option>
                 <option value="O+">O+</option>
                 <option value="B-">B-</option>
                 <option value="B+">B+</option>
@@ -115,11 +115,11 @@ function Form () {
             </div>
             <div className='block-input'>
               <label>Drug</label>
-              <input type="text" name="drug" value="Acetylleucine mylan 500" />
+              <input type="text" name="drug" />
             </div>
             <div className='block-input'>
               <label>More information</label>
-              <textarea name="information">Quelques informations</textarea>
+              <textarea name="information"></textarea>
             </div>
             <input type="submit" />
           </form>
