@@ -19,7 +19,7 @@ class ApiRequest {
 
   signUp ({ email, password }) {
     const json = {
-      username: email,
+      email: email,
       password: password
     }
     return new Promise((resolve, reject) => {
