@@ -2,7 +2,6 @@ import React from 'react'
 import ShowProfile from '../ShowProfile/ShowProfile'
 import AddProfile from '../AddProfile/AddProfile'
 import axios from 'axios'
-import Map from '../Map/Map'
 
 class Profils extends React.Component {
   constructor (props) {
@@ -57,7 +56,6 @@ class Profils extends React.Component {
             return <ShowProfile key={profil.id} name={profil.name} surname={profil.surname} id={profil.id} />
           }) : ''}
           <AddProfile/>
-          <Map/>
         </div>
       </div>
     )

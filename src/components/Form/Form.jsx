@@ -70,12 +70,12 @@ function Form () {
       <h1 className="title">My new profile</h1>
       <div>
         <div className="wrap-form">
-          <div className='back-to-home'>
+          {/* <div className='back-to-home'>
             <img className="arrow-back" src={arrow} alt="Arrow back home"/>
             <h2 className="back">Back to home</h2>
-          </div>
+          </div> */}
           <form className="form-profile" onSubmit={(e) => { postDataNewProfil(e) }}>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p> */}
             <label>Gender</label>
             <div>
               <label>Male</label>
