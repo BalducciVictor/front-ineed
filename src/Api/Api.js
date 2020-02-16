@@ -39,7 +39,7 @@ class ApiRequest {
       password: password
     }
     return new Promise((resolve, reject) => {
-      this.post('/login', json)
+      this.post('/api/login', json)
         .then(res => {
           resolve(res.data.id)
         })
