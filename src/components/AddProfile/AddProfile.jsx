@@ -22,7 +22,7 @@ class AddProfile extends React.Component {
       return (
         <div className="create-profile">
           {this.renderRedirect()}
-          <div className="flex--center">
+          <div className="picture_and_name">
             <img className="user" src={user} alt="Picto user"/>
           </div>
         <button className="profile-button" onClick={this.setRedirect}>Add new profile</button>

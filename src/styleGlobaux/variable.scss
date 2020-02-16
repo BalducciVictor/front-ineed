@@ -35,3 +35,14 @@ $border-clasic: 10px;
   font-size: 1rem;
   font-weight: bold;
 }
+
+
+@mixin absolute__centre {
+  top: 0px;
+left: 0px;
+right: 0px;
+bottom: 0px;
+position: absolute;
+}
+
+

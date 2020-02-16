@@ -7,12 +7,43 @@
     height: 223px;
     display: flex;
     flex-direction: column;
-    .flex--center {
+    position: relative;
+    margin: 40px 0px;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    0 12.5px 10px rgba(0, 0, 0, 0.035),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    0 100px 80px rgba(0, 0, 0, 0.07)
+    ;
+    .picture_and_name {
       flex-grow: 2;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
     }
   }
   button {
     width: 100%;
     border-radius: 0px;
+  }
+  .remove-profile {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: $blue;
+  }
+}
+
+@media (min-width:  $breakpoint-mobile) {
+  .list-profiles {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .profile {
+    max-width: 300px;
   }
 }
