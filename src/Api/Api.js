@@ -67,4 +67,6 @@ class ApiRequest {
 
 //   });
 // }
-export default ApiRequest
+
+
+export default new ApiRequest

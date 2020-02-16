@@ -1,7 +1,5 @@
 import React from 'react'
-import ApiRequest from '../Api/Api'
-
-const apiRequest = new ApiRequest()
+import apiRequest from '../Api/Api'
 
 const context = React.createContext({
   $Get: (path, data) => {

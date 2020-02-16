@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import arrow from '../../assets/img/arrow-back.png'
-import Api from '../../Api/Api'
+import apiRequest from '../../Api/Api'
 import ShowProfile from '../ShowProfile/ShowProfile'
 import Select from 'react-select'
 
@@ -17,8 +17,6 @@ function Form () {
 
   // data API
   const [chronicDisease, setChronicDisease] = useState([])
-
-  const apiRequest = new Api()
 
   // modification state chronic disease
   useEffect(() => {
