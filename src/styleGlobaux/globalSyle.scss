@@ -24,7 +24,7 @@
   label{
     @include label__clasic
   }
-  input[type=text], input[type=number], select, textarea{
+  input[type=text], input[type=number], input[type=email], input[type=password] ,select, textarea{
     @include input__clasic;
     font-size: 16px;
     padding-left: 20px;
