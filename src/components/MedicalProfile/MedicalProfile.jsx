@@ -1,32 +1,91 @@
-import React from 'react'
-import paul from '../../assets/paul.jpg'
-import download from '../../assets/icon-download.png'
-import edit from '../../assets/icon-edit.png'
-import share from '../../assets/icon-share.png'
+import React, {useState, useEffect} from 'react';
+import './MedicalProfile.scss';
+import paul from '../../assets/paul.jpg';
+import download from '../../assets/icon-download.png';
+import edit from '../../assets/icon-edit.png';
+import share from '../../assets/icon-share.png';
+import ApiRequest from "../../Api/Api";
 
-const MedicalProfile = ({ switchState }) => {
+const MedicalProfile = ( { switchState, Profil }) => {
+
+  const [MaladieChriniques, setMaladieChriniques] = useState([]);
+  const [Meds, setMeds] = useState([]);
+
+  let birthDate = new Date();
+
+  if(typeof Profil.birthDate !== 'undefined'){
+    birthDate = new Date(Profil.birthDate)
+  }
+
+  useEffect(() => {
+    getMaladieChriniques();
+    getMeds();
+  });
+
+  const Api = new ApiRequest();
+
+  const getMaladieChriniques = () => {
+    // Si MaladieChronique est vide
+    if (MaladieChriniques.length === 0) {
+        // Récupération des maladies lié au profil
+        Api.get('/api/maladie_chroniques?Profil=' + Profil.id)
+        .then(response => {
+          let listMaladies = [];
+
+          response.data['hydra:member'].map(item => {
+            listMaladies.push(<li key={item.id}>{item.name}</li>)
+          });
+
+          setMaladieChriniques(listMaladies)
+        })
+    }
+  };
+
+  const getMeds = () => {
+    // Si Meds est vide
+    if (Meds.length === 0) {
+      // Récupération des Médicaments lié au profil
+      Api.get('/api/medicaments?Profil=' + Profil.id)
+          .then(response => {
+            let listMeds = [];
+            response.data['hydra:member'].map(item => {
+              listMeds.push(<li key={item.id}>{item.name}</li>)
+            });
+
+            setMeds(listMeds)
+          })
+    }
+  };
+
+
   return (
-    <div className={`medical-profile ${switchState === 1 ? 'active' : ''}` }>
-      <h2>Medical profile</h2>
-      <hr/>
-      <div className="wrap-medical-profile">
-        <div className="user-information">
-          <img className="user-picture" src={paul} alt="Picture user"/>
-          <h3>Paul Victor</h3>
-          <p>march, 14 1954 (65 years)</p>
-          <h4>blood type</h4>
-          <p>0+</p>
-          <h4>Chronic disease</h4>
-          <ul>
-            <li>Rheumatological diseases</li>
-            <li>Heart and vascular diseases</li>
-          </ul>
-          <h4>Drug</h4>
-          <ul>
-            <li>ABACAVIR/LAMIVUDINE TEVA 600 mg/300 mg, comprimé pelliculé	 </li>
-            <li>ABIES PECTINATA WELEDA, degré de dilution compris entre 2CH et 30CH ou entre 4DH et 60DH</li>
-            <li>ACETYLLEUCINE MYLAN 500 mg, comprimé</li>
-          </ul>
+    <div  className={`medical-profile ${ switchState === 1 ? "active" : ""}` }>
+    <h2>Medical profile</h2>
+    <hr/>
+    <div className="wrap-medical-profile">
+      <div className="user-information">
+        <img className="user" src={paul} alt="Picture user"/>
+        <h3>{Profil.surname} {Profil.name}</h3>
+        <p>{birthDate.getDate()}/{birthDate.getMonth()}/{birthDate.getFullYear()}</p>
+        <h4>blood type</h4>
+        <p>{Profil.bloodType}</p>
+        <h4>Chronic disease</h4>
+        <ul>
+          {MaladieChriniques}
+        </ul>
+        <h4>Drug</h4>
+        <ul>
+          {Meds}
+        </ul>
+      </div>
+      <div className="icons">
+        <div className="icon-share">
+          <img className="share" src={share} alt="share picto"/>
+          <span>Share</span>
+        </div>
+        <div className="icon-download">
+          <img className="download" src={download} alt="download picto"/>
+          <span>Download</span>
         </div>
         <div className="icons">
           <div className="icon-share">
@@ -43,6 +102,7 @@ const MedicalProfile = ({ switchState }) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

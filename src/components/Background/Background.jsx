@@ -37,8 +37,9 @@ class Background extends React.Component {
 
   clearUserData (profils) {
     return profils.map((profil) => {
-      const { name, surname } = profil
+      const { id, name, surname } = profil
       return {
+        id,
         name,
         surname
       }
@@ -49,14 +50,19 @@ class Background extends React.Component {
   render () {
     const { profils } = this.state
     return (
-      <div className="boxWrapper background-profiles">
-        <h1 className="title-profile">Welcome</h1>
-        <div className="list-profiles">
-          { profils.length ? profils.map((profil, i) => {
-            return <ShowProfile key={'profil' + profil.name + i} name={profil.name} surname={profil.surname} />
-          }) : ''}
-          <AddProfile/>
-          <Map/>
+      <div className="background-profiles">
+        <svg className="logo_home"><use xlinkHref="/many_svg.svg#logo"/></svg>
+        <DisconnectButton/>
+        <ShowProfileButton/>
+        <div className="boxWrapper-p">
+          <h1 className="title-profile">Welcome</h1>
+          <div className="list-profiles">
+            { profils.length ? profils.map((profil, i) => {
+              return <ShowProfile key={profil.id} name={profil.name} surname={profil.surname} id={profil.id} />
+            }) : ''}
+            <AddProfile/>
+            <Map/>
+          </div>
         </div>
       </div>
     )

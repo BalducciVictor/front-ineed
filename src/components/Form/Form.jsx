@@ -1,76 +1,81 @@
 import React, { useState, useEffect } from 'react'
 import arrow from '../../assets/img/arrow-back.png'
 import apiRequest from '../../Api/Api'
+import ChronicDiseasesSelect from './select/ChronicDiseasesSelect'
 import ShowProfile from '../ShowProfile/ShowProfile'
 import Select from 'react-select'
 
 function Form () {
-  // data form
-  const [gender, setGender] = useState('')
-  const [name, setName] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [age, setAge] = useState('')
-  const [bloodType, setBloodType] = useState('')
-  const [chronicDiseases, setChronicDiseases] = useState('')
-  const [drugs, setDrugs] = useState('')
-  const [moreInformation, setMoreInformation] = useState('')
-
-  // data API
-  const [chronicDisease, setChronicDisease] = useState([])
-
-  // modification state chronic disease
-  useEffect(() => {
-    getDataSchronicDisease()
-  })
-
-  // get data Chronic Disease
-  const getDataSchronicDisease = () => {
-    if (!chronicDisease.length) {
-      apiRequest.get('/api/maladie_chroniques')
-        .then(res => {
-          const ChronicDiseases = res.data['hydra:member']
-          setChronicDisease(res.data['hydra:member'])
-        })
-    }
-  }
-  // add chronic disease option in select
-  const listItems = chronicDisease.map((data) => {
-    return { value: data.name, label: data.name }
-  })
 
   const postDataNewProfil = (e) => {
-    e.preventDefault()
-    alert('caroule')
+    e.preventDefault();
+
+    //Data dans le formulaire
+    let recupData = e.target.elements;
+
+    // tableau de data pour l'ajout de profil
     const data = {
-      name: name,
-      surname: firstName,
-      gender: gender,
-      birthDate: age,
-      bloodType: bloodType,
+      name: recupData.name.value,
+      surname: recupData.surname.value,
+      gender: recupData.gender.value,
+      birthDate: recupData.birthDate.value,
+      bloodType: recupData.bloodType.value,
       picture: 'yolo',
-      information: moreInformation,
-      User: 'string',
-      medicaments: [
-        drugs
-      ],
-      maladieChroniques: [
-        chronicDiseases
-      ]
+      information: recupData.information.value,
+      User: '/api/users/' + window.sessionStorage.id,
+      maladieChroniques: []
+    };
+
+    // si des maladies chroniques ont été selectionné
+    if(recupData.chronicDiseases.value !== ''){
+
+      //Si il y a plusieurs maladie chronique
+      if(typeof recupData.chronicDiseases[0] != 'undefined'){
+
+        // Boucle sur les maladies chroniques pour les ajouter dans le tableau 'data'
+        recupData.chronicDiseases.forEach(d => {
+          data.maladieChroniques.push('/api/maladie_chroniques/' + d.value);
+        })
+      //  Sil il y a qu'une seule maladie chronique
+      }else{
+        data.maladieChroniques.push('/api/maladie_chroniques/' + recupData.chronicDiseases.value);
+      }
     }
-    apiRequest.post(`/api/profils/${'coucou'}`, data)
-      .then(res => {
-        console.log(res, 'tout vas bien')
-      })
-      .catch(err => {
-        console.log(err, 'cest la merde')
-      })
-  }
+  //  Envoi du profil dans l'api dans l'api
+    apiRequest.post('/api/profils', data)
+        .then((response) => {
+          let idProfil = response.data.id;
+
+          // Si idProfil et le champs médicaments ne sont pas vide on ajoute les médicaments
+          if(idProfil !== '' && recupData.drug.value !== ''){
+            const dataDrugs = {
+              name: recupData.drug.value,
+              Profil: '/api/profils/' + idProfil
+            };
+
+            // Envoi du médicament dans l'api + liaison avec le profil
+            apiRequest.post('/api/medicaments', dataDrugs)
+                .then((response) => {
+                  window.location.pathname = '/profile'
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        });
+    };
+
+
 
   return (
     <div className="boxWrapper">
       <h1 className="title-form">My new profile</h1>
       <div>
         <div className="wrap-form">
+<<<<<<< HEAD
           <form className="form-profile">
             <label>Gender</label>
             <div className='block-input'>
@@ -78,24 +83,38 @@ function Form () {
               <label>Male</label>
               <input type="radio" checked={ gender === 'female'} onChange={() => setGender('f')}/>
               <label>Female</label>
+=======
+          <div className='back-to-home'>
+            <img className="arrow-back" src={arrow} alt="Arrow back home"/>
+            <h2 className="back">Back to home</h2>
+          </div>
+          <form className="form-profile" onSubmit={(e) => {postDataNewProfil(e)}}>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <label>Gender</label>
+            <div>
+              <label>Male</label>
+              <input checked type="radio" name="gender" value="m"/>
+              <label>Female</label>
+              <input type="radio" name="gender" value="f"/>
+>>>>>>> 387de0bf3bb4973daca8eecc5607c4499eeb1486
             </div>
             <div className='block-input'>
               <label>Name</label>
-              <input type="text" onChange={(e) => setName(e.target.value)} placeholder="Dupont" required/>
+              <input type="text" name="name" value="Dreidemy" required/>
             </div>
             <div className='block-input'>
               <label>First Name</label>
-              <input type="text" onChange={(e) => setFirstName(e.target.value)} placeholder="Martin" required/>
+              <input type="text" name="surname" value="Romain" required/>
             </div>
             <div className='block-input'>
               <label>Age</label>
-              <input type="number" onChange={(e) => setAge(e.target.value)} placeholder="46" required/>
+              <input type="date" name="birthDate" value="1999-06-19" placeholder="46" required/>
             </div>
             <div className='block-input'>
               <label>Blood type</label>
-              <select onChange={(e) => setBloodType(e.target.value)}>
+              <select name="bloodType">
                 <option value=""></option>
-                <option value="O-">O-</option>
+                <option selected value="O-">O-</option>
                 <option value="O+">O+</option>
                 <option value="B-">B-</option>
                 <option value="B+">B+</option>
@@ -107,21 +126,25 @@ function Form () {
             </div>
             <div className='block-input'>
               <label>Chronic disease</label>
+<<<<<<< HEAD
               <Select
                 isMulti
                 className="basic-multi-select"
                 classNamePrefix="select" options={listItems}
               />
+=======
+              <ChronicDiseasesSelect/>
+>>>>>>> 387de0bf3bb4973daca8eecc5607c4499eeb1486
             </div>
             <div className='block-input'>
               <label>Drug</label>
-              <input type="text" placeholder="Acetylleucine mylan 500" onChange={(e) => setDrugs(e.target.value)}/>
+              <input type="text" name="drug" value="Acetylleucine mylan 500" />
             </div>
             <div className='block-input'>
               <label>More information</label>
-              <textarea onChange={(e) => setMoreInformation(e.target.value)} />
+              <textarea name="information">Quelques informations</textarea>
             </div>
-            <input type="submit" value="Save" onClick={(e) => postDataNewProfil(e)}/>
+            <input type="submit" />
           </form>
         </div>
       </div>
