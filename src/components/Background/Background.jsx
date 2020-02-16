@@ -4,7 +4,7 @@ import AddProfile from '../AddProfile/AddProfile'
 import axios from 'axios'
 import Map from '../Map/Map'
 
-class Background extends React.Component {
+class Profils extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -50,23 +50,18 @@ class Background extends React.Component {
   render () {
     const { profils } = this.state
     return (
-      <div className="background-profiles">
-        <svg className="logo_home"><use xlinkHref="/many_svg.svg#logo"/></svg>
-        {/* <DisconnectButton/>
-        <ShowProfileButton/> */}
-        <div className="boxWrapper-p">
-          <h1 className="title-profile">Welcome</h1>
-          <div className="list-profiles">
-            { profils.length ? profils.map((profil, i) => {
-              return <ShowProfile key={profil.id} name={profil.name} surname={profil.surname} id={profil.id} />
-            }) : ''}
-            <AddProfile/>
-            <Map/>
-          </div>
+      <div className="boxWrapper">
+        <h1 className="title">Welcome</h1>
+        <div className="list-profiles">
+          { profils.length ? profils.map((profil, i) => {
+            return <ShowProfile key={profil.id} name={profil.name} surname={profil.surname} id={profil.id} />
+          }) : ''}
+          <AddProfile/>
+          <Map/>
         </div>
       </div>
     )
   }
 }
 
-export default Background
+export default Profils
