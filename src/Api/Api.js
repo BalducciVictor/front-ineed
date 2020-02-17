@@ -17,6 +17,10 @@ class ApiRequest {
     return axios.post(this.uri + (path || ''), data || {}, this.conf)
   }
 
+  del (path, data) {
+    return axios.delete(this.uri + (path || ''), data || {}, this.conf)
+  }
+
   signUp ({ email, password }) {
     const json = {
       email: email,
