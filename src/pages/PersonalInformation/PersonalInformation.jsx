@@ -1,35 +1,34 @@
-import React from 'react';
-import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton';
-import MedicalProfile from '../../components/MedicalProfile/MedicalProfile';
-import FilterList from '../../components/FilterList/FilterList';
-import List from '../../components/List/List';
-import DisconnectButton from '../../components/Buttons/DisconnectButton/DisconnectButton';
-import ShowProfileButton from '../../components/Buttons/ShowProfileButton/ShowProfileButton';
-import arrow from '../../assets/img/arrow-back.png';
-import { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
-import Api from "../../Api/Api";
+import React, { useState, useEffect } from 'react'
+import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton'
+import MedicalProfile from '../../components/MedicalProfile/MedicalProfile'
+import FilterList from '../../components/FilterList/FilterList'
+import List from '../../components/List/List'
+import DisconnectButton from '../../components/Buttons/DisconnectButton/DisconnectButton'
+import ShowProfileButton from '../../components/Buttons/ShowProfileButton/ShowProfileButton'
+import arrow from '../../assets/img/arrow-back.png'
+
+import { useParams } from 'react-router-dom'
+import Api from '../../Api/Api'
 
 const PersonalInformation = () => {
-  const [ switchState, setNewSwitch  ]= useState(0);
+  const [switchState, setNewSwitch] = useState(0)
   const [data, setData] = useState([])
 
-  let { id } = useParams();
+  const { id } = useParams()
 
   useEffect(() => {
-    getInformationProfile();
-  });
+    getInformationProfile()
+  })
 
   const getInformationProfile = () => {
-
-    if(data.length === 0){
+    if (data.length === 0) {
       Api.get('/api/profils/' + id)
-          .then((response) => {
-            console.log(response.data);
-            setData(response.data)
-          })
+        .then((response) => {
+          console.log(response.data)
+          setData(response.data)
+        })
     }
-  };
+  }
 
   const toogle = (value) => {
     setNewSwitch(value)
@@ -43,10 +42,10 @@ const PersonalInformation = () => {
           <SwitchButton setNewSwitch={val => { toogle(val) }} switchState={switchState} />
         </div>
       </div>
-      <MedicalProfile switchState={switchState} Profil={data}  />
+      <MedicalProfile switchState={switchState} Profil={data} />
       <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
-        <FilterList />
-        <List />
+        {/* <FilterList />
+        <List /> */}
       </div>
     </div>
   )

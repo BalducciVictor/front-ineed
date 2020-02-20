@@ -12,12 +12,7 @@
     height: 70px;
   }
   
-  
-  .title {
-    padding-left: 60px;
-    padding-top: 60px;
-  }
-  
+
   h1{
     font-family: Assistant, roboto, sans-serif;
     font-size: 1.9rem;
@@ -25,6 +20,19 @@
     text-transform: uppercase;
     width: 100%;
   }
+    
+  .title {
+    font-size: 22px;
+    padding-left: 20px;
+    padding-top: 20px;
+    @media (min-width:  $breakpoint-mobile) {
+      font-size: 30px;
+      width: 80%;
+      padding-left: 40px;
+      padding-top: 40px;
+    }
+  }
+  
   
   label{
     @include label__clasic

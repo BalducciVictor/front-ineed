@@ -34,9 +34,12 @@
   }
   .remove-profile {
     position: absolute;
-    right: 10px;
+    right: 16px;
     top: 5px;
     color: $blue;
+  }
+  .profile-name {
+    padding-top: 10px;
   }
 }
 
