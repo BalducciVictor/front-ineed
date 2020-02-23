@@ -61,7 +61,6 @@ const Home = function ({ form, setNewform, setMode, mode }) {
         }
       </div>
     </div>
-
   )
 }
 

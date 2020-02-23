@@ -3,9 +3,9 @@ import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton'
 import MedicalProfile from '../../components/MedicalProfile/MedicalProfile'
 import FilterList from '../../components/FilterList/FilterList'
 import List from '../../components/List/List'
-import DisconnectButton from '../../components/Buttons/DisconnectButton/DisconnectButton'
 import ShowProfileButton from '../../components/Buttons/ShowProfileButton/ShowProfileButton'
 import arrow from '../../assets/img/arrow-back.png'
+import BoxWrapper from '../../components/BoxWrapper'
 
 import { useParams } from 'react-router-dom'
 import Api from '../../Api/Api'
@@ -34,20 +34,26 @@ const PersonalInformation = () => {
     setNewSwitch(value)
   }
 
-  return (
-    <div className="boxWrapper">
-      <div className="personal-information">
-        <h1 className="title-information">My profile</h1>
-        <div className="wrap-information">
-          <SwitchButton setNewSwitch={val => { toogle(val) }} switchState={switchState} />
+  const template = () => {
+    return (
+      <div>
+        <div className="personal-information">
+          <h1 className="title-information">My profile</h1>
+          <div className="wrap-information">
+            <SwitchButton setNewSwitch={val => { toogle(val) }} switchState={switchState} />
+          </div>
+        </div>
+        <MedicalProfile switchState={switchState} Profil={data} />
+        <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
+          {/* <FilterList />
+          <List /> */}
         </div>
       </div>
-      <MedicalProfile switchState={switchState} Profil={data} />
-      <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
-        {/* <FilterList />
-        <List /> */}
-      </div>
-    </div>
+    )
+  }
+
+  return (
+    <BoxWrapper content={template} PageName="My profile" />
   )
 }
 

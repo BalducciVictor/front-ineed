@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import './Window.scss';
+import './Window.scss'
 
 const Window = () => (
   <div className='s1'>
@@ -8,6 +8,6 @@ const Window = () => (
       <h1>Welcome</h1>
     </div>
   </div>
-);
+)
 
-export default Window;
+export default Window

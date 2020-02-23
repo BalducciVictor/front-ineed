@@ -24,6 +24,8 @@
 				font-family: roboto, sans-serif;
 				text-align: center;
 				margin-top: 5%;
+				width: 100%;
+				text-align: center;
 				span{
 					color: $orange;
 					margin-left: 5px;
@@ -37,17 +39,33 @@
 			}
 		}
 	}
+	.title__log {
+		text-align: center;
+		font: Bold 40px/52px Assistant;
+		text-transform: uppercase;
+	}
 	@media (min-width:  1200px) {
-		padding: 0px 0px;
+		.form__Sign {
+			padding: 0px 0px;
+		}
 	}
 }
 
 .description{
 	display: none;
 	@media (min-width:  1200px) {
-		h2{
-			font-size: 2.5rem;
+		h2, h3{
 			font-weight: bold;
+			text-align: left;
+			font: Bold 40px/52px Assistant;
+			letter-spacing: 0;
+			text-transform: uppercase;
+		}
+		h2 {
+			padding-top: 5vh;
+		}
+		h3 {
+			color: #FFFFFF;
 		}
 		p{
 			font-size: 1.5rem;
@@ -65,8 +83,11 @@
 		background-color: $black;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		font-family: Assistant, roboto, sans-serif;
-		color: $orange;			
+		color: $orange;
+		background-image: url('../../assets/img/map.png');
+		background-size: 120%;
+		background-repeat: no-repeat;
+		background-position: center bottom;
 	}
 }

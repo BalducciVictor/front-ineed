@@ -1,103 +1,132 @@
 .App{
-    font-family: Roboto, sans-serif;
-    background-color: $color-secondary;
+  font-family: Roboto, sans-serif;
+  background-color: $color-secondary;
+  background-image: url(../assets/mapBackground.svg);
+  background-repeat: no-repeat;;
+  background-size: 80%;
+  background-position: 50% 5%;
+  @media (min-width:  $breakpoint-mobile) {
+    background-position: -50px -50px;
+    background-size: 885px;
   }
-  
-  button {
-    @include button__clasic;
-    width: 170px;
-    cursor: pointer;
-  }
-  .nav-barre {
-    height: 70px;
-  }
-  
+}
 
-  h1{
-    font-family: Assistant, roboto, sans-serif;
-    font-size: 1.9rem;
-    font-weight: bold;
-    text-transform: uppercase;
+button {
+  * {
+    text-decoration: none;
+  }
+  @include button__clasic;
+  width: 170px;
+  cursor: pointer;
+
+  // &.button--primary {
+  //   background-color: #fff;
+  //   border-radius: 6px;
+  //   font-family: Roboto, sans-serif;
+  //   font-size: 16px;
+  //   width: 159px;
+  //   height: 31px;
+  // }
+}
+
+.page__name {
+  font: Bold 22px/28px Assistant;
+  letter-spacing: 0;
+  color: #011627;
+  width: 100%;
+  text-align: left;
+  width: 90%;
+  padding: 30px 0% 20px 0%;
+  @media (min-width:  $breakpoint-mobile) {
+    padding: 30px 0px;
+    font: Bold 28px/37px Assistant;
+  }
+}
+
+h1{
+  font-family: Assistant, roboto, sans-serif;
+  font-size: 1.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.title {
+  font-size: 22px;
+  padding-left: 20px;
+  padding-top: 20px;
+  @media (min-width:  $breakpoint-mobile) {
+    font-size: 30px;
+    padding-left: 40px;
+    padding-top: 40px;
+  }
+}
+
+
+label{
+  @include label__clasic
+}
+input[type=text], input[type=number], input[type=email], input[type=password], input[type=date] ,select, textarea{
+  @include input__clasic;
+  font-size: 16px;
+  padding-left: 20px;
+  background-color: white;
+  position: relative;
+  *{
+    background-color: transparent;
+  }
+  &.error {
+    border:  2px solid $alert-color !important;
+  }
+}
+.container {
+  background-color:  $color-secondary;
+  @media (min-width:  $breakpoint-mobile) {
+    padding: 0 3rem;
     width: 100%;
   }
-    
-  .title {
-    font-size: 22px;
-    padding-left: 20px;
-    padding-top: 20px;
-    @media (min-width:  $breakpoint-mobile) {
-      font-size: 30px;
-      width: 80%;
-      padding-left: 40px;
-      padding-top: 40px;
-    }
+}
+
+.boxWrapper {
+  background-color: #F5F6FA;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height:  90vh;
+  background-color: #ffffff;
+  
+  &--border {
+    padding: 0px 20px;
   }
   
-  
-  label{
-    @include label__clasic
-  }
-  input[type=text], input[type=number], input[type=email], input[type=password], input[type=date] ,select, textarea{
-    @include input__clasic;
-    font-size: 16px;
-    padding-left: 20px;
-    background-color: white;
-    position: relative;
-    *{
-      background-color: transparent;
-    }
-    &.error {
-      border:  2px solid $alert-color !important;
-    }
-  }
-  .container {
-    background-color:  $color-secondary;
-    @media (min-width:  $breakpoint-mobile) {
-      padding: 0 3rem;
-      width: 100%;
-    }
-  }
-  
-  .boxWrapper {
-    background-color: #F5F6FA;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height:  90vh;
+  @media (min-width:  $breakpoint-mobile) {
+    border: solid 3vw #fff;
+    border: none;
+    width: 90%;
     background-color: #ffffff;
-    
-    &--border {
-      padding: 0px 20px;
-    }
-    
-    @media (min-width:  $breakpoint-mobile) {
-      border: solid 3vw #fff;
-      border: none;
-      width: 90%;
-      background-color: #ffffff;
-    }
   }
-  
-  .user-picture {
-    display: block;
-    border-radius: 50%;
-    width: 20vw;
-    max-width: 100px;
-  }
+}
 
-  .error-message {
-    color: $alert-color;
-    position: relative;
+.user-picture {
+  display: block;
+  border-radius: 50%;
+  width: 20vw;
+  max-width: 100px;
+}
+
+.error-message {
+  color: $alert-color;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 4px 0; 
+  &::before {
+    position: absolute;
+    right: 17px;
+    top: -40px;
+    content: url('../assets/pictos/alert@2x.png');
     display: block;
-    width: 100%;
-    padding: 4px 0; 
-    &::before {
-      position: absolute;
-      right: 17px;
-      top: -40px;
-      content: url('../assets/pictos/alert@2x.png');
-      display: block;
-    }
   }
+}

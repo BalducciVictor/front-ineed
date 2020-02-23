@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 // Components
 import Log from './pages/LogLoging/Log'
@@ -12,16 +12,28 @@ import NavBrarre from './components/Nav__barre/NavBrarre'
 import './styleGlobaux/global.scss'
 
 const App = () => {
+  const [isLog, setlog] = useState(sessionStorage.getItem('id'))
+  useEffect(() => {
+    setlog(sessionStorage.getItem('id'))
+  }, sessionStorage.getItem('id'))
   return (
     <div className={'App'} >
       <Router>
-        <NavBrarre />
+        <NavBrarre isLog={isLog} />
         <Switch>
-          <Route exact path='/' component={Log}/>
-          <Route exact path='/profile' component={Profile} />
-          <Route exact path='/profile/new' component={NewProfile} />
-          <Route exact path='/profile/information/:id' component={PersonalInformation} />
-          <Route exact path='/map' component={Datavisualitaion} />
+          <Route exact path="/log">
+            { isLog ? <Redirect to="/profile" /> : <Log /> }
+          </Route>
+          <Route exact path='/profile'>
+            { isLog ? <Profile /> : <Redirect to="/log" /> }
+          </Route>
+          <Route exact path='/profile/new'>
+            { isLog ? <NewProfile /> : <Redirect to="/log" /> }
+          </Route>
+          <Route exact path='/profile/information/:id'>
+            { isLog ? <PersonalInformation /> : <Redirect to="/log" /> }
+          </Route>
+          <Route exact path='/' component={Datavisualitaion} />
         </Switch>
       </Router>
     </div>

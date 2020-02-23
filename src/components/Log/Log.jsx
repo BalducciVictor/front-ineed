@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import CatchPhrase from './modules/CatchPhrase'
 import Form from './modules/Form'
-import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Home = function (props) {
   const [mode, setMode] = useState(1)
@@ -30,16 +30,14 @@ const Home = function (props) {
     setform(newForm)
   }
   return (
-    <div className="boxWrapper">
-      <div className="container__Sign" >
-        <section className="form__Sign">
-          <h1>Create an account</h1>
-          <form action="">
-            <Form form={form.list[mode]} setNewform={setNewform} setMode={setMode} mode={mode}/>
-          </form>
-        </section>
-        <CatchPhrase/>
-      </div>
+    <div className="container__Sign" >
+      <section className="form__Sign">
+        <p className="title__log" >{ mode === 1 ? 'WELCOME BACK !' : 'OPEN AN ACCOUNT' } <FontAwesomeIcon icon="check-square" /> </p>
+        <form action="">
+          <Form form={form.list[mode]} setNewform={setNewform} setMode={setMode} mode={mode}/>
+        </form>
+      </section>
+      <CatchPhrase/>
     </div>
   )
 }

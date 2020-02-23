@@ -1,12 +1,10 @@
 import React from 'react'
-import map from '../../../assets/img/map.png'
 
 const CatchPhrase = () => {
   return (
     <section className="description">
-      <h2>I NEED</h2>
-      <p>Your health guide</p>
-      <img src={ map } alt="map"/>
+      <h2>Travel easily with chronic illness</h2>
+      <h3>Find a specialist, a hospital, a place to get your medication.</h3>
     </section>
   )
 }

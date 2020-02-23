@@ -1,13 +1,12 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SignUp from '../../components/Log/Log'
+import BoxWrapper from '../../components/BoxWrapper'
 
 const Log = () => {
   const [handler] = useState('singIn')
   return (
-    <div>
-      <SignUp state={handler}/>
-    </div>
+    <BoxWrapper pageName={null} Content={() => <SignUp state={handler}/> } />
   )
 }
 

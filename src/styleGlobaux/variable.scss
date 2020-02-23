@@ -1,10 +1,12 @@
 $breakpoint-mobile: 768px;
 $color-secondary : #F5F6FA; 
+$color-tree: #F5F6FA;
 $white: #F5F6FA;
 $black: #011627;
 $alert-color: #D92A2A;
 $blue: #0494FA;
 $orange: #FF8500;
+
 $border-clasic: 10px;
 
 @mixin input__clasic {
@@ -27,6 +29,7 @@ $border-clasic: 10px;
   color: $white;
   border: none;
   font-weight: bold;
+  
 }
 
 
