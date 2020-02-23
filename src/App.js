@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import Context from './Store/reactContext'
+import { contextUser } from './Store/reactContext'
 
 // Components
 import Log from './pages/LogLoging/Log'
@@ -10,41 +10,50 @@ import PersonalInformation from './pages/PersonalInformation/PersonalInformation
 import Datavisualitaion from './pages/Datavisualitaion/Datavisualisation.jsx'
 import NavBrarre from './components/Nav__barre/NavBrarre'
 
-
 import './styleGlobaux/global.scss'
 
 const App = () => {
-  const [isLog, setlog] = useState(sessionStorage.getItem('id'))
+  const [userId, setUserId] = useState(sessionStorage.getItem('id'))
+  const [isLog, setLog] = useState(false)
 
-  
   useEffect(() => {
-    setlog(sessionStorage.getItem('id'))
-  }, sessionStorage.getItem('id'))
+    if (userId) {
+      setLog(true)
+    } else {
+      setLog(false)
+    }
+  })
 
+  const Routes = ({ value }) => {
+    return (
+      <Router>
+        <NavBrarre isLog={value.isLog} setUserId={setUserId} />
+        <Switch>
+          <Route exact path="/log">
+            { value.isLog ? <Redirect to="/profile" /> : <Log /> }
+          </Route>
+          <Route exact path='/profile'>
+            { value.isLog ? <Profile /> : <Redirect to="/log" /> }
+          </Route>
+          <Route exact path='/profile/new'>
+            { value.isLog ? <NewProfile /> : <Redirect to="/log" /> }
+          </Route>
+          <Route exact path='/profile/information/:id'>
+            { value.isLog ? <PersonalInformation /> : <Redirect to="/log" /> }
+          </Route>
+          <Route exact path='/' component={Datavisualitaion} />
+        </Switch>
+      </Router>
+    )
+  }
 
   return (
     <div className={'App'} >
-      <Context.Consumer>
-      { value.userID }
-        <Router>
-          <NavBrarre isLog={isLog} />
-          <Switch>
-            <Route exact path="/log">
-              { isLog ? <Redirect to="/profile" /> : <Log /> }
-            </Route>
-            <Route exact path='/profile'>
-              { isLog ? <Profile /> : <Redirect to="/log" /> }
-            </Route>
-            <Route exact path='/profile/new'>
-              { isLog ? <NewProfile /> : <Redirect to="/log" /> }
-            </Route>
-            <Route exact path='/profile/information/:id'>
-              { isLog ? <PersonalInformation /> : <Redirect to="/log" /> }
-            </Route>
-            <Route exact path='/' component={Datavisualitaion} />
-          </Switch>
-        </Router>
-      </Context.Consumer>
+      <contextUser.Provider value={{ userID: userId, isLog: isLog, setLog: setLog, setUserId: setUserId }} >
+        <contextUser.Consumer>
+          { value => <Routes value={value} /> }
+        </contextUser.Consumer>
+      </contextUser.Provider>
     </div>
   )
 }

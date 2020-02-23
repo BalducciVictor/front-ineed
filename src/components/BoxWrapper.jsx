@@ -7,7 +7,7 @@ const boxWrapper = ({ pageName, Content }) => {
       {
         pageName ? <p className="page__name">{pageName}</p> : ''
       }
-      <Content />
+      { Content ? <Content /> : '' }
     </div>
   )
 }

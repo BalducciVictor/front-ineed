@@ -12,22 +12,22 @@ import Api from '../../Api/Api'
 
 const PersonalInformation = () => {
   const [switchState, setNewSwitch] = useState(0)
-  const [data, setData] = useState([])
+  const [profilInformation, setProfilInformation] = useState(false)
 
   const { id } = useParams()
 
   useEffect(() => {
-    getInformationProfile()
+    if (!profilInformation) {
+      getInformationProfile()
+    }
   })
 
   const getInformationProfile = () => {
-    if (data.length === 0) {
-      Api.get('/api/profils/' + id)
-        .then((response) => {
-          console.log(response.data)
-          setData(response.data)
-        })
-    }
+    Api.get('/api/profils/' + id)
+      .then((response) => {
+        console.log(response.data)
+        setProfilInformation(response.data)
+      })
   }
 
   const toogle = (value) => {
@@ -43,7 +43,7 @@ const PersonalInformation = () => {
             <SwitchButton setNewSwitch={val => { toogle(val) }} switchState={switchState} />
           </div>
         </div>
-        <MedicalProfile switchState={switchState} Profil={data} />
+        <MedicalProfile switchState={switchState} Profil={profilInformation} />
         <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
           {/* <FilterList />
           <List /> */}
@@ -53,7 +53,7 @@ const PersonalInformation = () => {
   }
 
   return (
-    <BoxWrapper content={template} PageName="My profile" />
+    <BoxWrapper Content={template} PageName="My profile" />
   )
 }
 
