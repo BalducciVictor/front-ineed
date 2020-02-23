@@ -29,6 +29,7 @@ const Home = function (props) {
     })
     setform(newForm)
   }
+
   return (
     <div className="container__Sign" >
       <section className="form__Sign">
@@ -40,6 +41,7 @@ const Home = function (props) {
       <CatchPhrase/>
     </div>
   )
+  
 }
 
 export default Home

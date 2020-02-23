@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import Context from './Store/reactContext'
 
 // Components
 import Log from './pages/LogLoging/Log'
@@ -13,9 +14,13 @@ import './styleGlobaux/global.scss'
 
 const App = () => {
   const [isLog, setlog] = useState(sessionStorage.getItem('id'))
+
+  
   useEffect(() => {
     setlog(sessionStorage.getItem('id'))
   }, sessionStorage.getItem('id'))
+
+
   return (
     <div className={'App'} >
       <Router>

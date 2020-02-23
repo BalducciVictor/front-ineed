@@ -13,7 +13,7 @@ const PageContainer = ({ isLog }) => {
     }, 200)
   }
 
-  const Nav = () => {
+  const NavConnected = () => {
     const location = useLocation()
     useEffect(() => {
       setPathName(location.pathname)
@@ -26,16 +26,22 @@ const PageContainer = ({ isLog }) => {
       </nav>)
   }
 
+  const NavDisconnect = () => {
+    return ( 
+      <nav >
+            <button className={'button button--primary'} onClick={() => { localStorage.removeItem('id'); history.push('/log') }} >Sign up</button>
+            <button className={'button button--secondary'} onClick={() => { localStorage.removeItem('id'); history.push('/log') }} >Log in</button>
+          </nav>
+    )
+  }
+
   return (
     <div className="nav-barre">
       <img className="logo__image" onClick={() => { history.push('/') }} src={logo} alt="logo"/>
       {
         isLog
-          ? <Nav />
-          : <nav >
-            <button className={'button button--primary'} onClick={() => { localStorage.removeItem('id'); history.push('/log') }} >Sign up</button>
-            <button className={'button button--secondary'} onClick={() => { localStorage.removeItem('id'); history.push('/log') }} >Log in</button>
-          </nav>
+          ? <NavConnected />
+          : <NavDisconnect />
       }
     </div>
   )
