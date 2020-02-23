@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { createContext, Component } from "react"
 import apiRequest from '../Api/Api'
 
-const context = React.createContext({
+const context = createContext({
+
+  userID = '',
+
   $Get: (path, data) => {
     return apiRequest.get(path, data)
   },
+
   $Post: (path, data) => {
     return apiRequest.post(path, data)
   },
+
   $SignUp: (data) => {
     return new Promise((resolve, reject) => {
       apiRequest.signUp(data)
@@ -21,6 +26,7 @@ const context = React.createContext({
         })
     })
   },
+
   $SignIn: (data) => {
     return new Promise((resolve, reject) => {
       apiRequest.signIn(data)
@@ -32,6 +38,20 @@ const context = React.createContext({
         })
     })
   }
+
 })
 
+class UserProvider extends Component {
+  state = {
+    
+  };
+
+  render() {
+    return (
+      <context.Provider value={{ userID : sessionStorage.getItem('id') }}>
+        {this.props.children}
+      </context.Provider>
+    );
+  }
+}
 export default context

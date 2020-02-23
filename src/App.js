@@ -10,6 +10,7 @@ import PersonalInformation from './pages/PersonalInformation/PersonalInformation
 import Datavisualitaion from './pages/Datavisualitaion/Datavisualisation.jsx'
 import NavBrarre from './components/Nav__barre/NavBrarre'
 
+
 import './styleGlobaux/global.scss'
 
 const App = () => {
@@ -23,24 +24,27 @@ const App = () => {
 
   return (
     <div className={'App'} >
-      <Router>
-        <NavBrarre isLog={isLog} />
-        <Switch>
-          <Route exact path="/log">
-            { isLog ? <Redirect to="/profile" /> : <Log /> }
-          </Route>
-          <Route exact path='/profile'>
-            { isLog ? <Profile /> : <Redirect to="/log" /> }
-          </Route>
-          <Route exact path='/profile/new'>
-            { isLog ? <NewProfile /> : <Redirect to="/log" /> }
-          </Route>
-          <Route exact path='/profile/information/:id'>
-            { isLog ? <PersonalInformation /> : <Redirect to="/log" /> }
-          </Route>
-          <Route exact path='/' component={Datavisualitaion} />
-        </Switch>
-      </Router>
+      <Context.Consumer>
+      { value.userID }
+        <Router>
+          <NavBrarre isLog={isLog} />
+          <Switch>
+            <Route exact path="/log">
+              { isLog ? <Redirect to="/profile" /> : <Log /> }
+            </Route>
+            <Route exact path='/profile'>
+              { isLog ? <Profile /> : <Redirect to="/log" /> }
+            </Route>
+            <Route exact path='/profile/new'>
+              { isLog ? <NewProfile /> : <Redirect to="/log" /> }
+            </Route>
+            <Route exact path='/profile/information/:id'>
+              { isLog ? <PersonalInformation /> : <Redirect to="/log" /> }
+            </Route>
+            <Route exact path='/' component={Datavisualitaion} />
+          </Switch>
+        </Router>
+      </Context.Consumer>
     </div>
   )
 }

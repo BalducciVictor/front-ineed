@@ -25,9 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "heroku-run-build-script": true,$ git add .
-  $ git commit -am "make it better"
-  $ git push heroku master
+  "heroku-run-build-script": true,
   "eslintConfig": {
     "extends": "react-app"
   },
