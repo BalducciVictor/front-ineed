@@ -17,10 +17,18 @@ function Map ({ phrmacies }) {
     events: []
   })
 
+<<<<<<< HEAD
 
 
   return (
     <ReactMapGL {...viewport} onViewportChange={viewport => { setViewport(viewport) }} mapboxApiAccessToken={MAPBOX_TOKEN}>
+=======
+  // MAPBOX_TOKEN
+
+  return (
+    <ReactMapGL {...viewport} onViewportChange={viewport => { setViewport(viewport) }} mapboxApiAccessToken={MAPBOX_TOKEN}>
+
+>>>>>>> ff5bc8a4bb97bd22cd076ea34a3d484d6508605c
       {
         phrmacies ? phrmacies.map(({ latitude, longitude }, i) => <Marker key={`KEY$__${i}`} latitude={Number(latitude)} longitude={Number(longitude)} >
           <img src={pictoPharmacie}></img>

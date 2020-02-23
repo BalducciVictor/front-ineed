@@ -1,7 +1,4 @@
-.personal-information {
-<<<<<<< HEAD
-=======
-  background: #F5F6FA;
+.background-profiles {
   background-image: url(../../assets/img/map.png);
   background-repeat: no-repeat;
   background-size: 60%;
@@ -41,7 +38,7 @@
     }
   }
 
-  .boxWrapper-i {
+  .boxWrapper-p {
     background-color: #F5F6FA;
     border: solid 3vw #fff;
     width: 90%;
@@ -64,42 +61,28 @@
     width: 100%;
     padding-left: 5%;
     padding-top: 6%;
+    padding-bottom: 7%;
     text-align: left;
     font-size: 1.375rem;
-    text-transform: none;
 
     @media (max-width: (500px)) {
-      margin-bottom: 20px;
+      margin-bottom: 50px;
     }
   }
 
-  .wrap-information {
+  .list-profiles {
+    width: 90%;
     display: flex;
-    width: 100%;
-  }
+    flex-wrap: wrap;
+    align-items: stretch;
+    > *{
+      margin-right: 20px;
+    }
 
-  .back-to-home {
-    width: 20%;
     @media (max-width: (500px)) {
       display: block;
-      margin: auto;
-      width: 100%;
+      width: 88%;
     }
   }
-
-  .arrow-back {
-    display: block;
-    width: 18%;
-    margin: auto;
-  }
-
-  .back {
-    text-transform: uppercase;
-    text-align: center;
-    color:#0494FA;
-    font-size: 16px;
-    font-family: Roboto, sans-serif;
-  }
->>>>>>> ff5bc8a4bb97bd22cd076ea34a3d484d6508605c
-  
 }
+
