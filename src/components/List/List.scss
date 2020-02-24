@@ -18,4 +18,23 @@
     margin: 0;
     border: none; /*on supprime le style par défaut*/
   }
+
+
+  h3{
+    font-size: 19px;
+    font-weight: Bold;
+    color: #0494FA;
+    margin-bottom: 10px;
+
+  }
+
+  div.favItem{
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+
+    hr{
+
+    }
+  }
 }
