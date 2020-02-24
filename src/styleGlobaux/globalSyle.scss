@@ -18,30 +18,45 @@ button {
   @include button__clasic;
   width: 170px;
   cursor: pointer;
-
-  // &.button--primary {
-  //   background-color: #fff;
-  //   border-radius: 6px;
-  //   font-family: Roboto, sans-serif;
-  //   font-size: 16px;
-  //   width: 159px;
-  //   height: 31px;
-  // }
 }
 
 .page__name {
-  font: Bold 22px/28px Assistant;
+  h2 {
+    font: Bold 22px/28px Assistant;
+  }
+  h3 {
+   font-size: 16;
+   font-weight: 300;
+   font-family: Assistant, Roboto;
+  }
   letter-spacing: 0;
   color: #011627;
   width: 100%;
   text-align: left;
   width: 90%;
-  padding: 30px 0% 20px 0%;
+  margin: 30px 0% 5px 0%;
   @media (min-width:  $breakpoint-mobile) {
-    padding: 30px 0px;
-    font: Bold 28px/37px Assistant;
+    h2, h3 {
+      margin: 18px 0px;
+    }
+    h3 {
+      font-size: 22px;
+      line-height: 28px;
+    }
+    h2 {
+      font: Bold 28px/37px Assistant;
+    }
   }
 }
+
+.page__sub__text {
+  text-align: left;
+  font: Regular 16px/22px Assistant;
+  @media (min-width:  $breakpoint-mobile) {
+    font: Regular 22px/28px Assistant;
+  }
+}
+
 
 h1{
   font-family: Assistant, roboto, sans-serif;
@@ -79,6 +94,7 @@ input[type=text], input[type=number], input[type=email], input[type=password], i
     border:  2px solid $alert-color !important;
   }
 }
+
 .container {
   background-color:  $color-secondary;
   @media (min-width:  $breakpoint-mobile) {
@@ -106,6 +122,11 @@ input[type=text], input[type=number], input[type=email], input[type=password], i
     border: none;
     width: 90%;
     background-color: #ffffff;
+  }
+
+  .boxWrapper__hr {
+    opacity: 0.4;
+    margin: 0px;
   }
 }
 

@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-=======
 import './styles/style.scss'
 
 const baseUrl = 'http://13.59.220.41'
 const centreOfSante = 'http://13.59.220.41/api/centre_de_santes?Arrondissement=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20'
 
->>>>>>> ff5bc8a4bb97bd22cd076ea34a3d484d6508605c
 class App extends Component {
   formatData () {
     const { specialites, centres } = this.state
