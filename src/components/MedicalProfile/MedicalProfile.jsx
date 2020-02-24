@@ -76,7 +76,7 @@ const MedicalProfile = ({ switchState, Profil }) => {
           <div className="user-main-information">
             <img className="user" src={paul} alt="Picture user"/>
             <h3>{Profil.surname} {Profil.name}</h3>
-            <p>{birthDate.getDate()}/{birthDate.getMonth()}/{birthDate.getFullYear()}</p>
+            <p>{birthDate.getDate()}/{birthDate.getMonth() + 1}/{birthDate.getFullYear()}</p>
           </div>
           <h4>Gender</h4>
           <p>{Profil.gender}</p>
