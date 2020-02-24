@@ -33,7 +33,7 @@ const Filtre = ({ props }) => {
           template="Pharmacies 24/24" active={ buttonPharmacies.state }
         />
         <InputSelect
-          aPlaceHolder="Health centres"
+          placeHolder="Health centres"
           setValue={setCentreValue}
           value={CentreValue}
           values={

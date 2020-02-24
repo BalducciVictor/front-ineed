@@ -1,74 +1,44 @@
 import React, { useState, useEffect } from 'react'
+import Select from 'react-select'
+import style from './inputSelect.scss'
 
-const ImputFiltre = ({ values, value, setValue, aPlaceHolder }) => {
-  const [list, setList] = useState([])
-  const [currentValues, setCurrentValues] = useState(values)
-  const [inputSize, setInputSize] = useState({
-    width: 0,
-    height: 0
-  })
-
-  useEffect(() => {
-    const memoCurrentValues = values.filter((val) => list.indexOf(val) === -1)
-    setCurrentValues(memoCurrentValues)
-  }, [value], [inputSize.height])
-
-  const ThisValueByDefault = ({ aPlaceHolder }) => {
-    if (value) {
-      return (
-        <div className="text__value" >{value}</div>
-      )
-    } else {
-      return (
-        <div className="placeholder">{aPlaceHolder}</div>
-      )
-    }
+const ImputFiltre = ({ placeHolder }) => {
+  const customStyles = {
+    container: (base, state) => ({
+      ...base,
+      border: state.isFocused ? null : null,
+      transition:
+        'border-color 0.2s ease, box-shadow 0.2s ease, padding 0.2s ease',
+      '&:hover': {
+        boxShadow: '0 2px 4px 0 rgba(41, 56, 78, 0.1)'
+      },
+      'margin-left': '10px',
+      'padding-top': '2px',
+      width: '180px'
+      // height: '40px;'
+    }),
+    control: (base, state) => ({
+      ...base,
+      'border-radius': '30px',
+      'border-width': '2px'
+    }),
+    valueContainer: (base, state) => ({
+      ...base
+      // background: 'pink'
+    }),
+    multiValue: (base, state) => ({
+      ...base,
+      background: 'lightYellow',
+      maxWidth: '100px'
+    }),
+    Input: (base, state) => ({
+      ...base,
+      height: '0px'
+    })
   }
 
-  const List = () => {
-    return (
-      list.map((selected, i) => <div className="option__selected" key={`item-list-input-${aPlaceHolder}-${i}`}>{selected}</div>)
-    )
-  }
-
-  const setAutocomple = (selected) => {
-    setValue('')
-    const Newlist = list
-    Newlist.push(selected)
-    setList(Newlist)
-  }
-
-  const Autocomplet = ({ values, value }) => {
-    return (
-      <div className="autocomplet">
-        { values.map(autoCompletText => {
-          if (autoCompletText.indexOf(value) === 0 && value) {
-            return (
-              <div onClick={ () => { setAutocomple(autoCompletText) } } >{autoCompletText}</div>
-            )
-          }
-        })
-        }
-      </div>
-    )
-  }
-  const setSize = (el) => {
-    if (el) {
-      // inputSize.height = el.offsetHeight
-      // inputSize.width = el.offsetWidth
-      // console.log(el.offsetWidth)
-      // setInputSize(inputSize)
-    }
-  }
   return (
-    <div className={`input__filtre ${false ? 'active' : ''}`}>
-      <span ref={el => setSize(el) }>
-        {list.length ? <List /> : ''}
-        {' '}<ThisValueByDefault aPlaceHolder={aPlaceHolder} value={value} />
-      </span>
-      <input name={aPlaceHolder} onChange={e => { setValue(e.target.value) }} value={value} type="text"/>
-      <Autocomplet values={currentValues} value={value} />
-    </div>
+    <Select placeholder={placeHolder} value styles={customStyles} />
   )
 }
 
