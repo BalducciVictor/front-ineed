@@ -1,0 +1,36 @@
+.container-pop {
+  position: absolute;
+  background-color: #878CA2D8;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  .pop-wrap {
+    background-color: white;
+    display: block;
+    margin: auto;
+    position: absolute ;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 90vw;
+    max-width: 1056px;
+    height: 50vh;
+    max-height: 363px;
+    .parent-relative:nth-child(2) {
+      height: 100%;
+    }
+    .parent-relative {
+      position: relative;
+      height: 100%;
+    }
+    .cross {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+
+  }
+}
