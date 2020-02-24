@@ -45,8 +45,8 @@ const PersonalInformation = () => {
         </div>
         <MedicalProfile switchState={switchState} Profil={profilInformation} />
         <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
-          {/* <FilterList />
-          <List /> */}
+          {/* <FilterList /> */
+          <List profile={profilInformation} />}
         </div>
       </div>
     )
