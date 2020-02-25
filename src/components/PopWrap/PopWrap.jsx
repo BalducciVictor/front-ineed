@@ -1,4 +1,5 @@
 import React from 'react';
+import cross from '../../assets/cross.png';
 
 const PopWrap = ({ Content , data ,  setData}) => {
 
@@ -7,12 +8,15 @@ const PopWrap = ({ Content , data ,  setData}) => {
     NewData.state = false
     setData(NewData)
   }
+
   const Pop = ({data, setData}) => {
     return(
       <div className='container-pop'>
       <div className="pop-wrap">
         <section className="parent-relative">
-          <div className="cross" onClick={closeData}>x</div>
+          <div className="cross" onClick={closeData}>
+            <img className="cross" src={cross} alt="Blue cross"/>
+          </div>
           <Content />
         </section>
       </div>
@@ -20,8 +24,8 @@ const PopWrap = ({ Content , data ,  setData}) => {
     )
   }
   return(
-      data.state ? <Pop /> : ''
-    )
+    data.state ? <Pop /> : ''
+  )
 }
 
 export default PopWrap;

@@ -18,29 +18,33 @@ const Profils = () => {
 
   // Call to retrieve profils by ID
   const callGetProfile = () => {
-    const data = { User: sessionStorage.getItem('id') }
-    const configSend = { 'Content-Type': 'application/json' }
-    axios.get('http://13.59.220.41/api/profils', data, configSend)
+    axios.get('http://13.59.220.41/api/profils?User=' + sessionStorage.getItem('id'))
       .then(res => {
-        let profilsFromData = res.data['hydra:member']
-          profilsFromData = clearUserData(profilsFromData)
-          console.log(profilsFromData)
-          setProfiles(profilsFromData)
+        let profilsFromData = res.data['hydra:member'];
+        profilsFromData = clearUserData(profilsFromData);
+        setProfiles(profilsFromData);
       })
       .catch(err => {
-        console.log(err.response.data)
+        console.log(err.response.data);
       })
-  }
+  };
+
+  useEffect(() => {
+    if (!profils.length) {
+      callGetProfile();
+    }
+  });
+
   const clearUserData = (profils) => {
     return profils.map((profil) => {
-      const { id, name, surname } = profil
+      const { id, name, surname } = profil;
       return {
         id,
         name,
         surname
       }
     })
-  }
+  };
 
   useEffect(() => {
       callGetProfile()
@@ -64,11 +68,20 @@ const Profils = () => {
 
   const PopContent = () => {
     return(
-      <div>
-        <button onClick={removeProfile} >Yes</button>
-        <div>
-          dfsf
-        </div>
+      <div className='pop-content'>
+        <h2>Are you sure you want to delete this profile ? Your data will be deleted.</h2>
+        <button onClick={removeProfile} >Delete profile</button>
+        <p>Cancel</p>
+      </div>
+    )
+  }
+
+  const PopRegister = () => {
+    return(
+      <div className='pop-register'>
+        <h2>Please to be able to add a place to your list, you have to open an account to the service first by clicking on the button.</h2>
+        <button onClick={removeProfile} >Open an account</button>
+        <p>You already have an account ? <span>Log in</span></p>
       </div>
     )
   }
@@ -83,11 +96,11 @@ const Profils = () => {
         <PopWrap data={popRemoveProfile} setData={setPopRemoveProfile} Content={PopContent}/>
       </div>
     )
-  }
+  };
 
   return (
     sessionStorage.getItem('id') ? <BoxWrapper pageName="Choose a profile" Content={template} /> : ''
   )
-}
+};
 
 export default Profils
