@@ -29,7 +29,7 @@ const App = () => {
       <Router>
         <NavBrarre isLog={value.isLog} setUserId={setUserId} />
         <Switch>
-          <Route exact path="/log">
+          <Route exact path="/log/:modeParmsUrl">
             { value.isLog ? <Redirect to="/profile" /> : <Log /> }
           </Route>
           <Route exact path='/profile'>
