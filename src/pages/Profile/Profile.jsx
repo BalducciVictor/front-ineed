@@ -41,7 +41,7 @@ const Profils = () => {
   const template = () => {
     return (
       <div className="list-profiles">
-        <button className="" onClick={() => { history.push('profile/new') } } >Create a new profile</button>
+        <button className="new-profile-button" onClick={() => { history.push('profile/new') } } >Create a new profile</button>
         { profils.length ? profils.map((profil, i) => {
           return <ShowProfile key={profil.id} name={profil.name} surname={profil.surname} id={profil.id} />
         }) : ''}
