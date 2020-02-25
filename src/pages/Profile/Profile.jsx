@@ -57,7 +57,7 @@ const Profils = () => {
           let pop = popRemoveProfile
           pop.state = false
           setPopRemoveProfile(pop)
-          callGetProfile
+          callGetProfile()
       })
   }
 
