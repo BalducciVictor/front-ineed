@@ -5,10 +5,12 @@ import download from '../../assets/icon-download.png'
 import edit from '../../assets/icon-edit.png'
 import share from '../../assets/icon-share.png'
 import Api from '../../Api/Api'
+import EditMedicalProfile from '../EditMedicalProfile/EditMedicalProfile'
 
 const MedicalProfile = ({ switchState, Profil }) => {
   const [MaladieChriniques, setMaladieChriniques] = useState([])
   const [Meds, setMeds] = useState([])
+  const [showEdit, setshowEdit] = useState(false)
 
   let birthDate = new Date()
 
@@ -57,13 +59,30 @@ const MedicalProfile = ({ switchState, Profil }) => {
   return (
     <div className={`medical-profile${switchState === 1 ? ' active' : ''}` }>
       <h2>Medical profile</h2>
-      <hr/>
       <div className="wrap-medical-profile">
         <div className="user-information">
-          <img className="user" src={paul} alt="Picture user"/>
-          <h3>{Profil.surname} {Profil.name}</h3>
-          <p>{birthDate.getDate()}/{birthDate.getMonth()}/{birthDate.getFullYear()}</p>
-          <h4>blood type</h4>
+          <div className="icons">
+            <div className="icon-share">
+              <img className="share" src={share} alt="share picto"/>
+              <span>Share</span>
+            </div>
+            <div className="icon-download">
+              <img className="download" src={download} alt="download picto"/>
+              <span>Download</span>
+            </div>
+            <div className="icon-edit" onClick={ ()=> setshowEdit(!showEdit)}>
+              <img className="edit" src={edit} alt="edit picto"/>
+              <span>Edit</span>
+            </div>
+          </div>
+          <div className="user-main-information">
+            <img className="user" src={paul} alt="Picture user"/>
+            <h3>{Profil.surname} {Profil.name}</h3>
+            <p>{birthDate.getDate()}/{birthDate.getMonth() + 1}/{birthDate.getFullYear()}</p>
+          </div>
+          <h4>Gender</h4>
+          <p>{Profil.gender}</p>
+          <h4>Blood type</h4>
           <p>{Profil.bloodType}</p>
           <h4>Chronic disease</h4>
           <ul>
@@ -74,31 +93,8 @@ const MedicalProfile = ({ switchState, Profil }) => {
             {Meds}
           </ul>
         </div>
-        <div className="icons">
-          <div className="icon-share">
-            <img className="share" src={share} alt="share picto"/>
-            <span>Share</span>
-          </div>
-          <div className="icon-download">
-            <img className="download" src={download} alt="download picto"/>
-            <span>Download</span>
-          </div>
-          <div className="icons">
-            <div className="icon-share">
-              <img className="share" src={share} alt="share picto"/>
-              <span>Share</span>
-            </div>
-            <div className="icon-download">
-              <img className="download" src={download} alt="download picto"/>
-              <span>Download</span>
-            </div>
-            <div className="icon-edit">
-              <img className="edit" src={edit} alt="edit picto"/>
-              <span>Edit</span>
-            </div>
-          </div>
-        </div>
       </div>
+      {showEdit && <EditMedicalProfile/>}
     </div>
   )
 }

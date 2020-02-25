@@ -10,50 +10,48 @@ const Profils = () => {
 
   // Call to retrieve profils by ID
   const callGetProfile = () => {
-    const data = { User: sessionStorage.getItem('id') }
-    const configSend = { 'Content-Type': 'application/json' }
-    axios.get('http://13.59.220.41/api/profils', data, configSend)
+    axios.get('http://13.59.220.41/api/profils?User=' + sessionStorage.getItem('id'))
       .then(res => {
-        let profilsFromData = res.data['hydra:member']
-        profilsFromData = clearUserData(profilsFromData)
-        setProfiles(profilsFromData)
+        let profilsFromData = res.data['hydra:member'];
+        profilsFromData = clearUserData(profilsFromData);
+        setProfiles(profilsFromData);
       })
       .catch(err => {
-        console.log(err.response.data)
+        console.log(err.response.data);
       })
-  }
+  };
 
   useEffect(() => {
     if (!profils.length) {
-      callGetProfile()
+      callGetProfile();
     }
-  })
+  });
 
   const clearUserData = (profils) => {
     return profils.map((profil) => {
-      const { id, name, surname } = profil
+      const { id, name, surname } = profil;
       return {
         id,
         name,
         surname
       }
     })
-  }
+  };
 
   const template = () => {
     return (
       <div className="list-profiles">
-        <button className="" onClick={() => { history.push('profile/new') } } >Create a new profile</button>
+        <button className="new-profile-button" onClick={() => { history.push('profile/new') } } >Create a new profile</button>
         { profils.length ? profils.map((profil, i) => {
           return <ShowProfile key={profil.id} name={profil.name} surname={profil.surname} id={profil.id} />
         }) : ''}
       </div>
     )
-  }
+  };
 
   return (
     sessionStorage.getItem('id') ? <BoxWrapper pageName="Choose a profile" Content={template} /> : ''
   )
-}
+};
 
 export default Profils
