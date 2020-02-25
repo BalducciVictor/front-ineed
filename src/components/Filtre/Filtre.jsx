@@ -1,47 +1,54 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FiltreButton from '../Buttons/FiltreButton'
 import InputSelect from '../InputSelect'
+import ContextFiltre from '../../Store/ContextFiltre'
+const specialite = [{ label: 'all', value: 'all' }, { label: 'Oto-rhino-laryngologie', value: 0 }, { label: 'Médecine générale', value: 1 }, { label: 'Kinésithérapie', value: 2 }, { label: 'Orthophonie', value: 3 }, { label: 'Dentaire', value: 4 }, { label: 'Imagerie', value: 5 }, { label: 'Rhumatologie', value: 6 }, { label: 'Gynécologie', value: 7 }, { label: 'Cardiologie', value: 8 }, { label: 'Ophtalmologie', value: 9 }, { label: 'Gastro-entérologie', value: 10 }, { label: 'Orthodontie', value: 11 }, { label: 'Dermatologie', value: 12 }, { label: 'Vaccinations internationales', value: 13 }, { label: 'Chirurgie dentaire', value: 14 }, { label: 'Homéopathie', value: 15 }, { label: 'Angiologie-phlébologie', value: 16 }, { label: 'Chirurgie esthétique', value: 17 }, { label: 'Endocrinologie', value: 18 }, { label: 'Soins infirmiers', value: 19 }, { label: 'Pédiatrie', value: 20 }, { label: 'Biologie', value: 21 }, { label: 'Psychologie', value: 22 }, { label: 'Médecine du sport', value: 23 }, { label: 'Orthoptie', value: 24 }, { label: 'Psychiatrie', value: 25 }, { label: 'Allergologie', value: 26 }, { label: 'Panoramique dentaire', value: 27 }, { label: 'Implantologie', value: 28 }, { label: 'Pneumologie', value: 29 }, { label: 'Podologie', value: 30 }, { label: 'Parodontologie', value: 31 }, { label: 'Pathologie Infectieuse et Tropicale', value: 32 }, { label: 'Pédicurie', value: 33 }, { label: 'Urologie', value: 34 }, { label: 'Pathologie infectieuse et tropicale', value: 35 }, { label: 'Neurologie', value: 36 }, { label: 'Pédicurie / Podologie', value: 37 }, { label: 'Stomatologie', value: 38 }, { label: 'Chirurgie viscérale', value: 39 }, { label: 'Andrologie', value: 40 }, { label: 'Pédopsychiatrie', value: 41 }, { label: 'Ostéodensitométrie', value: 42 }, { label: 'Chirurgie orthopédique', value: 43 }, { label: 'Médecine de voyage', value: 44 }, { label: 'Gériatrie', value: 45 }, { label: 'Tabacologie', value: 46 }, { label: 'Diététique', value: 47 }, { label: 'Echographie', value: 48 }, { label: 'Hématologie', value: 49 }, { label: 'Chirurgie Buccale', value: 50 }, { label: 'Pédodontie', value: 51 }, { label: 'Chirurgie Dentaire', value: 52 }, { label: 'Anesthésie', value: 53 }, { label: 'Phlébologie', value: 54 }, { label: 'Mammographie', value: 55 }, { label: 'Ionophorèse', value: 56 }, { label: 'Néphrologie', value: 57 }, { label: 'Chirurgie buccale', value: 58 }, { label: 'Chirurgie vasculaire', value: 59 }, { label: 'Médecine Interne', value: 60 }, { label: 'Chirurgie Esthétique', value: 61 }, { label: 'Acupuncture', value: 62 }, { label: 'Médecine agréée', value: 63 }, { label: 'Ostéopathie', value: 64 }, { label: 'Consultation Sage-femme', value: 65 }, { label: 'imagerie', value: 66 }, { label: 'Alcoologie', value: 67 }, { label: 'Médecine interne', value: 68 }, { label: 'Chirurgie plastique', value: 69 }]
 
 const Filtre = ({ props }) => {
-  const [buttonAll, setButtonAll] = useState({
-    state: false
-  })
-
-  const [buttonHospital, setButtonHospital] = useState({
-    state: false
-  })
-
-  const [buttonPharmacies, setButtonPharmacies] = useState({
-    state: false
-  })
-  const [CentreValue, setCentreValue] = useState('')
+  const toogleAllButton = (valueDefault, set) => {
+    const newValue = JSON.parse(JSON.stringify(valueDefault))
+    if (newValue.includes('all')) {
+      const i = newValue.indexOf('all')
+      newValue.splice(i, 1)
+    } else {
+      newValue.push('all')
+    }
+    set(newValue)
+  }
 
   return (
-    <div className="box__filtre">
-      <p className="instruction">What can we help you find ?</p>
-      <div className="fitres">
-        <FiltreButton
-          toogle={setButtonAll}
-          template="All" active={ buttonAll.state }
-        />
-        <FiltreButton
-          toogle={setButtonHospital}
-          template="Hospitals" active={ buttonHospital.state }
-        />
-        <FiltreButton
-          toogle={setButtonPharmacies}
-          template="Pharmacies 24/24" active={ buttonPharmacies.state }
-        />
-        <InputSelect
-          placeHolder="Health centres"
-          setValue={setCentreValue}
-          value={CentreValue}
-          values={
-            ['sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'qui est esse', 'ea molestias quasi exercitationem repellat qui ipsa sit aut', 'eum et est occaecati', 'nesciunt quas odio', 'dolorem eum magni eos aperiam quia', 'magnam facilis autem', 'dolorem dolore est ipsam', 'nesciunt iure omnis dolorem tempora et accusantium', 'optio molestias id quia eum', 'et ea vero quia laudantium autem', 'in quibusdam tempore odit est dolorem', 'dolorum ut in voluptas mollitia et saepe quo animi', 'voluptatem eligendi optio', 'eveniet quod temporibus', 'sint suscipit perspiciatis velit dolorum rerum ipsa laboriosam odio', 'fugit voluptas sed molestias voluptatem provident', 'voluptate et itaque vero tempora molestiae', 'adipisci placeat illum aut reiciendis qui', 'doloribus ad provident suscipit at', 'asperiores ea ipsam voluptatibus modi minima quia sint', 'dolor sint quo a velit explicabo quia nam', 'maxime id vitae nihil numquam', 'autem hic labore sunt dolores incidunt', 'rem alias distinctio quo quis', 'est et quae odit qui non', 'quasi id et eos tenetur aut quo autem', 'delectus ullam et corporis nulla voluptas sequi', 'iusto eius quod necessitatibus culpa ea', 'a quo magni similique perferendis', 'ullam ut quidem id aut vel consequuntur', 'doloremque illum aliquid sunt', 'qui explicabo molestiae dolorem', 'magnam ut rerum iure', 'id nihil consequatur molestias animi provident', 'fuga nam accusamus voluptas reiciendis itaque', 'provident vel ut sit ratione est', 'explicabo et eos deleniti nostrum ab id repellendus', 'eos dolorem iste accusantium est eaque quam', 'enim quo cumque', 'non est facere', 'commodi ullam sint et excepturi error explicabo praesentium voluptas', 'eligendi iste nostrum consequuntur adipisci praesentium sit beatae perferendis', 'optio dolor molestias sit', 'ut numquam possimus omnis eius suscipit laudantium iure', 'aut quo modi neque nostrum ducimus', 'quibusdam cumque rem aut deserunt', 'ut voluptatem illum ea doloribus itaque eos', 'laborum non sunt aut ut assumenda perspiciatis voluptas', 'repellendus qui recusandae incidunt voluptates tenetur qui omnis exercitationem', 'soluta aliquam aperiam consequatur illo quis voluptas', 'qui enim et consequuntur quia animi quis voluptate quibusdam', 'ut quo aut ducimus alias', 'sit asperiores ipsam eveniet odio non quia', 'sit vel voluptatem et non libero', 'qui et at rerum necessitatibus', 'sed ab est est', 'voluptatum itaque dolores nisi et quasi', 'qui commodi dolor at maiores et quis id accusantium', 'consequatur placeat omnis quisquam quia reprehenderit fugit veritatis facere', 'voluptatem doloribus consectetur est ut ducimus', 'beatae enim quia vel', 'voluptas blanditiis repellendus animi ducimus error sapiente et suscipit', 'et fugit quas eum in in aperiam quod', 'consequatur id enim sunt et et', 'repudiandae ea animi iusto', 'aliquid eos sed fuga est maxime repellendus', 'odio quis facere architecto reiciendis optio', 'fugiat quod pariatur odit minima', 'voluptatem laborum magni', 'et iusto veniam et illum aut fuga', 'sint hic doloribus consequatur eos non id', 'consequuntur deleniti eos quia temporibus ab aliquid at', 'enim unde ratione doloribus quas enim ut sit sapiente', 'dignissimos eum dolor ut enim et delectus in', 'doloremque officiis ad et non perferendis', 'necessitatibus quasi exercitationem odio', 'quam voluptatibus rerum veritatis', 'pariatur consequatur quia magnam autem omnis non amet', 'labore in ex et explicabo corporis aut quas', 'tempora rem veritatis voluptas quo dolores vero', 'laudantium voluptate suscipit sunt enim enim', 'odit et voluptates doloribus alias odio et', 'optio ipsam molestias necessitatibus occaecati facilis veritatis dolores aut', 'dolore veritatis porro provident adipisci blanditiis et sunt', 'placeat quia et porro iste', 'nostrum quis quasi placeat', 'sapiente omnis fugit eos', 'sint soluta et vel magnam aut ut sed qui', 'ad iusto omnis odit dolor voluptatibus', 'aut amet sed', 'ratione ex tenetur perferendis', 'beatae soluta recusandae', 'qui qui voluptates illo iste minima', 'id minus libero illum nam ad officiis', 'quaerat velit veniam amet cupiditate aut numquam ut sequi', 'quas fugiat ut perspiciatis vero provident', 'laboriosam dolor voluptates', 'temporibus sit alias delectus eligendi possimus magni', 'at nam consequatur ea labore ea harum']
-          }
-        />
-      </div>
-    </div>
+    <ContextFiltre.Consumer>
+      { ({ setFiltreAll, filtreAll, filtreHospitals, setFiltreHospitals, filtrePharmacies, setFlitresPharmacies, setFiltreCentres, filtreCentres }) => {
+        return (
+          <div className="box__filtre">
+            <p className="instruction">What can we help you find ?</p>
+            <div className="fitres">
+              <FiltreButton
+                toogle={() => { setFiltreAll(!filtreAll); setFiltreHospitals([]); setFlitresPharmacies([]); setFiltreCentres([]) } }
+                template="All" active={ filtreAll }
+              />
+              <FiltreButton
+                toogle={() => {
+                  toogleAllButton(filtreHospitals, setFiltreHospitals); setFiltreAll(false)
+                }}
+                template="Hospitalss" active={ filtreHospitals.includes('all') }
+              />
+              <FiltreButton
+                toogle={() => { toogleAllButton(filtrePharmacies, setFlitresPharmacies); setFiltreAll(false) }}
+                template="Pharmacies 24/24" active={ filtrePharmacies.includes('all') }
+              />
+              <InputSelect
+                placeHolder="Health centres"
+                defaultValue={filtreCentres}
+                options={specialite}
+                setValue={val => { setFiltreCentres(val); setFiltreAll(false) }}
+              />
+            </div>
+          </div>
+        )
+      }
+      }
+    </ContextFiltre.Consumer>
   )
 }
 

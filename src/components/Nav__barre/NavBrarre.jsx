@@ -20,11 +20,7 @@ const PageContainer = ({ isLog, setUserId }) => {
     }, [location])
     return (
       <nav className="connected">
-        <contextUser.Provider >
-          <contextUser.Provider >
-            <button className={'button button--secondary'} onClick={() => { DisconnectUser() }} >Disconnect</button>
-          </contextUser.Provider>
-        </contextUser.Provider>
+        <button className={'button button--secondary'} onClick={() => { DisconnectUser() }} >Disconnect</button>
         { pathName !== '/profile' ? <button onClick={() => { history.push('/profile') }} className={'button button--blue'}>Show a profile</button> : ''}
         { pathName !== '/' ? <button className={'button button--blue'} onClick={() => { history.push('/') }} >Map</button> : ''}
       </nav>)
