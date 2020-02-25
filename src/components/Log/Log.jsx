@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import CatchPhrase from './modules/CatchPhrase'
 import Form from './modules/Form'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useEffect } from 'react'
 
 const Home = function (props) {
-  let { modeParmsUrl } = useParams();
-  const [mode, setMode] = useState(0)
+  const [mode, setMode] = useState(1)
   const [form, setform] = useState({
     list: [
       {
@@ -21,10 +19,6 @@ const Home = function (props) {
       }
     ]
   })
-
-  useEffect(()=> {
-    setMode(Number(modeParmsUrl) || 0)
-  },[modeParmsUrl])
 
   const setNewform = (value, index) => {
     const newForm = Object.assign({}, form)
@@ -47,6 +41,7 @@ const Home = function (props) {
       <CatchPhrase/>
     </div>
   )
+  
 }
 
 export default Home

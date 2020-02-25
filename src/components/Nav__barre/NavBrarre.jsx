@@ -33,8 +33,8 @@ const PageContainer = ({ isLog, setUserId }) => {
   const NavDisconnect = () => {
     return (
       <nav >
-        <button className={'button button--primary'} onClick={() => { localStorage.removeItem('id'); history.push('/log/0') }} >Sign up</button>
-        <button className={'button button--secondary'} onClick={() => { localStorage.removeItem('id'); history.push('/log/1') }} >Log in</button>
+        <button className={'button button--primary'} onClick={() => { localStorage.removeItem('id'); history.push('/log') }} >Sign up</button>
+        <button className={'button button--secondary'} onClick={() => { localStorage.removeItem('id'); history.push('/log') }} >Log in</button>
       </nav>
     )
   }
