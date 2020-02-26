@@ -21,7 +21,7 @@ const MedicalProfile = ({ switchState, Profil }) => {
   useEffect(() => {
     getMaladieChriniques()
     getMeds()
-  })
+  }, [MaladieChriniques.length, Meds.length, showEdit.length])
 
   const getMaladieChriniques = () => {
     // Si MaladieChronique est vide
@@ -70,7 +70,7 @@ const MedicalProfile = ({ switchState, Profil }) => {
               <img className="download" src={download} alt="download picto"/>
               <span>Download</span>
             </div>
-            <div className="icon-edit" onClick={ ()=> setshowEdit(!showEdit)}>
+            <div className="icon-edit" onClick={ () => setshowEdit(!showEdit)}>
               <img className="edit" src={edit} alt="edit picto"/>
               <span>Edit</span>
             </div>

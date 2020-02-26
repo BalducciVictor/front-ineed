@@ -112,6 +112,7 @@ input[type=text], input[type=number], input[type=email], input[type=password], i
   align-items: center;
   min-height:  90vh;
   background-color: #ffffff;
+  overflow: hidden;
   
   &--border {
     padding: 0px 20px;

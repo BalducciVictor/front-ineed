@@ -17,10 +17,8 @@ const PersonalInformation = () => {
   const { id } = useParams()
 
   useEffect(() => {
-    if (!profilInformation) {
-      getInformationProfile()
-    }
-  })
+    getInformationProfile()
+  }, [profilInformation.length])
 
   const getInformationProfile = () => {
     Api.get('/api/profils/' + id)
@@ -46,7 +44,7 @@ const PersonalInformation = () => {
         <MedicalProfile switchState={switchState} Profil={profilInformation} />
         <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
           {/* <FilterList /> */
-          <List profile={profilInformation} />}
+            <List profile={profilInformation} />}
         </div>
       </div>
     )

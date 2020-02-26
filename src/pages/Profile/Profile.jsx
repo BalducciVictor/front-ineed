@@ -20,54 +20,47 @@ const Profils = () => {
   const callGetProfile = () => {
     axios.get('http://13.59.220.41/api/profils?User=' + sessionStorage.getItem('id'))
       .then(res => {
-        let profilsFromData = res.data['hydra:member'];
-        profilsFromData = clearUserData(profilsFromData);
-        setProfiles(profilsFromData);
+        let profilsFromData = res.data['hydra:member']
+        profilsFromData = clearUserData(profilsFromData)
+        setProfiles(profilsFromData)
       })
       .catch(err => {
-        console.log(err.response.data);
+        console.log(err.response.data)
       })
-  };
-
-  useEffect(() => {
-    if (!profils.length) {
-      callGetProfile();
-    }
-  });
+  }
 
   const clearUserData = (profils) => {
     return profils.map((profil) => {
-      const { id, name, surname } = profil;
+      const { id, name, surname } = profil
       return {
         id,
         name,
         surname
       }
     })
-  };
+  }
 
   useEffect(() => {
-      callGetProfile()
-  }, [profils.length] )
+    callGetProfile()
+  }, [profils.length])
 
-  const openPop = (id,surname, name) => {
-    setPopRemoveProfile({state : true ,id,surname, name})
+  const openPop = (id, surname, name) => {
+    setPopRemoveProfile({ state: true, id, surname, name })
   }
 
   const removeProfile = () => {
-      Api.del('/api/profils/' + popRemoveProfile.id)
-        .then(response => {
-          history.push('/profile')
-          let pop = popRemoveProfile
-          pop.state = false
-          setPopRemoveProfile(pop)
-          callGetProfile()
+    Api.del('/api/profils/' + popRemoveProfile.id)
+      .then(response => {
+        history.push('/profile')
+        const pop = popRemoveProfile
+        pop.state = false
+        setPopRemoveProfile(pop)
+        callGetProfile()
       })
   }
 
-
   const PopContent = () => {
-    return(
+    return (
       <div className='pop-content'>
         <h2>Are you sure you want to delete this profile ? Data cannot be restored.</h2>
         <button onClick={removeProfile} >Delete profile</button>
@@ -77,7 +70,7 @@ const Profils = () => {
   }
 
   const PopRegister = () => {
-    return(
+    return (
       <div className='pop-register'>
         <h2>Please to be able to add a place to your list, you have to open an account to the service first by clicking on the button.</h2>
         <button onClick={removeProfile} >Open an account</button>
@@ -96,11 +89,11 @@ const Profils = () => {
         <PopWrap data={popRemoveProfile} setData={setPopRemoveProfile} Content={PopContent}/>
       </div>
     )
-  };
+  }
 
   return (
     sessionStorage.getItem('id') ? <BoxWrapper pageName="Choose a profile" Content={template} /> : ''
   )
-};
+}
 
 export default Profils
