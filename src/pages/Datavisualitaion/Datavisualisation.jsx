@@ -7,6 +7,7 @@ import MapGl from '../../components/MapGl/mapGl'
 import { render } from '@testing-library/react'
 import ContextFiltre from '../../Store/ContextFiltre'
 import Filtre from '../../components/Filtre/Filtre'
+import PopAddListProfile from '../../components/PopAddListProfile/PopAddListProfile'
 
 const PersonalInformation = () => {
   const [categories, setCategories] = useState({
@@ -35,7 +36,10 @@ const PersonalInformation = () => {
   }
 
   return (
-    <BoxWrapper Content={template} pageName="Travel easily with chronic illness" subText="Find a specialist, a hospital, a place to get your medication.<br> Add to your list, create your medical form and benefit from an account for all your family." />
+    <div className="">
+      <BoxWrapper Content={template} pageName="Travel easily with chronic illness" subText="Find a specialist, a hospital, a place to get your medication.<br> Add to your list, create your medical form and benefit from an account for all your family." />
+      <PopAddListProfile/>
+    </div>
   )
 }
 
