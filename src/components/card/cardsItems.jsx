@@ -1,6 +1,6 @@
 import React from 'react'
-
-const Card = ({ name, address, telephone, hours }) => {
+import corbeil from '../../assets/picto/remove.svg'
+const Card = ({ name, address, telephone, hours, type }) => {
   return (
     <div className="container__card">
       <ul className="card">
@@ -9,6 +9,9 @@ const Card = ({ name, address, telephone, hours }) => {
         <li className="card__telephone"><span className="picto"><p>{telephone}</p></span></li>
         <li className="card__hours"><span className="picto"><p>{hours}</p></span></li>
       </ul>
+      <div className={`cta cta--remove cta--${type}`}>
+        <img src={corbeil} className='picto__remove' />
+      </div>
     </div>
   )
 }

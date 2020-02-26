@@ -34,11 +34,9 @@ const PersonalInformation = () => {
 
   const template = () => {
     return (
-      <div>
-        <div className="personal-information">
-          <div className="wrap-information">
-            <SwitchButton setNewSwitch={val => { toogle(val) }} switchState={switchState} />
-          </div>
+      <div className="personal-information">
+        <div className="wrap-information">
+          <SwitchButton setNewSwitch={val => { toogle(val) }} switchState={switchState} />
         </div>
         <MedicalProfile switchState={switchState} Profil={profilInformation} />
         <div className={switchState === 1 ? 'hidden' : '' }>
