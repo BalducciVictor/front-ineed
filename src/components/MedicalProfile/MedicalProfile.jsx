@@ -5,10 +5,12 @@ import download from '../../assets/icon-download.png'
 import edit from '../../assets/icon-edit.png'
 import share from '../../assets/icon-share.png'
 import Api from '../../Api/Api'
+import EditMedicalProfile from '../EditMedicalProfile/EditMedicalProfile'
 
 const MedicalProfile = ({ switchState, Profil }) => {
   const [MaladieChriniques, setMaladieChriniques] = useState([])
   const [Meds, setMeds] = useState([])
+  const [showEdit, setshowEdit] = useState(false)
 
   let birthDate = new Date()
 
@@ -68,7 +70,7 @@ const MedicalProfile = ({ switchState, Profil }) => {
               <img className="download" src={download} alt="download picto"/>
               <span>Download</span>
             </div>
-            <div className="icon-edit">
+            <div className="icon-edit" onClick={ ()=> setshowEdit(!showEdit)}>
               <img className="edit" src={edit} alt="edit picto"/>
               <span>Edit</span>
             </div>
@@ -92,6 +94,7 @@ const MedicalProfile = ({ switchState, Profil }) => {
           </ul>
         </div>
       </div>
+      {showEdit && <EditMedicalProfile/>}
     </div>
   )
 }

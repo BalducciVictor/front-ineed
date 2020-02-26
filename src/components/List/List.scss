@@ -19,22 +19,25 @@
     border: none; /*on supprime le style par défaut*/
   }
 
-
   h3{
     font-size: 19px;
     font-weight: Bold;
-    color: #0494FA;
+    color: $blue;
     margin-bottom: 10px;
-
   }
 
-  div.favItem{
+  .fav-item{
     margin-bottom: 15px;
     font-size: 14px;
     text-transform: uppercase;
-
-    hr{
-
+    .wrapper-hospital{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .icon-list{
+      width: 23px;
+      height: 23px;
     }
   }
 }
