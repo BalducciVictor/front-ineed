@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Api from '../../Api/Api';
+import logoHospistal from '../../assets/logo-hospital.png'
 
 
 
@@ -51,13 +52,22 @@ function List({profile}){
         };
 
         return (
-            <div className="favItem" key={item.id}>
-                <div className="favName">{item.name}</div>
-                <hr/>
-                <div className="moreInfo">
-                    <div>{item.address}</div>
-                    <div>{item.phone}</div>
-                    <div>{rewriteTime(timeStart.getHours() - 1)}h{rewriteTime(timeStart.getMinutes())} - {rewriteTime(timeEnd.getHours() - 1)}h{rewriteTime(timeEnd.getMinutes())}</div>
+            <div className="fav-item" key={item.id}>
+                <div className="wrapper-item">
+                    <div className="wrapper-hospital">
+                        <img className="icon-list" src={logoHospistal} alt="logo hospital"/>
+                        <div className="favName">{item.name}</div>
+                    </div>
+                    <hr/>
+                    <div className="moreInfo">
+                        {console.log(item)}
+                        <div>{item.address}</div>
+                        <div>{item.telephone}</div>
+                        <div>{rewriteTime(timeStart.getHours() - 1)}h{rewriteTime(timeStart.getMinutes())} - {rewriteTime(timeEnd.getHours() - 1)}h{rewriteTime(timeEnd.getMinutes())}</div>
+                    </div>
+                </div>
+                <div className="remove-list">
+                    
                 </div>
             </div>
         )
@@ -66,12 +76,15 @@ function List({profile}){
     let PharmacyToShow = [];
     PharmacyToShow = PharmacyList.map(item => {
         return (
-            <div className="favItem" key={item.id}>
-                <div className="favName">{item.name}</div>
+            <div className="fav-item" key={item.id}>
+                <div className="wrapper-hospital">
+                    <svg className="icon-list"><use xlinkHref="/many_svg.svg#heathCenter"/></svg>
+                    <div className="favName">{item.name}</div>
+                </div>
                 <hr/>
                 <div className="moreInfo">
                     <div>{item.address}</div>
-                    <div>{item.phone}</div>
+                    <div>{item.telephone}</div>
                     <div>{item.horraires[0]}</div>
                 </div>
             </div>
@@ -80,10 +93,12 @@ function List({profile}){
 
     let HospitalToShow = [];
     HospitalToShow = HospitalList.map(item => {
-        console.log(item);
         return (
-            <div className="favItem" key={item.id}>
-                <div className="favName">{item.name}</div>
+            <div className="fav-item" key={item.id}>
+                <div className="wrapper-hospital">
+                    <svg className="icon-list"><use xlinkHref="/many_svg.svg#speciality"/></svg>
+                    <div className="favName">{item.name}</div>
+                </div>
                 <hr/>
                 <div className="moreInfo">
                     <div>{item.address}</div>
@@ -94,7 +109,6 @@ function List({profile}){
     });
 
     getFavList();
-
 
     // Render of component List
     return (
@@ -113,7 +127,6 @@ function List({profile}){
         </div>
     )
 }
-
 
 
 export default List
