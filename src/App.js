@@ -83,6 +83,7 @@ const App = () => {
         if (filtre.includes('all') || filtreAll) {
           return endPoint
         } else {
+          // set Endpoint with the good parms
           return () => { return endPoint(builParamsEndpoint(filtre, type)) }
         }
       }
@@ -94,7 +95,6 @@ const App = () => {
       ///  order of send filtreHospitals || filtrePharmacies || filtreCentres
       Api.getAllFiltre(setRequests())
         .then((responses) => {
-          console.log(responses)
           const resClear = {}
           responses.map((response, i) => {
             const data = response.data['hydra:member']
@@ -102,6 +102,7 @@ const App = () => {
             // data.config is in responses if request comme to the back then we save
             saveOnStore({ [responses[i].config.url]: { data } })
 
+            // set call type for get ther reference
             let type = ''
             type = !type && id.includes('hopitals') ? 'hospitals' : type
             type = !type && id.includes('centre_de_santes') ? 'centres' : type
