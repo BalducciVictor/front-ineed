@@ -57,7 +57,7 @@ const MedicalProfile = ({ switchState, Profil }) => {
   }
 
   return (
-    <div className={`medical-profile${switchState === 1 ? ' active' : ''}` }>
+    <div className={`medical-profile${switchState === 0 ? ' hidden' : ''}` }>
       <h2>Medical profile</h2>
       <div className="wrap-medical-profile">
         <div className="user-information">

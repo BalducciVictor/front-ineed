@@ -36,22 +36,20 @@ const PersonalInformation = () => {
     return (
       <div>
         <div className="personal-information">
-          <h1 className="title-information">My profile</h1>
           <div className="wrap-information">
             <SwitchButton setNewSwitch={val => { toogle(val) }} switchState={switchState} />
           </div>
         </div>
         <MedicalProfile switchState={switchState} Profil={profilInformation} />
-        <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
-          {/* <FilterList /> */
-            <List profile={profilInformation} />}
+        <div className={switchState === 1 ? 'hidden' : '' }>
+          <List profile={profilInformation} />
         </div>
       </div>
     )
   }
 
   return (
-    <BoxWrapper Content={template} PageName="My profile" />
+    <BoxWrapper Content={template} pageName="My profile" />
   )
 }
 

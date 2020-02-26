@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Api from '../../Api/Api'
 import logoHospistal from '../../assets/logo-hospital.png'
+import Card from '../card/cardsItems'
 
 function List ({ profile }) {
   // data API
@@ -36,40 +37,31 @@ function List ({ profile }) {
     }
   }
 
-  let healthCenterToShow = []
-  healthCenterToShow = HealthCenterList.map(item => {
-    const timeStart = new Date(item.timeStart)
-    const timeEnd = new Date(item.timeEnd)
+  const healthCenterToShow = []
+  // healthCenterToShow = HealthCenterList.map(item => {
+  //   const timeStart = new Date(item.timeStart)
+  //   const timeEnd = new Date(item.timeEnd)
 
-    const rewriteTime = (time) => {
-      if (time.toString().length === 1) {
-        return '0' + time
-      } else {
-        return time
-      }
-    }
+  //   return (
+  //     <div className="fav-item" key={item.id}>
+  //       <div className="wrapper-item">
+  //         <div className="wrapper-hospital">
+  //           <img className="icon-list" src={logoHospistal} alt="logo hospital"/>
+  //           <div className="favName">{item.name}</div>
+  //         </div>
+  //         <hr/>
+  //         <div className="moreInfo">
+  //           <div>{item.address}</div>
+  //           <div>{item.telephone}</div>
+  //           <div>{telephone(timeStart.getHours() - 1)}h{rewriteTime(timeStart.getMinutes())} - {rewriteTime(timeEnd.getHours() - 1)}h{rewriteTime(timeEnd.getMinutes())}</div>
+  //         </div>
+  //       </div>
+  //       <div className="remove-list">
 
-    return (
-      <div className="fav-item" key={item.id}>
-        <div className="wrapper-item">
-          <div className="wrapper-hospital">
-            <img className="icon-list" src={logoHospistal} alt="logo hospital"/>
-            <div className="favName">{item.name}</div>
-          </div>
-          <hr/>
-          <div className="moreInfo">
-            {console.log(item)}
-            <div>{item.address}</div>
-            <div>{item.telephone}</div>
-            <div>{rewriteTime(timeStart.getHours() - 1)}h{rewriteTime(timeStart.getMinutes())} - {rewriteTime(timeEnd.getHours() - 1)}h{rewriteTime(timeEnd.getMinutes())}</div>
-          </div>
-        </div>
-        <div className="remove-list">
-
-        </div>
-      </div>
-    )
-  })
+  //       </div>
+  //     </div>
+  //   )
+  // })
 
   let PharmacyToShow = []
   PharmacyToShow = PharmacyList.map(item => {
@@ -115,10 +107,18 @@ function List ({ profile }) {
       <hr/>
 
       <h3>Health center : </h3>
-      {healthCenterToShow}
+      {
+        HealthCenterList.map(({ name, address, telephone }, i) => {
+          return <Card name={name} address={address} telephone={telephone} key={`card__porfile_${profile.surname}__${i}__health`} />
+        })
+      }
 
       <h3>Pharmacy : </h3>
-      {PharmacyToShow}
+      {
+        PharmacyToShow.map(({ name, address, telephone }, i) => {
+          return <Card name={name} address={address} telephone={telephone} key={`card__porfile_${profile.surname}__${i}__pharmacy`} />
+        })
+      }
 
       <h3>Hospital : </h3>
       {HospitalToShow}

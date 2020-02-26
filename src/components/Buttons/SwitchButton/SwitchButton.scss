@@ -16,12 +16,14 @@
     display: block;
     background-color: #0494FA;
     border-radius: $border-clasic / 2;
-    width: 50%;
-    height: 100%;
+    width: 52%;
+    height: 110%;
     position: absolute;
     z-index: 0;
     transition: .6s;
     border-radius: 20px;
+    top: -3px ;
+    left: -2;
     transform: translateX(0px);
     transition: 1s;
   }
@@ -30,10 +32,16 @@
     &::after {
       transform: translateX(-50%);
     }
+    .left {
+      color: white;
+    }
   }
   &.right {
     &::after {
       transform: translateX(50%);
+    }
+    .right {
+      color: white;
     }
   }
 
@@ -47,6 +55,7 @@
     width: 100%;
     display: table;
     border-radius: 30px;
+    color: $color-primary;
   }
 
   div{
