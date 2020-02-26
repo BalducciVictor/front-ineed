@@ -1,0 +1,42 @@
+.container__card {
+  max-width: 478px;
+  min-width: 90%;
+  height: 167px;
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  display: flex;
+  margin: 40px 0px;
+  justify-content: space-between;
+  .picto__remove {
+    display: block;
+    margin: 10px auto ;
+  }
+  .cta {
+     &--primary{
+       background-color: $blue;
+     }
+     &--secondary {
+      background-color: $orange;
+     }
+     &--tree {
+       background-color: $black;
+     }
+    &--remove{
+      width: 29px;
+      height: 167px;
+    }
+  }
+  p {
+    font: Medium 14px Roboto;
+    color: black;
+    padding: 5px 0px;
+  }
+  .card__name {
+    p {
+      width: 300px;
+      padding: 10px 0px;
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+  }
+}

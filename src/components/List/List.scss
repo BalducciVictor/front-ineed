@@ -1,8 +1,8 @@
 .list {
   background-color: #fff;
-  width: 55%;
-  margin-left: 6%;
-
+  width: 100%;
+  max-width: 478px;
+  margin: auto;
   h2 {
     font-family: Roboto, sans-serif;
     font-size: 22px;
@@ -20,9 +20,8 @@
   }
 
   h3{
-    font-size: 19px;
+    font-size :22px ;
     font-weight: Bold;
-    color: $blue;
     margin-bottom: 10px;
   }
 
