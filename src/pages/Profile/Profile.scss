@@ -1,12 +1,15 @@
 .list-profiles{
-    position: relative;
     .new-profile-button{
         position: absolute;
-        top: -60px;
-        right: 0px;
+        top: 15%;
+        right: 10%;
         color: #FF8500;
         border: solid #FF8500 3px;
         background-color: initial;
         width: 200px;
+        @media (max-width: 758px) {
+          position: initial;
+        }
+        
     }
 }
