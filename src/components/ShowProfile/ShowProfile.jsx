@@ -3,24 +3,15 @@ import Api from '../../Api/Api'
 import paul from '../../assets/paul.jpg'
 import { useHistory } from 'react-router-dom'
 
-const ShowProfile = ({ name, surname, id }) => {
+const ShowProfile = ({ name, surname, id, removeProfile }) => {
   const history = useHistory()
 
-  const removeProfile = () => {
-    const isSure = window.confirm('Do you want remove this profil : ' + surname + ' ' + name)
-    if (isSure) {
-      Api.del('/api/profils/' + id)
-        .then(response => {
-          history.push('/profile')
-        })
-    }
-  }
 
   return (
 
     <div className="profile">
       <div className="remove-profile">
-        <a onClick={(e) => { removeProfile() }}>Remove</a>
+        <a onClick={() => {removeProfile( id, surname, name  )}} >Remove</a>
       </div>
       <div className="picture_and_name">
         <img className="user-picture" src={paul} alt="Picture user"/>
