@@ -17,15 +17,15 @@ hr {
 .fitres {
   display: flex;
   flex-wrap: wrap;
-  input {
-    padding-top: 10px;
-    width: 100%;
-    border: none;
-    color: $color-primary;
-    min-height: 80%;
-    position: absolute;
-    height: 35px;
-  }
+  // input {
+  //   padding-top: 10px;
+  //   width: 100%;
+  //   border: none;
+  //   color: $color-primary;
+  //   min-height: 80%;
+  //   position: absolute;
+  //   // height: 35px;
+  // }
 }
 
 .input__filtre {
@@ -85,7 +85,7 @@ hr {
   border-radius: 40px;
   margin-left: 10px;
   transition: .5s ease-in-out;
-  max-height: 43px;
+  max-height: 42px;
   margin-bottom: 20px;
   &.active {
     background-color: $color-primary;

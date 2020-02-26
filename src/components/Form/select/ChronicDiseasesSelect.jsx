@@ -26,8 +26,7 @@ function ChronicDiseasesSelect () {
 
   options = chronicDisease.map(data => {
     return { value: data.id, label: data.name }
-  }
-  )
+  })
 
   return (
     <Select

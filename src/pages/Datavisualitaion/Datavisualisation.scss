@@ -1,5 +1,7 @@
 .map--wrap {
   width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .page__map {

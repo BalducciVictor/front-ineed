@@ -41,7 +41,6 @@ const Home = function (props) {
       <CatchPhrase/>
     </div>
   )
-  
 }
 
 export default Home
