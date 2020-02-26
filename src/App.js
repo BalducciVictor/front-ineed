@@ -95,17 +95,22 @@ const App = () => {
       Api.getAllFiltre(setRequests())
         .then((responses) => {
           console.log(responses)
-          const resClear = responses.map(({ data }, i) => {
+          const resClear = {}
+          responses.map((response, i) => {
+            const data = response.data['hydra:member']
+            const id = response.data['@id']
             // data.config is in responses if request comme to the back then we save
-            console.log(responses[i].config)
-            if (responses[i].config.url) {
-              const endpoint = responses[i].config.url
-              saveOnStore({ [endpoint]: { data } })
-            }
-            return data['hydra:member']
+            saveOnStore({ [responses[i].config.url]: { data } })
+
+            let type = ''
+            type = !type && id.includes('hopitals') ? 'hospitals' : type
+            type = !type && id.includes('centre_de_santes') ? 'centres' : type
+            type = !type && id.includes('pharmacies') ? 'pharmacies' : type
+
+            resClear[type] = data
           })
-          ///  order of send respection || filtrePharmacies || filtreCentres
-          setDataOrigin({ hospitals: resClear[0], centres: resClear[1], pharmacies: resClear[2] })
+
+          setDataOrigin(resClear)
         })
     } else {
       setDataOrigin({ hospitals: [], centres: [], pharmacies: [] })
