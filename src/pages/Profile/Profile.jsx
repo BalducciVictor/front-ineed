@@ -69,7 +69,7 @@ const Profils = () => {
   const PopContent = () => {
     return(
       <div className='pop-content'>
-        <h2>Are you sure you want to delete this profile ? Your data will be deleted.</h2>
+        <h2>Are you sure you want to delete this profile ? Data cannot be restored.</h2>
         <button onClick={removeProfile} >Delete profile</button>
         <p>Cancel</p>
       </div>
