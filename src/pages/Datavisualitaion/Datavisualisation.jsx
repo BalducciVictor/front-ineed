@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import Datvis from './dataVis.jsx'
-import './styleDataVis.scss'
 import BoxWrapper from '../../components/BoxWrapper'
 import MapGl from '../../components/MapGl/mapGl'
-import { render } from '@testing-library/react'
-import ContextFiltre from '../../Store/ContextFiltre'
 import Filtre from '../../components/Filtre/Filtre'
+import ListMap from '../../components/List/List'
+import ContextList from '../../Store/DataFiltre'
+import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton'
 
-const PersonalInformation = () => {
+const Datavisualisation = () => {
   const [categories, setCategories] = useState({
     pharmacies: [],
     hospitals: [],
@@ -27,9 +26,13 @@ const PersonalInformation = () => {
         <Filtre />
         <hr/>
         <div className="map--wrap">
-          <MapGl/>
+          <ContextList.Consumer>
+            { list => <ListMap key="map" HealthCenterList={list.centres} PharmacyList={list.pharmacies} HospitalList={list.hospitals} /> }
+          </ContextList.Consumer>
+          <div className="map__container"><MapGl/></div>
+          <SwitchButton left={'My list'} rigth={'My information'} switchState={''} />
+          { false ? <Datvis data={[]} /> : <div />}
         </div>
-        { false ? <Datvis data={[]} /> : <div />}
       </div>
     )
   }
@@ -39,4 +42,4 @@ const PersonalInformation = () => {
   )
 }
 
-export default PersonalInformation
+export default Datavisualisation

@@ -12,7 +12,6 @@ const MAPBOX_TOKEN = 'pk.eyJ1IjoiY2hlaWsiLCJhIjoiY2s2a3pzMDE2MDk0azNucGF3cHI1bjh
 function Map () {
   const [viewport, setViewport] = useState({
     width: 609,
-    height: 404,
     latitude: 48.8534,
     longitude: 2.3488,
     zoom: 10.9,
@@ -76,7 +75,7 @@ function Map () {
     <ContextDataFiltre.Consumer>
       {
         store =>
-          <ReactMapGL {...viewport} onViewportChange={viewport => { setViewport(viewport) }} mapboxApiAccessToken={MAPBOX_TOKEN}>
+          <ReactMapGL {...viewport} style={{ width: '100%', minHeight: '30vw', flexGrow: 2 }} onViewportChange={viewport => { setViewport(viewport) }} mapboxApiAccessToken={MAPBOX_TOKEN}>
             {store ? <SetMarkers {...store}/> : ''}
           </ReactMapGL>
       }

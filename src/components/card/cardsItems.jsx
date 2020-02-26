@@ -1,13 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import corbeil from '../../assets/picto/remove.svg'
-const Card = ({ name, address, telephone, hours, type }) => {
+import PictoNumber from '../pictosSvg/number'
+import PictoAddress from '../pictosSvg/adress'
+import Clock from '../pictosSvg/clock'
+import Api from '../../Api/Api'
+
+const Card = ({ name, address, telephone, type, timeEnd, timeStart, openAll, pharmacieHorraires }) => {
+  const [time, setTime] = useState()
+
+  useEffect(() => {
+    // primary === hospital
+    if (type === 'primary' || openAll) {
+      setTime('Open all')
+    } else if (timeStart) {
+      setTime(`${new Date(timeStart).getHours() - 1}h00` + ' - ' + `${new Date(timeEnd).getHours() - 1}h00`)
+    } else if (pharmacieHorraires) {
+      Api.get(pharmacieHorraires[0])
+        .then(({ data }) => {
+          setTime(`${new Date(data.timeStart).getHours() - 1}h00` + ' - ' + `${new Date(data.timeEnd).getHours() - 1}h00`)
+        })
+    }
+  }, [])
+
   return (
     <div className="container__card">
       <ul className="card">
         <li className="card__name"> <span className="picto"></span><p>{name}</p></li>
-        <li className="card__address"><span className="picto"><p>{address}</p></span></li>
-        <li className="card__telephone"><span className="picto"><p>{telephone}</p></span></li>
-        <li className="card__hours"><span className="picto"><p>{hours}</p></span></li>
+        <hr/>
+        <li className="card__address"> <span className="picto"><PictoAddress type={type} /></span> <p>{address}</p></li>
+        <li className="card__telephone"><span className="picto"><PictoNumber type={type} /></span><p>{ '0' + telephone}</p></li>
+        <li className="card__hours"> <span><Clock type={type}> </Clock></span> <p>{time}</p></li>
       </ul>
       <div className={`cta cta--remove cta--${type}`}>
         <img src={corbeil} className='picto__remove' />
