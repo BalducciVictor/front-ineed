@@ -8,8 +8,11 @@ import { render } from '@testing-library/react'
 import ContextFiltre from '../../Store/ContextFiltre'
 import Filtre from '../../components/Filtre/Filtre'
 import PopAddListProfile from '../../components/PopAddListProfile/PopAddListProfile'
+import PopWrap from '../../components/PopWrap/PopWrap.jsx'
+import ShowProfile from '../../components/ShowProfile/ShowProfile'
 
 const PersonalInformation = () => {
+  const [profils, setProfils] = useState([])
   const [categories, setCategories] = useState({
     pharmacies: [],
     hospitals: [],
@@ -22,6 +25,34 @@ const PersonalInformation = () => {
     setCategories(NewCategorise)
   }
 
+  const callGetProfile = () => {
+    axios.get('http://13.59.220.41/api/profils?User=' + sessionStorage.getItem('id'))
+      .then(res => {
+        let profilsFromData = res.data['hydra:member']
+        setProfils(profilsFromData)
+      })
+      .catch(err => {
+        console.log(err.response.data)
+      })
+  }
+
+  useEffect(() => {
+    callGetProfile()
+  }, [profils.length])
+
+  const PopContent = () => {
+    return (
+      <div className='pop-content'>
+        <h2>Add wish profile</h2>
+        { profils.length ? profils.map((profil, i) => {
+          return <ShowProfile key={profil.id} removeProfile={'passer le add my list'} name={profil.name} surname={profil.surname} id={profil.id} />
+        }) : ''}
+        <button onClick={alert('coucou')} >Delete profile</button>
+        <p>Cancel</p>
+      </div>
+    )
+  }
+
   const template = () => {
     return (
       <div className="page__map">
@@ -31,6 +62,7 @@ const PersonalInformation = () => {
           <MapGl/>
         </div>
         { false ? <Datvis data={[]} /> : <div />}
+        <PopWrap data={profils} setData={profils} Content={PopContent}/>
       </div>
     )
   }
@@ -38,7 +70,6 @@ const PersonalInformation = () => {
   return (
     <div className="">
       <BoxWrapper Content={template} pageName="Travel easily with chronic illness" subText="Find a specialist, a hospital, a place to get your medication.<br> Add to your list, create your medical form and benefit from an account for all your family." />
-      <PopAddListProfile/>
     </div>
   )
 }
