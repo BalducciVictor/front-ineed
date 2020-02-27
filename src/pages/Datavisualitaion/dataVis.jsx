@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
-import MapCustom from './MapSvg'
+import MapCustom from './mapSvg'
 import Arrondissements from './Arrondissements'
 
 const DataVis = function ({ specialites }) {
