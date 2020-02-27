@@ -19,6 +19,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+select {
+	width: 100%;
+}
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -45,4 +49,8 @@ table {
 * {
   box-sizing: border-box;
 }
+
+[onclick] {
+	cursor: pointer; 
+ }
 

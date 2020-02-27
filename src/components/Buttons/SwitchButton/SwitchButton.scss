@@ -1,62 +1,70 @@
-$background: #141241;
-$switchbg: #1bbc9b;
-$white: #ffffff;
-
-@mixin clearfix {
-	zoom: 1;
-	&:before,
-	&:after {
-		content: " "; /* 1 */
-		display: table; /* 2 */
-	}
-	&:after {
-		clear: both;
-	}
-}
-
 .switch-button {
-  background-color: $switchbg;
-  width: 80%;
-  display: inline-block;
-  border-radius: 8px;
-  height: 40px;
-  padding: 5px;
+  border: 2px solid #0494FA;
+  border-radius: $border-clasic;
+  width: 300px;
+  height: 42px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   position: relative;
-  @include clearfix;
-  
-  label {
-    float: left;
+  margin: auto;;
+
+  &::after {
+    content: '';
+    display: block;
+    background-color: #0494FA;
+    border-radius: $border-clasic / 2;
     width: 50%;
-    position: relative;
-    z-index: 2;
-    line-height: 40px;
-    cursor: pointer;
-    color: darken($switchbg, 15%);
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    transition: .6s;
+    transform: translateX(0px);
   }
 
-  input[type="radio"]{
-    display: none;
-    &:checked + label {
-      color: $background;
-      font-weight: bold;
+  &.left {
+    &::after {
+      transform: translateX(-50%);
+    }
+    div:nth-child(2) {
+      color: $color-primary;
+    }
+  }
+  &.right {
+    &::after {
+      transform: translateX(50%);
+    }
+    div:nth-child(1) {
+      span:nth-child(1) {
+        opacity: 0;
+      }
     }
   }
 
   span {
-    position: relative;
-    z-index: 1;
-    top: 0;
-    left: 0;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    display: table;
+  }
+
+  div{
+    cursor: pointer;
+    color: white;
+    display: flex;
+    font-weight: bold;
+    z-index: 3;
+    text-align: center;
     width: 50%;
     height: 100%;
-    display: block;
-    border-radius: 5px 0 0 5px;
-    background-color: $white;
-    transition: all 200ms ease;
-    &.right {
-      left: 50%;
-      border-radius: 0 5px 5px 0;
-      transition: all 200ms ease;
+    transition-delay: 1s;
+    position: relative;
+    div:nth-child(1) {
+      color: $blue;
     }
   }
 }

@@ -1,46 +1,45 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.updateMap = this.updateMap.bind(this);
+  constructor (props) {
+    super(props)
+    this.updateMap = this.updateMap.bind(this)
   }
 
-  componentDidMount() {
-    const { arrondissementsGroup } = this.props;
-    this.updateMap(arrondissementsGroup);
+  componentDidMount () {
+    const { arrondissementsGroup } = this.props
+    this.updateMap(arrondissementsGroup)
   }
 
-  updateMap(arrondissementsGroup) {
-    const { updateCurrentArrondissements } = this.props;
+  updateMap (arrondissementsGroup) {
+    const { updateCurrentArrondissements } = this.props
     const colorClass = [
       'many', // 0
       'middle', // 1
-      'Few', // 2
-    ];
+      'Few' // 2
+    ]
 
     arrondissementsGroup.forEach((arrondissements, i) => {
       arrondissements.forEach((arrondissement) => {
-        const elementArrondissements = document.getElementsByClassName(arrondissement.className)[0];
-        elementArrondissements.classList.add(colorClass[i]);
+        const elementArrondissements = document.getElementsByClassName(arrondissement.className)[0]
+        elementArrondissements.classList.add(colorClass[i])
         elementArrondissements.addEventListener(('mouseenter'), () => {
-          this.mapSvg.append(elementArrondissements);
-        });
+          this.mapSvg.append(elementArrondissements)
+        })
         elementArrondissements.addEventListener(('click'), () => {
         //  console.log(this.props.updateCurrentArrondissements(arrondissements))
-          updateCurrentArrondissements(arrondissement);
-        });
-      });
-    });
+          updateCurrentArrondissements(arrondissement)
+        })
+      })
+    })
   }
 
-
-  render() {
+  render () {
     return (
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="577.645" height="391.181" viewBox="0 0 577.645 391.181">
-          <g ref={(el) => { this.mapSvg = el; }} className="map__svg" data-name="map-paris 1 3" transform="translate(-3.171 -4.578)">
+          <g ref={(el) => { this.mapSvg = el }} className="map__svg" data-name="map-paris 1 3" transform="translate(-3.171 -4.578)">
             <g className="1_arrondissement" data-name="_arrondissement">
               <path className="Tracé_952" data-name="Tracé 952" d="M362.252,219.671l-32.579-22.425L296.08,181.323l13.878-27.279,5.871-1.351L379.756,180.2l-2.114,5.888Z" fill="#ccc" />
               <path className="Tracé_972" data-name="Tracé 972" d="M344.3,194.182h2.412V182.518h-2.16l-3.852,3.06,1.08,1.692,2.52-1.638Z" fill="#fff" />
@@ -124,12 +123,11 @@ export default class Map extends Component {
           </g>
         </svg>
       </div>
-    );
+    )
   }
 }
 
-
 Map.propTypes = {
   arrondissementsGroup: PropTypes.array.isRequired,
-  updateCurrentArrondissements: PropTypes.func.isRequired,
-};
+  updateCurrentArrondissements: PropTypes.func.isRequired
+}

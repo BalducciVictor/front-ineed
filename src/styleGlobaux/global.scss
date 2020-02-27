@@ -1,0 +1,34 @@
+// Global
+@import './AppReset.scss';
+@import './fontFace.scss';
+@import './graphicalCharter.scss';
+@import './variable.scss';
+
+
+@import './globalSyle.scss';
+
+
+// pages
+@import '../pages/Datavisualitaion/styleDataVis.scss';
+@import '../pages/LogLoging/Home.scss';
+@import '../pages/NewProfile/NewProfile.scss';
+@import '../pages/PersonalInformation/PersonalInformation.scss';
+@import '../pages/Datavisualitaion/Datavisualisation.scss';
+
+
+// componenent
+@import '../components/Buttons/ShowProfileButton/ShowProfileButton.scss';
+@import '../components/Buttons/SwitchButton/SwitchButton.scss';
+@import '../components/FilterList/FilterList.scss';
+@import '../components/Form/Form.scss';
+@import '../components/Filtre/filtre.scss';
+
+@import '../components/List/List.scss';
+@import '../components/Log/Log.scss';
+@import '../components/Map/Map.scss';
+
+@import '../components/MedicalProfile/MedicalProfile.scss';
+@import '../components/ShowProfile/ShowProfile.scss';
+
+@import '../components/Nav__barre/NavBarre.scss';
+@import '../pages/Profile/Profile.scss'

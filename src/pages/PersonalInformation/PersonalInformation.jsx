@@ -1,30 +1,60 @@
-import React from 'react';
-import './PersonalInformation.scss';
-// import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton';
-import MedicalProfile from '../../components/MedicalProfile/MedicalProfile';
-import arrow from '../../assets/img/arrow-back.png';
+import React, { useState, useEffect } from 'react'
+import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton'
+import MedicalProfile from '../../components/MedicalProfile/MedicalProfile'
+import FilterList from '../../components/FilterList/FilterList'
+import List from '../../components/List/List'
+import ShowProfileButton from '../../components/Buttons/ShowProfileButton/ShowProfileButton'
+import arrow from '../../assets/img/arrow-back.png'
+import BoxWrapper from '../../components/BoxWrapper'
 
-class PersonalInformation extends React.Component {
+import { useParams } from 'react-router-dom'
+import Api from '../../Api/Api'
 
-  render() {
-      return (
-        <div className="personal-information">
-          <svg className="logo_home"><use xlinkHref="/many_svg.svg#logo"/></svg>
-          <button className="specialty-button">search a specialty</button>
-          <div className="boxWrapper-i">
-            <h1 className="title-information">My profile</h1>
-            <div className="wrap-information">
-              <div className='back-to-home'>
-                <img className="arrow-back" src={arrow} alt="Arrow back home"/>
-                <h2 className="back">Back to home</h2>
-              </div>
-              {/* <SwitchButton /> */}
-            </div>
-            <MedicalProfile/>
-          </div>
-        </div>
-      );
+const PersonalInformation = () => {
+  const [switchState, setNewSwitch] = useState(0)
+  const [profilInformation, setProfilInformation] = useState(false)
+
+  const { id } = useParams()
+
+  useEffect(() => {
+    if (!profilInformation) {
+      getInformationProfile()
     }
+  })
+
+  const getInformationProfile = () => {
+    Api.get('/api/profils/' + id)
+      .then((response) => {
+        console.log(response.data)
+        setProfilInformation(response.data)
+      })
   }
 
-export default PersonalInformation;
+  const toogle = (value) => {
+    setNewSwitch(value)
+  }
+
+  const template = () => {
+    return (
+      <div>
+        <div className="personal-information">
+          <h1 className="title-information">My profile</h1>
+          <div className="wrap-information">
+            <SwitchButton setNewSwitch={val => { toogle(val) }} switchState={switchState} />
+          </div>
+        </div>
+        <MedicalProfile switchState={switchState} Profil={profilInformation} />
+        <div className={`wrap-list ${switchState === 0 ? 'active' : ''}`}>
+          {/* <FilterList /> */
+          <List profile={profilInformation} />}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <BoxWrapper Content={template} PageName="My profile" />
+  )
+}
+
+export default PersonalInformation

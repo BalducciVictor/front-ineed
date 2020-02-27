@@ -1,23 +1,34 @@
-import React from 'react';
+import React from 'react'
+import Api from '../../Api/Api'
+import paul from '../../assets/paul.jpg'
+import { useHistory } from 'react-router-dom'
 
-import './ShowProfile.scss';
+const ShowProfile = ({ name, surname, id }) => {
+  const history = useHistory()
 
-import paul from '../../assets/paul.jpg';
+  const removeProfile = () => {
+    const isSure = window.confirm('Do you want remove this profil : ' + surname + ' ' + name)
+    if (isSure) {
+      Api.del('/api/profils/' + id)
+        .then(response => {
+          history.push('/profile')
+        })
+    }
+  }
 
+  return (
 
-const ShowProfile = (props) => (
-  <div className="profile">
-    <div className="remove-profile">
-      <a>Remove</a>
-    </div>
-    <div className="flex--center">
-      <div>
-        <img className="user" src={props.picture} alt="Picture user"/>
-        <h2 className="profile-name">{props.name} {props.surname}</h2>
+    <div className="profile">
+      <div className="remove-profile">
+        <a onClick={(e) => { removeProfile() }}>Remove</a>
       </div>
+      <div className="picture_and_name">
+        <img className="user-picture" src={paul} alt="Picture user"/>
+        <p className="profile-name">{name} {surname}</p>
+      </div>
+      <button className="profile-button" onClick={(e) => { history.push('/profile/information/' + id) }}>See the profile</button>
     </div>
-    <button className="profile-button" href="#">See the profile</button>
-  </div>
-);
+  )
+}
 
-export default ShowProfile;
+export default ShowProfile

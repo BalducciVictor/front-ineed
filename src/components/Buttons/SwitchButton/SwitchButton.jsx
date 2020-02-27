@@ -1,35 +1,12 @@
-import React from 'react';
-import './SwitchButton.scss';
+import React from 'react'
 
-class SwitchButton extends React.Component {
+const switchButton = ({ setNewSwitch, switchState }) => {
+  return (
+    <div className={`switch-button ${switchState === 0 ? 'left' : 'right'}`}>
+      <div onClick={() => { setNewSwitch(0) }}><span>My list</span><span>My list</span></div>
+      <div onClick={() => { setNewSwitch(1) }}><span>My information</span><span>My information</span></div>
+    </div>
+  )
+}
 
-  state = {
-    active: ''
-  }
-  addActiveClass(e){
-      const clicked = e.target.id
-      if(this.state.active === clicked) { 
-          this.setState({active: ''});
-      } else {
-          this.setState({active: clicked})
-     }
-  }
-
-  render() {
-      return (
-        <div className="switch-button">
-          <label>
-          My list
-          <input name="radio" type="radio" value="optionone" id="optionone" checked/>
-          </label>
-          <label className="right">
-          My information
-          <input name="radio" type="radio" value="optiontwo" id="optiontwo" />
-          </label>
-          <span aria-hidden="true"></span>
-        </div>
-      );
-    }
-  }
-
-export default SwitchButton;
+export default switchButton

@@ -1,0 +1,47 @@
+@import "../../styleGlobaux/graphicalCharter.scss";
+
+.profile {
+  position: absolute;
+  width: 287px;
+  height: 223px;
+  background-color: #FFFFFF;
+  top: 269px;
+  left: 229px;
+
+  .remove-profile {
+    padding-top: 10px;
+    padding-right: 10px;
+    text-align: right;
+    font-family: Assistant, roboto, sans-serif;
+    color: #0494FA;
+    cursor: pointer;
+  }
+
+  .user {
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+    margin-top: 30px;
+    height: 80px;
+    width: 80px;
+  }
+
+  .profile-name {
+    font-family: Assistant, roboto, sans-serif;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .profile-button {
+    cursor: pointer;
+    position: absolute;
+    background: #0494FA;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: none;
+    color: white;
+    width: 287px;
+    height: 45px;
+    bottom: 0;
+  }
+}
