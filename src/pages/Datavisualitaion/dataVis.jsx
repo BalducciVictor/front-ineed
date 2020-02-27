@@ -1,86 +1,81 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Map from './mapSvg'
 import Arrondissements from './Arrondissements'
 
-export default class DataVis extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      data: null,
-      currentArrondissements: {}
-    }
-    this.updateCurrentArrondissements = this.updateCurrentArrondissements.bind(this)
-
-    this.formatClassName = (name) => name.replace(/(eme\s)|(er\s)/gm, '_')
-
-    this.setNumberArrondissement = (name) => name.match(/(\d+)/gm)[0]
-
-    this.sortArrayByArrondissements = (data) => data.sort((a, b) => parseFloat(a.total) - parseFloat(b.total)).reverse()
-  }
-
-  componentDidMount () {
-    const { data } = this.props
-    const arrondissements = this.clearArrondissements(data)
-    this.setState({
-      data: this.fitre(arrondissements)
-    })
-  }
-
-  updateCurrentArrondissements (arrondissements) {
-    this.setState({ currentArrondissements: arrondissements })
-  }
-
-  clearArrondissements (arrondissements) {
-    return arrondissements.map((arrondissement) => {
-      const model = {
-        name: '',
-        number: null,
-        hopitals: [],
-        centreDeSantes: [],
-        total: null,
-        className: ''
-      }
-
-      model.name = arrondissement.name
-      model.number = this.setNumberArrondissement(arrondissement.name)
-      model.hopitals = arrondissement.hopitals.length
-      model.centreDeSantes = arrondissement.centreDeSantes.length
-      model.total = arrondissement.centreDeSantes.length + arrondissement.hopitals.length
-      model.className = this.formatClassName(arrondissement.name)
-
-      return model
-    })
-  }
-
-  fitre (json) {
-    const array = [[], [], []]
-    const newJson = this.sortArrayByArrondissements(json)
-    for (let i = 0; i < array.length; i++) {
-      for (let j = Math.floor(20 / 3) * i; j < Math.floor((20 / 3) * (i + 1)); j++) {
-        array[i].push(newJson[j])
+const DataVis = function ({ specialites }) {
+  const sortByArrondissment = () => {
+    const arrondisment = {}
+    for (const typeOf in specialites) {
+      if (specialites[typeOf].data && specialites[typeOf].data.length) {
+        console.log(specialites[typeOf].data)
+        specialites[typeOf].data.forEach(specialite => {
+          const numberArrondissement = specialite.Arrondissement.match(/(\d+)/)[0]
+          if (arrondisment[numberArrondissement]) {
+            arrondisment[numberArrondissement].push({ specialite: specialite['@type'] })
+          } else {
+            arrondisment[numberArrondissement] = [{ specialite: specialite['@type'] }]
+          }
+        })
       }
     }
-    return array
+    return arrondisment
   }
 
-  render () {
-    const { data, currentArrondissements } = this.state
-    const { updateCurrentArrondissements } = this
-    return data
-      ? (
-        <div className="view">
-          <Map
-            updateCurrentArrondissements={(arrondissements) => updateCurrentArrondissements(arrondissements)}
-            arrondissementsGroup={data}
-          />
-          { currentArrondissements.name ? <Arrondissements arrondissements={currentArrondissements} /> : ''}
-        </div>
-      )
-      : ''
+  const [arrondissements, setArrondissements] = useState(sortByArrondissment())
+  const [ranger, setRanger] = useState()
+
+  useEffect(() => {
+    defindRager(arrondissements)
+  }, [arrondissements])
+
+  const defindRager = (arrondissment) => {
+    if (!arrondissment) {
+      return
+    }
+    setArrondissements(arrondissment)
+    console.log(arrondissment, 'ici')
+
+    const ranger = {
+      min: 1000,
+      max: 0,
+      result: []
+    }
+    for (const key in arrondissment) {
+      console.log(arrondissment[key].length)
+      if (arrondissment[key].length < ranger.min) {
+        ranger.min = arrondissment[key].length
+      }
+      if (arrondissment[key].length > ranger.max) {
+        ranger.max = arrondissment[key].length
+      }
+    }
+
+    let r = ranger.max - ranger.min
+    r = r / 4
+
+    for (let i = 1; i < 5; i++) {
+      if (i === 1) {
+        ranger.result.push({ start: ranger.min, end: r * i })
+      } else {
+        ranger.result.push({ start: ranger.result[i - 2].end, end: r * i })
+      }
+    }
+    setRanger(ranger)
   }
+
+  // console.log(specialite)
+
+  return (
+    <div className="view">
+      <Map
+        // updateCurrentArrondissements={(arrondissements) => updateCurrentArrondissements(arrondissements)}
+        ranger={ranger}
+        arrondissements={arrondissements}
+      />
+    </div>
+  )
 }
 
-DataVis.propTypes = {
-  data: PropTypes.array
-}
+export default DataVis
+{ /* { currentArrondissements.name ? <Arrondissements arrondissements={currentArrondissements} /> : ''} */ }

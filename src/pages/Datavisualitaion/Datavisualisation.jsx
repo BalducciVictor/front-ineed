@@ -1,44 +1,51 @@
 import React, { useState, useEffect } from 'react'
-import Datvis from './dataVis.jsx'
+import Datvis from './dataVis'
 import BoxWrapper from '../../components/BoxWrapper'
 import MapGl from '../../components/MapGl/mapGl'
 import Filtre from '../../components/Filtre/Filtre'
 import ListMap from '../../components/List/List'
-import ContextList from '../../Store/DataFiltre'
 import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton'
+import ContextDataFiltre from '../../Store/DataFiltre'
 
 const Datavisualisation = () => {
-  const [categories, setCategories] = useState({
-    pharmacies: [],
-    hospitals: [],
-    centres: []
-  })
+  const [mode, setMode] = useState('datavis')
 
-  const setCategorie = (key, value) => {
-    const NewCategorise = categories
-    NewCategorise[key] = value
-    setCategories(NewCategorise)
-  }
-
-  const template = () => {
+  const MapGl = ({ list }) => {
     return (
-      <div className="page__map">
-        <Filtre />
-        <hr/>
-        <div className="map--wrap">
-          <ContextList.Consumer>
-            { list => <ListMap key="map" HealthCenterList={list.centres} PharmacyList={list.pharmacies} HospitalList={list.hospitals} /> }
-          </ContextList.Consumer>
-          <div className="map__container"><MapGl/></div>
-          <SwitchButton left={'My list'} rigth={'My information'} switchState={''} />
-          { false ? <Datvis data={[]} /> : <div />}
-        </div>
-      </div>
+      mode === 'datavis' ? <div className='Map__gl'>
+        <ListMap key="map" HealthCenterList={list.centres} PharmacyList={list.pharmacies} HospitalList={list.hospitals} />
+        <MapGl/>
+      </div> : ''
     )
   }
 
+  const MapDavis = ({ specialites }) => {
+    return (
+      <Datvis specialites={specialites} />
+    )
+  }
+
+  const Template = () => {
+
+  }
+
   return (
-    <BoxWrapper Content={template} pageName="Travel easily with chronic illness" subText="Find a specialist, a hospital, a place to get your medication.<br> Add to your list, create your medical form and benefit from an account for all your family." />
+    <ContextDataFiltre.Consumer>
+      {
+        specialites =>
+          <div className="page__map">
+            <Filtre />
+            <hr/>
+            <div className="map--wrap">
+              <div className="map__container">
+                {/* <MapGl /> */}
+                <MapDavis specialites={specialites} />
+              </div>
+              <SwitchButton left={'Map'} rigth={'Visualization'} switchState={ mode == 'datavis' ? 1 : 0 } setNewSwitch={(val) => { setMode(val == 1 ? 'datavis' : 'mapGl') }} />
+            </div>
+          </div>
+      }
+    </ContextDataFiltre.Consumer>
   )
 }
 

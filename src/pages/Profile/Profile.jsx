@@ -79,7 +79,7 @@ const Profils = () => {
     )
   }
 
-  const template = () => {
+  const Template = () => {
     return (
       <div className="list-profiles">
         <button className="new-profile-button" onClick={() => { history.push('profile/new') } } >Create a new profile</button>
@@ -92,7 +92,9 @@ const Profils = () => {
   }
 
   return (
-    sessionStorage.getItem('id') ? <BoxWrapper pageName="Choose a profile" Content={template} /> : ''
+    <BoxWrapper pageName="Choose a profile" >
+      <Template />
+    </BoxWrapper>
   )
 }
 

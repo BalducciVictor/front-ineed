@@ -4,6 +4,7 @@ import Api from '../../Api/Api'
 import ChronicDiseasesSelect from './select/ChronicDiseasesSelect'
 import ShowProfile from '../ShowProfile/ShowProfile'
 import Select from 'react-select'
+import BoxWrapper from '../../components/BoxWrapper'
 
 const Form = () => {
   const postDataNewProfil = (e) => {
@@ -67,8 +68,7 @@ const Form = () => {
   }
 
   return (
-    <div className="boxWrapper">
-      <h1 className="title">My new profile</h1>
+    <BoxWrapper pageName="My new profile">
       <div>
         <div className="wrap-form">
           {/* <div className='back-to-home'>
@@ -126,7 +126,7 @@ const Form = () => {
           </form>
         </div>
       </div>
-    </div>
+    </BoxWrapper>
   )
 }
 

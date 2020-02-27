@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import CatchPhrase from './modules/CatchPhrase'
 import Form from './modules/Form'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Home = function (props) {
-  const [mode, setMode] = useState(1)
+  const { typeLog } = useParams()
+  const [mode, setMode] = useState(typeLog === 'singnup' ? 0 : 1)
   const [form, setform] = useState({
     list: [
       {
@@ -19,6 +20,10 @@ const Home = function (props) {
       }
     ]
   })
+
+  useEffect(() => {
+    setMode(typeLog === 'singnup' ? 0 : 1)
+  }, [typeLog])
 
   const setNewform = (value, index) => {
     const newForm = Object.assign({}, form)

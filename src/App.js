@@ -96,6 +96,7 @@ const App = () => {
       Api.getAllFiltre(setRequests())
         .then((responses) => {
           const resClear = {}
+          let total = 0
           responses.map((response, i) => {
             const data = response.data['hydra:member']
             const id = response.data['@id']
@@ -108,8 +109,12 @@ const App = () => {
             type = !type && id.includes('centre_de_santes') ? 'centres' : type
             type = !type && id.includes('pharmacies') ? 'pharmacies' : type
 
+            total += data.length + 1
+
             resClear[type] = data
           })
+
+          resClear.total = total
 
           setDataOrigin(resClear)
         })
@@ -122,21 +127,23 @@ const App = () => {
     return (
       <Router>
         <NavBrarre isLog={value.isLog} setUserId={setUserId} />
-        <Switch>
-          <Route exact path="/log">
-            { value.isLog ? <Redirect to="/profile" /> : <Log /> }
-          </Route>
-          <Route exact path='/profile'>
-            { value.isLog ? <Profile /> : <Redirect to="/log" /> }
-          </Route>
-          <Route exact path='/profile/new'>
-            { value.isLog ? <NewProfile /> : <Redirect to="/log" /> }
-          </Route>
-          <Route exact path='/profile/information/:id'>
-            { value.isLog ? <PersonalInformation /> : <Redirect to="/log" /> }
-          </Route>
-          <Route exact path='/' component={Datavisualitaion} />
-        </Switch>
+        <boxWrapper>
+          <Switch>
+            <Route exact path="/log/:typeLog">
+              { value.isLog ? <Redirect to="/profile" /> : <Log /> }
+            </Route>
+            <Route exact path='/profile'>
+              { value.isLog ? <Profile /> : <Redirect to="/log/singin" /> }
+            </Route>
+            <Route exact path='/profile/new'>
+              { value.isLog ? <NewProfile /> : <Redirect to="/log/singin" /> }
+            </Route>
+            <Route exact path='/profile/information/:id'>
+              { value.isLog ? <PersonalInformation /> : <Redirect to="/log/singin" /> }
+            </Route>
+            <Route exact path='/' component={Datavisualitaion} />
+          </Switch>
+        </boxWrapper>
       </Router>
     )
   }

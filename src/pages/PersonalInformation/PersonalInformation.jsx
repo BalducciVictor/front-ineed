@@ -55,7 +55,7 @@ const PersonalInformation = () => {
       })
   }, [])
 
-  const template = () => {
+  const Template = () => {
     return (
       <div className="personal-information">
         <div className="wrap-information">
@@ -71,7 +71,9 @@ const PersonalInformation = () => {
   }
 
   return (
-    <BoxWrapper Content={template} pageName="My profile" />
+    <BoxWrapper pageName="My profile">
+      <Template />
+    </BoxWrapper>
   )
 }
 

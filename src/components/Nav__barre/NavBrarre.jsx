@@ -29,8 +29,8 @@ const PageContainer = ({ isLog, setUserId }) => {
   const NavDisconnect = () => {
     return (
       <nav >
-        <button className={'button button--primary'} onClick={() => { localStorage.removeItem('id'); history.push('/log') }} >Sign up</button>
-        <button className={'button button--secondary'} onClick={() => { localStorage.removeItem('id'); history.push('/log') }} >Log in</button>
+        <button className={'button button--primary'} onClick={() => { localStorage.removeItem('id'); history.push('/log/singnup') }} >Sign up</button>
+        <button className={'button button--secondary'} onClick={() => { localStorage.removeItem('id'); history.push('/log/signin') }} >Log in</button>
       </nav>
     )
   }
