@@ -9,7 +9,7 @@ require('dotenv').config()
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiY2hlaWsiLCJhIjoiY2s2a3pzMDE2MDk0azNucGF3cHI1bjhsZiJ9.O5OgNMJeOXTZTVfv7kAuwA'
 
-function Map () {
+const MapBox = ({ specialite }) => {
   const [viewport, setViewport] = useState({
     width: 609,
     latitude: 48.8534,
@@ -72,16 +72,10 @@ function Map () {
     )
   }
   return (
-    <ContextDataFiltre.Consumer>
-      {
-        store =>
-          <ReactMapGL {...viewport} style={{ width: '100%', minHeight: '30vw', flexGrow: 2 }} onViewportChange={viewport => { setViewport(viewport) }} mapboxApiAccessToken={MAPBOX_TOKEN}>
-            {store ? <SetMarkers {...store}/> : ''}
-          </ReactMapGL>
-      }
-
-    </ContextDataFiltre.Consumer>
+    <ReactMapGL {...viewport} style={{ width: '100%', minHeight: '30vw', flexGrow: 2, paddingTop: '80px' }} onViewportChange={viewport => { setViewport(viewport) }} mapboxApiAccessToken={MAPBOX_TOKEN}>
+      {specialite ? <SetMarkers {...specialite}/> : ''}
+    </ReactMapGL>
   )
 }
 
-export default Map
+export default MapBox

@@ -2,6 +2,31 @@
   width: 100%;
   display: flex;
   position: relative;
+  .map__container {
+    width: 100%;
+  }
+  .ranger {
+    display: flex;
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+    div {
+      height: 50px;
+      padding: 10px;
+      width: 73px;
+      display: flex;
+    }
+    span {
+      display: table;
+      margin: auto;
+    }
+    padding-bottom: 40px;
+  }
+
+  .map__gl {
+    width: 100%;
+    display: flex;
+  }
   .switch-button {
     position: absolute;
     right: 0px;
@@ -12,9 +37,7 @@
   .list {
     height: 685px;
     overflow-y: scroll;
-  }
-  .map__container {
-    padding-top: 65px;
+    padding-right: 15px;
   }
 }
 
@@ -22,7 +45,9 @@
   width: 90%;
 }
 
+
 .view {
+  position: relative;
   svg :nth-child(1) {
     overflow: visible;
     display: flex;
@@ -64,5 +89,34 @@
       }
     }
   }
-  
+
+  .card {
+    height: 281px;
+    width: 305px;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 40px;
+    position: absolute;
+    right: 0px;
+    left: 60%;
+    top: 90px;
+    .paris{
+      font-family: 'Roboto',;
+      font-style: Italic;
+      font-weight: Bold;
+      font-size: 18px;
+      color: $blue
+    }
+  }
+  .one {
+    background-color: #D0D0D0;
+  }
+  .two {
+    background-color: #FFCCA8;
+  }
+  .tree {
+    background-color: #FFA962;
+  }
+  .four {
+    background-color: #FF8500;
+  }
 }

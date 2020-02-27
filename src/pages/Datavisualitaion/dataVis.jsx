@@ -1,81 +1,123 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
-import Map from './mapSvg'
+import MapCustom from './MapSvg'
 import Arrondissements from './Arrondissements'
 
 const DataVis = function ({ specialites }) {
-  const sortByArrondissment = () => {
+  const [arrondissements, setArrondissements] = useState({})
+  const [ranger, setRanger] = useState()
+  const [currentArrondissements, updateCurrentArrondissements] = useState(1)
+
+  const sortByArrondissment = (object) => {
     const arrondisment = {}
-    for (const typeOf in specialites) {
-      if (specialites[typeOf].data && specialites[typeOf].data.length) {
-        console.log(specialites[typeOf].data)
-        specialites[typeOf].data.forEach(specialite => {
+    for (const typeOf in object) {
+      if (object[typeOf].data && object[typeOf].data.length) {
+        object[typeOf].data.forEach(specialite => {
           const numberArrondissement = specialite.Arrondissement.match(/(\d+)/)[0]
           if (arrondisment[numberArrondissement]) {
-            arrondisment[numberArrondissement].push({ specialite: specialite['@type'] })
+            arrondisment[numberArrondissement].push({ specialite: specialite['@type'], arrondisment: numberArrondissement })
+          } else {
+            arrondisment[numberArrondissement] = [{ specialite: specialite['@type'] }]
+          }
+        })
+      } else if (object[typeOf] && object[typeOf].length) {
+        object[typeOf].forEach(specialite => {
+          const numberArrondissement = specialite.Arrondissement.match(/(\d+)/)[0]
+          if (arrondisment[numberArrondissement]) {
+            arrondisment[numberArrondissement].push({ specialite: specialite['@type'], arrondisment: numberArrondissement })
           } else {
             arrondisment[numberArrondissement] = [{ specialite: specialite['@type'] }]
           }
         })
       }
     }
-    return arrondisment
+    if (arrondisment) {
+      setArrondissements(arrondisment)
+    }
   }
-
-  const [arrondissements, setArrondissements] = useState(sortByArrondissment())
-  const [ranger, setRanger] = useState()
 
   useEffect(() => {
-    defindRager(arrondissements)
+    sortByArrondissment(specialites)
+  }, [specialites.centres && specialites.centres.length, specialites.hospitals && specialites.hospitals.length, specialites.centres && specialites.centres.length])
+
+  useEffect(() => {
+    defindRager(specialites)
   }, [arrondissements])
 
-  const defindRager = (arrondissment) => {
-    if (!arrondissment) {
-      return
-    }
-    setArrondissements(arrondissment)
-    console.log(arrondissment, 'ici')
+  const sortArrayByArrondissements = (data) => data.sort((a, b) => parseFloat(a.total) - parseFloat(b.total)).reverse()
 
-    const ranger = {
-      min: 1000,
-      max: 0,
-      result: []
-    }
-    for (const key in arrondissment) {
-      console.log(arrondissment[key].length)
-      if (arrondissment[key].length < ranger.min) {
-        ranger.min = arrondissment[key].length
+  const defindRager = () => {
+    if (arrondissements) {
+      const ranger = {
+        min: 1000,
+        max: 0,
+        result: [],
+        arrondissements: []
       }
-      if (arrondissment[key].length > ranger.max) {
-        ranger.max = arrondissment[key].length
+      for (const key in arrondissements) {
+        if (arrondissements[key].length < ranger.min) {
+          ranger.min = arrondissements[key].length
+        }
+        if (arrondissements[key].length > ranger.max) {
+          ranger.max = arrondissements[key].length
+        }
       }
-    }
 
-    let r = ranger.max - ranger.min
-    r = r / 4
+      let r = ranger.max - ranger.min
+      r = r / 4
 
-    for (let i = 1; i < 5; i++) {
-      if (i === 1) {
-        ranger.result.push({ start: ranger.min, end: r * i })
-      } else {
-        ranger.result.push({ start: ranger.result[i - 2].end, end: r * i })
+      for (let i = 1; i < 5; i++) {
+        ranger.result.push(Math.round(r * i))
       }
+
+      console.log(ranger)
+      setRanger(ranger)
     }
-    setRanger(ranger)
   }
 
-  // console.log(specialite)
-
   return (
-    <div className="view">
-      <Map
-        // updateCurrentArrondissements={(arrondissements) => updateCurrentArrondissements(arrondissements)}
-        ranger={ranger}
+    <div>
+      <MapCustom
+        rangers={ranger}
         arrondissements={arrondissements}
+        updateCurrentArrondissements={ (val) => { updateCurrentArrondissements(val) }}
       />
+      <div>
+
+        {currentArrondissements &&
+        <div>
+          {Object.values(arrondissements).map((arrondissement, i) => {
+            if (i === currentArrondissements) {
+              return (
+                <div className="card" >
+                  <div className="text">
+                    <p className="paris">{`Paris, ${i}th`}</p>
+                    <p className="all">{`All ${arrondissement.length}`}</p>
+                    <p className="all">{`All ${arrondissement.length}`}</p>
+                    {console.log(arrondissement)}
+                    {
+                      arrondissement.map((specialite) => {
+
+                      })
+                    }
+                  </div>
+                </div>
+              )
+            }
+            // currentArrondissements
+          })}
+        </div>
+        }
+
+      </div>
+      <section className="ranger">
+        <div className="one"><span>0</span><span>-</span><span>{ranger && ranger.result && ranger.result[0]}</span> </div>
+        <div className="two"><span>{ranger && ranger.result && ranger.result[0]}</span><span>-</span><span>{ranger && ranger.result && ranger.result[1]}</span> </div>
+        <div className="tree"><span>{ranger && ranger.result && ranger.result[1]}</span><span>-</span><span>{ranger && ranger.result && ranger.result[2]}</span> </div>
+        <div className="four"><span>{ranger && ranger.result && ranger.result[2]}</span><span>-</span><span>{ranger && ranger.result && ranger.result[3]}</span> </div>
+      </section>
     </div>
   )
 }
 
 export default DataVis
-{ /* { currentArrondissements.name ? <Arrondissements arrondissements={currentArrondissements} /> : ''} */ }

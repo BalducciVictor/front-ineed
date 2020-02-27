@@ -28,7 +28,6 @@ const PersonalInformation = () => {
   const getInformationProfile = () => {
     Api.get('/api/profils/' + id)
       .then((response) => {
-        console.log(response.data)
         setProfilInformation(response.data)
       })
   }
