@@ -24,24 +24,21 @@
 
 @font-face {
     font-family: 'Assistant';
-    src: url('/src/fonts/Assistant-Light.woff2') format('woff2'),
-        url('/src/fonts/Assistant-Light.woff') format('woff');
+    src: url('/src/fonts/Assistant-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Assistant';
-    src: url('/src/fonts/Assistant-Regular.woff2') format('woff2'),
-        url('/src/fonts/Assistant-Regular.woff') format('woff');
+    src: url('/src/fonts/Assistant-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Assistant';
-    src: url('/src/fonts/Assistant-ExtraLight.woff2') format('woff2'),
-        url('/src/fonts/Assistant-ExtraLight.woff') format('woff');
+    src:url('/src/fonts/Assistant-ExtraLight.woff') format('woff');
     font-weight: 200;
     font-style: normal;
 }

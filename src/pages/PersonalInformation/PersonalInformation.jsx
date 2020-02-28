@@ -71,6 +71,11 @@ const PersonalInformation = () => {
 
   return (
     <BoxWrapper pageName="My profile">
+      <div className='container-form page__name'>
+        <h2 className="page__name">My profile</h2>
+        <h3 className="page__name">Share information from your information, handler your list.</h3>
+        <hr />
+      </div>
       <Template />
     </BoxWrapper>
   )

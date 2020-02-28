@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './MedicalProfile.scss'
-import paul from '../../assets/paul.jpg'
+import paul from '../../assets/iconePepoel.svg'
 import download from '../../assets/icon-download.png'
 import edit from '../../assets/icon-edit.png'
 import share from '../../assets/icon-share.png'

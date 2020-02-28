@@ -2,7 +2,7 @@ import React from 'react';
 
 import './AccountProfile.scss';
 
-import paul from '../../assets/paul.jpg';
+import paul from '../../assets/iconePepoel.svg';
 
 
 const AccountProfile = () => (

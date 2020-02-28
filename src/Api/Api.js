@@ -41,7 +41,7 @@ class ApiRequest {
 
   getPharmacies24h (parms) {
     return new Promise((resolve, reject) => {
-      this.get('/api/pharmacies' + (parms || ''))
+      this.get('/api/pharmacies?open_night=1' + (parms || ''))
         .then((responses) => {
           const newHydra = responses.data['hydra:member'].filter(pharmacie => pharmacie.openAll)
           responses.data['hydra:member'] = newHydra
@@ -52,10 +52,8 @@ class ApiRequest {
 
   getPharmacies (parms) {
     return new Promise((resolve, reject) => {
-      this.get('/api/pharmacies' + (parms || ''))
+      this.get('/api/pharmacies?open_night=1' + (parms || ''))
         .then((responses) => {
-          const newHydra = responses.data['hydra:member'].filter(pharmacie => pharmacie.openAll)
-          responses.data['hydra:member'] = newHydra
           resolve(responses)
         })
     })

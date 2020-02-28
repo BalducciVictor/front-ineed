@@ -24,7 +24,6 @@ const DataVis = function ({ specialites, setMode, setfiltreArrondisment }) {
 
       array.forEach(specialite => {
         const numberArrondissement = specialite.Arrondissement.match(/(\d+)/)[0]
-        console.log(numberArrondissement)
         if (!arrondisment[numberArrondissement]) {
           arrondisment[numberArrondissement] = [0]
         } else {

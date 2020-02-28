@@ -34,7 +34,7 @@
 				};
 			}
 			.message_error{
-				color: red;
+				color: #D92A2A;
 				margin: 2% 0px;
 			}
 		}
@@ -83,7 +83,7 @@
 		background-color: $black;
 		display: flex;
 		flex-direction: column;
-		font-family: Assistant, roboto, sans-serif;
+		font-family: 'Assistant', roboto, sans-serif;
 		color: $orange;
 		background-image: url('../../assets/img/map.png');
 		background-size: 120%;

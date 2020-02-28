@@ -10,7 +10,7 @@ const PageContainer = ({ isLog, setUserId }) => {
   const DisconnectUser = () => {
     sessionStorage.setItem('id', '')
     setUserId('')
-    history.push('/log')
+    history.push('/')
   }
 
   const NavConnected = () => {
