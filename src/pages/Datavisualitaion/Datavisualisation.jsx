@@ -30,8 +30,9 @@ const Datavisualisation = () => {
   const [filtreHospitals, setFiltreHospitals] = useState([])
   const [filtrePharmacies, setFlitresPharmacies] = useState([])
   const [filtreCentres, setFiltreCentres] = useState([])
-  const [filtreArrondisment, setfiltreArrondisment] = useState([11, 12])
+  const [filtreArrondisment, setfiltreArrondisment] = useState([])
   const [dataOrigin, setDataOrigin] = useState(localDataOrigin)
+  const [init, setInit] = useState(0)
 
   const buildParam = (parms, name) => {
     return parms.map((parm, i) => {
@@ -65,12 +66,12 @@ const Datavisualisation = () => {
     ]
     return requests.map(({ filtre, endPoint, type }) => {
       if (filtre.length || filtre.includes('all') || filtreAll) {
-        if (filtre.includes('all') || filtreAll) {
-          return endPoint
-        } else {
-          // set Endpoint with the good parms
-          return () => { return endPoint(builParamsEndpoint(filtre, type)) }
-        }
+        return () => { return endPoint(builParamsEndpoint(filtre, type)) }
+        // if (filtre.includes('all') || filtreAll) {
+        //   return endPoint
+        // } else {
+        //   // set Endpoint with the good parms
+        // }
       }
     }).filter((request) => request)
   }
@@ -86,7 +87,7 @@ const Datavisualisation = () => {
             const data = response.data['hydra:member']
             const id = response.data['@id']
             // data.config is in responses if request comme to the back then we save
-            saveOnStore({ [responses[i].config.url]: { data } })
+            // saveOnStore({ [responses[i].config.url]: { data } })
 
             // set call type for get ther reference
             let type = ''
@@ -106,11 +107,20 @@ const Datavisualisation = () => {
     } else {
       setDataOrigin({ hospitals: [], centres: [], pharmacies: [] })
     }
-  }, [filtreAll, filtreHospitals.length, filtrePharmacies.length, filtreCentres.length])
+  }, [filtreAll, filtreHospitals.length, filtrePharmacies.length, filtreCentres.length, filtreArrondisment.length])
+
+  useEffect(() => {
+    console.log(init)
+    if (mode === 'datavis' && init === 1) {
+      setMode('mapGl')
+    } else {
+      setInit(1)
+    }
+  }, [filtreArrondisment.length])
 
   const MapGl = ({ list }) => {
     return (
-      <div className={`map__gl ${mode !== 'mapGl' ? 'hidden' : ''}  ${mode}`} >
+      mode === 'mapGl' && <div className={'map__gl'} >
         <ListMap key="map" HealthCenterList={dataOrigin.centres} PharmacyList={dataOrigin.pharmacies} HospitalList={dataOrigin.hospitals} />
         <MapBox specialite={ dataOrigin } />
       </div>
@@ -119,8 +129,8 @@ const Datavisualisation = () => {
 
   const MapDavis = ({ specialites }) => {
     return (
-      <div className={`view ${mode === 'datavis' ? ' ' : 'hidden'} `}>
-        <Datvis specialites={specialites} />
+      mode === 'datavis' && <div className={'view'}>
+        <Datvis setfiltreArrondisment={setfiltreArrondisment} setMode={setMode} specialites={specialites} />
       </div>
     )
   }
@@ -129,14 +139,14 @@ const Datavisualisation = () => {
       <h2 className="page__name"> Travel easily with chronic illness</h2>
       <h3 className="page__sub__text"> Find a specialist, a hospital, a place to get your medication.<br/> Add to your list, create your medical form and benefit from an account for all your family. </h3>
       <hr className="boxWrapper__hr" />
-      <Filtre setFiltreAll={setFiltreAll} filtreAll={filtreAll} filtreHospitals={filtreHospitals} setFiltreHospitals={setFiltreHospitals} filtrePharmacies={filtrePharmacies} setFlitresPharmacies={setFlitresPharmacies} setFiltreCentres={setFiltreCentres} filtreCentres={filtreCentres} />
+      <Filtre filtreArrondisment={filtreArrondisment} setfiltreArrondisment={setfiltreArrondisment} mode={mode} setFiltreAll={setFiltreAll} filtreAll={filtreAll} filtreHospitals={filtreHospitals} setFiltreHospitals={setFiltreHospitals} filtrePharmacies={filtrePharmacies} setFlitresPharmacies={setFlitresPharmacies} setFiltreCentres={setFiltreCentres} filtreCentres={filtreCentres} />
       <hr/>
       <div className="map--wrap">
         <div className="map__container">
           <MapGl />
-          <MapDavis specialites={dataOrigin} />
+          <MapDavis setfiltreArrondisment={setfiltreArrondisment} specialites={dataOrigin} />
         </div>
-        <SwitchButton left={'Map'} rigth={'Visualization'} switchState={ mode == 'datavis' ? 0 : 1 } setNewSwitch={(val) => { setMode(val == 0 ? 'datavis' : 'mapGl') }} />
+        <SwitchButton setMode={setMode} left={'Visualization'} rigth={'Map'} switchState={ mode == 'datavis' ? 0 : 1 } setNewSwitch={(val) => { setMode(val == 0 ? 'datavis' : 'mapGl') }} />
       </div>
     </div>
   )

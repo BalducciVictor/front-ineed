@@ -25,7 +25,7 @@ $border-clasic: 10px;
   width: 100%;
   background-color: $blue;
   border-radius: $border-clasic;
-  font-family: Assistant, roboto, sans-serif;
+  font-family: 'Assistant', roboto, sans-serif;
   font-size: 1.125rem;
   color: $white;
   border: none;
@@ -35,7 +35,7 @@ $border-clasic: 10px;
 
 
 @mixin label__clasic {
-  font-family: Assistant, roboto, sans-serif;
+  font-family: 'Assistant', roboto, sans-serif;
   font-size: 1rem;
   font-weight: bold;
 }

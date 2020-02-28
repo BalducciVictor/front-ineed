@@ -15,7 +15,7 @@ const Home = function ({ form, setNewform, setMode, mode }) {
         sessionStorage.setItem('id', userId)
         setUserId(userId)
         setLog(true)
-        history.push('/profile')
+        history.push('/')
       })
       .catch((err) => {
         console.log(err, 'ici')
@@ -23,6 +23,9 @@ const Home = function ({ form, setNewform, setMode, mode }) {
   }
 
   const signUp = (setLog, setUserId) => {
+    if (form.password !== form.ConfirmPassword) {
+      return
+    }
     Api.signUp(form)
       .then(() => {
         signIn(setLog, setUserId)
@@ -52,7 +55,7 @@ const Home = function ({ form, setNewform, setMode, mode }) {
           key={input.name}
         />
       })}
-      {/* {messageErrorPassword === true && <p className="message_error">Passwords do not match</p>} */}
+      { form.ConfirmPassword && form.password != form.ConfirmPassword && <p className="message_error">Passwords do not match</p>}
       <contextUser.Consumer>
         { user => <button onClick={ (e) => submit(e, user.setLog, user.setUserId)} >Sign up</button>}
       </contextUser.Consumer>

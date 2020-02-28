@@ -26,6 +26,16 @@ button {
   cursor: pointer;
 }
 
+
+.name {
+  text-align: left;
+  width: 100%;
+font: Bold 28px/37px Assistant;
+letter-spacing: 0;
+color: #011627;
+opacity: 1;
+}
+
 .page__name {
   h2 {
     font: Bold 22px/28px Assistant;
@@ -33,7 +43,7 @@ button {
   h3 {
    font-size: 16;
    font-weight: 300;
-   font-family: Assistant, Roboto;
+   font-family: 'Assistant', Roboto;
   }
   letter-spacing: 0;
   color: #011627;
@@ -55,6 +65,8 @@ button {
   }
 }
 
+
+
 .page__sub__text {
   text-align: left;
   font: Regular 16px/22px Assistant;
@@ -65,7 +77,7 @@ button {
 
 
 h1{
-  font-family: Assistant, roboto, sans-serif;
+  font-family: 'Assistant', roboto, sans-serif;
   font-size: 1.9rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -110,6 +122,7 @@ input[type=text], input[type=number], input[type=email], input[type=password], i
 }
 
 .boxWrapper, boxwrapper {
+  min-height: 100vh;
   background-color: #F5F6FA;
   width: 100%;
   margin: 0 auto;

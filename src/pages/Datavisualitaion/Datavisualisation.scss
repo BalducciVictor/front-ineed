@@ -99,12 +99,42 @@
     right: 0px;
     left: 60%;
     top: 90px;
+
+    .card--button {
+      position: absolute;
+    left: -39px;
+    right: 0px;
+    margin: auto;
+    text-align: center;
+    width: 305px;
+    height: 50px;
+    background-color: $blue;;
+    color: white;
+    font-size: 16px;
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    }
+
     .paris{
       font-family: 'Roboto',;
       font-style: Italic;
       font-weight: Bold;
       font-size: 18px;
       color: $blue
+    }
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 10px 0;
+    }
+    .all {
+      padding: 20px 0px;
     }
   }
   .one {
@@ -119,4 +149,8 @@
   .four {
     background-color: #FF8500;
   }
+}
+
+.relative {
+  position: relative;
 }

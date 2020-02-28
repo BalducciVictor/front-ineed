@@ -5,8 +5,6 @@ import pictoCentreDeSante from '../../assets/picto/ping-centreDeSante.svg'
 import pictoHospital from '../../assets/picto/ping-hospitals.svg'
 import ContextDataFiltre from '../../Store/DataFiltre'
 
-require('dotenv').config()
-
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiY2hlaWsiLCJhIjoiY2s2a3pzMDE2MDk0azNucGF3cHI1bjhsZiJ9.O5OgNMJeOXTZTVfv7kAuwA'
 
 const MapBox = ({ specialite }) => {

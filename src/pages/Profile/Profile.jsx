@@ -92,7 +92,11 @@ const Profils = () => {
   }
 
   return (
-    <BoxWrapper pageName="Choose a profile" >
+    <BoxWrapper >
+      <div className="page__name">
+        <h2>Choose a profil</h2>
+        <hr/>
+      </div>
       <Template />
     </BoxWrapper>
   )
