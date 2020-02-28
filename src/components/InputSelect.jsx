@@ -59,17 +59,23 @@ const customStyles = {
 }
 
 const ImputFiltre = ({ placeHolder, setValue, defaultValue, options }) => {
+  const [defaultVal, setDefaultVal] = useState()
   const filtreValue = (values) => {
     if (values) {
-      console.log()
       setValue(values.map(input => input.value))
     } else {
       setValue([])
     }
   }
 
+  useEffect(() => {
+    setDefaultVal(defaultValue.map((val) => {
+      return options.find(({ value }) => value == val)
+    }))
+  }, [options.length, placeHolder, setValue, defaultValue])
+
   return (
-    <Select isMulti defaultValue={defaultValue.map(val => { return options.find(({ value }) => value === val) })} onChange={values => filtreValue(values)} placeholder={placeHolder} options={options} styles={customStyles} />
+    <Select isMulti selectOption={ (() => defaultVal)} value={defaultVal} onChange={values => filtreValue(values)} placeholder={placeHolder} options={options} styles={customStyles} />
   )
 }
 

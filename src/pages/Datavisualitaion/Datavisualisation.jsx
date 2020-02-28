@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import Datvis from './dataVis.jsx'
-import './styleDataVis.scss'
 import BoxWrapper from '../../components/BoxWrapper'
 import MapGl from '../../components/MapGl/mapGl'
-import { render } from '@testing-library/react'
-import ContextFiltre from '../../Store/ContextFiltre'
 import Filtre from '../../components/Filtre/Filtre'
-import PopAddListProfile from '../../components/PopAddListProfile/PopAddListProfile'
+import ListMap from '../../components/List/List'
+import ContextList from '../../Store/DataFiltre'
+import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton'
 
-const PersonalInformation = () => {
+const Datavisualisation = () => {
   const [categories, setCategories] = useState({
     pharmacies: [],
     hospitals: [],
@@ -28,9 +26,13 @@ const PersonalInformation = () => {
         <Filtre />
         <hr/>
         <div className="map--wrap">
-          <MapGl/>
+          <ContextList.Consumer>
+            { list => <ListMap key="map" HealthCenterList={list.centres} PharmacyList={list.pharmacies} HospitalList={list.hospitals} /> }
+          </ContextList.Consumer>
+          <div className="map__container"><MapGl/></div>
+          <SwitchButton left={'My list'} rigth={'My information'} switchState={''} />
+          { false ? <Datvis data={[]} /> : <div />}
         </div>
-        { false ? <Datvis data={[]} /> : <div />}
       </div>
     )
   }
@@ -38,9 +40,8 @@ const PersonalInformation = () => {
   return (
     <div className="">
       <BoxWrapper Content={template} pageName="Travel easily with chronic illness" subText="Find a specialist, a hospital, a place to get your medication.<br> Add to your list, create your medical form and benefit from an account for all your family." />
-      <PopAddListProfile/>
     </div>
   )
 }
 
-export default PersonalInformation
+export default Datavisualisation

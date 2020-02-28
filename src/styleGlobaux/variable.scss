@@ -50,3 +50,22 @@ position: absolute;
 }
 
 
+
+
+.col-primary {
+  stroke: $blue;
+  fill: $blue;
+  color: $blue;
+}
+
+.col-secondary {
+  stroke: $orange;
+  fill: $orange;
+  color: $orange;
+}
+
+.col-tree {
+  stroke: $black;
+  fill: $black;
+  color: $black;
+}

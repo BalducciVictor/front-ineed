@@ -5,7 +5,7 @@ import ChronicDiseasesSelect from './select/ChronicDiseasesSelect'
 import ShowProfile from '../ShowProfile/ShowProfile'
 import Select from 'react-select'
 
-function Form () {
+const Form = () => {
   const postDataNewProfil = (e) => {
     e.preventDefault()
 
@@ -38,6 +38,7 @@ function Form () {
         data.maladieChroniques.push('/api/maladie_chroniques/' + recupData.chronicDiseases.value)
       }
     }
+
     //  Envoi du profil dans l'api dans l'api
     Api.post('/api/profils', data)
       .then((response) => {

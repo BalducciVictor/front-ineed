@@ -1,18 +1,12 @@
 .medical-profile {
   background-color: #fff;
   width: 100%;
-  transform: translateY(100vh);
   transition: 0.7s;
   margin-top: 5%;
   margin-bottom: 10%;
   height: 0px;
   transition-property: height;
 
-  &.active {
-    transform: translateY(0vh);
-    transform: none;
-    height: initial;
-  }
 
   h2 {
     font-family: Roboto, sans-serif;

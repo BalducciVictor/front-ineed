@@ -10,7 +10,7 @@ import Log from './pages/LogLoging/Log'
 import Profile from './pages/Profile/Profile'
 import NewProfile from './pages/NewProfile/NewProfile'
 import PersonalInformation from './pages/PersonalInformation/PersonalInformation'
-import Datavisualitaion from './pages/Datavisualitaion/Datavisualisation.jsx'
+import Datavisualitaion from './pages/Datavisualitaion/Datavisualisation'
 import NavBrarre from './components/Nav__barre/NavBrarre'
 import './styleGlobaux/global.scss'
 
@@ -154,6 +154,10 @@ const App = () => {
       </contextUser.Provider>
     </div>
   )
+}
+
+if (module.hot) {
+  module.hot.accept()
 }
 
 export default App
