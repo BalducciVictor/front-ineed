@@ -32,6 +32,7 @@ const Datavisualisation = () => {
   const [filtreCentres, setFiltreCentres] = useState([])
   const [filtreArrondisment, setfiltreArrondisment] = useState([])
   const [dataOrigin, setDataOrigin] = useState(localDataOrigin)
+  const [init, setInit] = useState(0)
 
   const buildParam = (parms, name) => {
     return parms.map((parm, i) => {
@@ -105,14 +106,21 @@ const Datavisualisation = () => {
         })
     } else {
       setDataOrigin({ hospitals: [], centres: [], pharmacies: [] })
-    } if (mode === 'mapGl') {
-      setFiltreAll(false)
     }
   }, [filtreAll, filtreHospitals.length, filtrePharmacies.length, filtreCentres.length, filtreArrondisment.length])
 
+  useEffect(() => {
+    console.log(init)
+    if (mode === 'datavis' && init === 1) {
+      setMode('mapGl')
+    } else {
+      setInit(1)
+    }
+  }, [filtreArrondisment.length])
+
   const MapGl = ({ list }) => {
     return (
-      <div className={`map__gl ${mode !== 'mapGl' ? 'hidden' : ''}  ${mode}`} >
+      mode === 'mapGl' && <div className={'map__gl'} >
         <ListMap key="map" HealthCenterList={dataOrigin.centres} PharmacyList={dataOrigin.pharmacies} HospitalList={dataOrigin.hospitals} />
         <MapBox specialite={ dataOrigin } />
       </div>
@@ -121,7 +129,7 @@ const Datavisualisation = () => {
 
   const MapDavis = ({ specialites }) => {
     return (
-      <div className={`view ${mode === 'datavis' ? ' ' : 'hidden'} `}>
+      mode === 'datavis' && <div className={'view'}>
         <Datvis setfiltreArrondisment={setfiltreArrondisment} setMode={setMode} specialites={specialites} />
       </div>
     )

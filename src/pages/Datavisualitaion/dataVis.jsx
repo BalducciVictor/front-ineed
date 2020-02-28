@@ -83,33 +83,9 @@ const DataVis = function ({ specialites, setMode, setfiltreArrondisment }) {
       <MapCustom
         rangers={ranger}
         arrondissements={arrondissements}
-        updateCurrentArrondissements={ (val) => { updateCurrentArrondissements(val) }}
+        updateCurrentArrondissements={ (val) => { setfiltreArrondisment(val || [0]) }}
       />
       <div>
-
-        {currentArrondissements &&
-        <div>
-          {Object.values(arrondissements).map((arrondissement, i) => {
-            if (i === currentArrondissements) {
-              return (
-                <div className="card" >
-                  <div className="relative">
-                    <div className="text">
-                      <p className="paris">{`Paris, ${i}th`}</p>
-                      <p className="all">{'All 12'}</p>
-                      <p className="hospitals col-primary">{'2 Hospitals'}</p>
-                      <p className="Cardiologist col-secondary">{'6 Cardiologist'}</p>
-                      <p className="Pharmacies col-tree">{'4 Pharmacies'}</p>
-                    </div>
-                    <div onClick={() => { setMode('mapGl'); setfiltreArrondisment([i]) }} className="card--button"><div>Look at the map</div></div>
-                  </div>
-                </div>
-              )
-            }
-            // currentArrondissements
-          })}
-        </div>
-        }
 
       </div>
       <section className="ranger">

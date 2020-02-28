@@ -28,7 +28,7 @@ const MapCustom = ({ rangers, arrondissements, updateCurrentArrondissements }) =
       })
 
       elementArrondissements.addEventListener(('click'), () => {
-        updateCurrentArrondissements(Number(number))
+        updateCurrentArrondissements([Number(number)])
       })
 
       let memo = 0
