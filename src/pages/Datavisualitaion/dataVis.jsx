@@ -1,36 +1,40 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
-import MapCustom from './MapSvg'
+import MapCustom from './mapSvg'
 import Arrondissements from './Arrondissements'
 
-const DataVis = function ({ specialites }) {
+const DataVis = function ({ specialites, setMode, setfiltreArrondisment }) {
   const [arrondissements, setArrondissements] = useState({})
   const [ranger, setRanger] = useState()
-  const [currentArrondissements, updateCurrentArrondissements] = useState(1)
+  const [currentArrondissements, updateCurrentArrondissements] = useState()
 
   const sortByArrondissment = (object) => {
     const arrondisment = {}
-    for (const typeOf in object) {
-      if (object[typeOf].data && object[typeOf].data.length) {
-        object[typeOf].data.forEach(specialite => {
-          const numberArrondissement = specialite.Arrondissement.match(/(\d+)/)[0]
-          if (arrondisment[numberArrondissement]) {
-            arrondisment[numberArrondissement].push({ specialite: specialite['@type'], arrondisment: numberArrondissement })
-          } else {
-            arrondisment[numberArrondissement] = [{ specialite: specialite['@type'] }]
-          }
-        })
-      } else if (object[typeOf] && object[typeOf].length) {
-        object[typeOf].forEach(specialite => {
-          const numberArrondissement = specialite.Arrondissement.match(/(\d+)/)[0]
-          if (arrondisment[numberArrondissement]) {
-            arrondisment[numberArrondissement].push({ specialite: specialite['@type'], arrondisment: numberArrondissement })
-          } else {
-            arrondisment[numberArrondissement] = [{ specialite: specialite['@type'] }]
-          }
-        })
+    if (object.hospitals || object.pharmacies || object.centres) {
+      let array = []
+      if (object.hospitals) {
+        array = array.concat(object.hospitals)
       }
+      if (object.pharmacies) {
+        array = array.concat(object.pharmacies)
+      }
+      if (object.pharmacies) {
+        array = array.concat(object.centres)
+      }
+
+      array.forEach(specialite => {
+        const numberArrondissement = specialite.Arrondissement.match(/(\d+)/)[0]
+        console.log(numberArrondissement)
+        if (!arrondisment[numberArrondissement]) {
+          arrondisment[numberArrondissement] = [0]
+        } else {
+          arrondisment[numberArrondissement].push(0)
+        }
+      })
+    } else {
+      return
     }
+
     if (arrondisment) {
       setArrondissements(arrondisment)
     }
@@ -90,16 +94,15 @@ const DataVis = function ({ specialites }) {
             if (i === currentArrondissements) {
               return (
                 <div className="card" >
-                  <div className="text">
-                    <p className="paris">{`Paris, ${i}th`}</p>
-                    <p className="all">{`All ${arrondissement.length}`}</p>
-                    <p className="all">{`All ${arrondissement.length}`}</p>
-                    {console.log(arrondissement)}
-                    {
-                      arrondissement.map((specialite) => {
-
-                      })
-                    }
+                  <div className="relative">
+                    <div className="text">
+                      <p className="paris">{`Paris, ${i}th`}</p>
+                      <p className="all">{'All 12'}</p>
+                      <p className="hospitals col-primary">{'2 Hospitals'}</p>
+                      <p className="Cardiologist col-secondary">{'6 Cardiologist'}</p>
+                      <p className="Pharmacies col-tree">{'4 Pharmacies'}</p>
+                    </div>
+                    <div onClick={() => { setMode('mapGl'); setfiltreArrondisment([i]) }} className="card--button"><div>Look at the map</div></div>
                   </div>
                 </div>
               )
