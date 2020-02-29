@@ -12,7 +12,7 @@ import NewProfile from './pages/NewProfile/NewProfile'
 import PersonalInformation from './pages/PersonalInformation/PersonalInformation'
 import Datavisualitaion from './pages/Datavisualitaion/Datavisualisation'
 import NavBrarre from './components/Nav__barre/NavBrarre'
-import './styleGlobaux/global.scss'
+import './globalstyle/global.scss'
 
 const App = () => {
   const [userId, setUserId] = useState(sessionStorage.getItem('id'))
