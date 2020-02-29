@@ -1,7 +1,4 @@
 import React from 'react'
-
-import './Map.scss'
-
 import map from '../../assets/img/map.png'
 
 const Map = () => (

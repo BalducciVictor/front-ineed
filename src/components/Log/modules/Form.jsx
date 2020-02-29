@@ -1,35 +1,43 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import genrateInput from '../../../pluging/inputGenerate'
-import Input from '../../input'
-import Context from '../../../Store/reactContext'
-import context from '../../../Store/reactContext'
+import Input from '../../Input__primary'
+import { contextApi, contextUser } from '../../../Store/reactContext'
+import { useHistory } from 'react-router-dom'
+import Api from '../../../Api/Api'
 
 const Home = function ({ form, setNewform, setMode, mode }) {
-  const signIn = ($SignIn) => {
-    $SignIn(form)
+  const history = useHistory()
+
+  const signIn = (setLog, setUserId) => {
+    Api.signIn(form)
+      .then((userId) => {
+        sessionStorage.setItem('id', userId)
+        setUserId(userId)
+        setLog(true)
+        history.push('/profile')
+      })
       .catch((err) => {
         console.log(err, 'ici')
       })
   }
 
-  const signUp = ($signUp) => {
-    $signUp(form)
+  const signUp = (setLog, setUserId) => {
+    Api.signUp(form)
+      .then(() => {
+        signIn(setLog, setUserId)
+      })
       .catch((err) => {
         console.log(err, 'ici')
       })
   }
 
-  const submit = (e, functions) => {
+  const submit = (e, setLog, setUserId) => {
     e.preventDefault()
-    const { $SignIn, $SignUp } = functions
     if (mode === 1) {
-      signIn($SignIn)
+      signIn(setLog, setUserId)
     } else if (mode === 0) {
-      signUp($SignUp)
-      console.log('ok')
-    } else {
-      console.error('as not mode')
+      signUp(setLog, setUserId)
     }
   }
 
@@ -39,19 +47,15 @@ const Home = function ({ form, setNewform, setMode, mode }) {
     <div>
       { inputs.map((input) => {
         return <Input
-          label={input.label}
-          value={input.value}
+          {...input}
           setValue={(value) => { setNewform(value, input.name) }}
-          type={input.type}
           key={input.name}
         />
       })}
       {/* {messageErrorPassword === true && <p className="message_error">Passwords do not match</p>} */}
-      <Context.Consumer >
-        {({ $SignIn, $SignUp }) => (
-          <button onClick={ (e) => submit(e, { $SignIn: $SignIn, $SignUp: $SignUp })} >Sign up</button>
-        )}
-      </Context.Consumer>
+      <contextUser.Consumer>
+        { user => <button onClick={ (e) => submit(e, user.setLog, user.setUserId)} >Sign up</button>}
+      </contextUser.Consumer>
       <div>
         {
           mode === 0
@@ -60,7 +64,6 @@ const Home = function ({ form, setNewform, setMode, mode }) {
         }
       </div>
     </div>
-
   )
 }
 

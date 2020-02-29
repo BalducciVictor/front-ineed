@@ -1,16 +1,12 @@
 
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import './Home.scss'
+import React, { useState, useEffect } from 'react'
 import SignUp from '../../components/Log/Log'
+import BoxWrapper from '../../components/BoxWrapper'
 
 const Log = () => {
   const [handler] = useState('singIn')
   return (
-    <div className="container">
-      <svg className="logo_home"><use xlinkHref="/many_svg.svg#logo"/></svg>
-      <SignUp state={handler}/>
-    </div>
+    <BoxWrapper pageName={null} Content={() => <SignUp state={handler}/> } />
   )
 }
 

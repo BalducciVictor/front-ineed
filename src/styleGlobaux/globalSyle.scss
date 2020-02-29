@@ -1,0 +1,161 @@
+.App{
+  font-family: Roboto, sans-serif;
+  background-color: $color-secondary;
+  background-image: url(../assets/mapBackground.svg);
+  background-repeat: no-repeat;;
+  background-size: 80%;
+  background-position: 50% 5%;
+  @media (min-width:  $breakpoint-mobile) {
+    background-position: -50px -50px;
+    background-size: 885px;
+  }
+}
+
+
+
+.hidden {
+  display: none;
+}
+
+button {
+  * {
+    text-decoration: none;
+  }
+  @include button__clasic;
+  width: 170px;
+  cursor: pointer;
+}
+
+.page__name {
+  h2 {
+    font: Bold 22px/28px Assistant;
+  }
+  h3 {
+   font-size: 16;
+   font-weight: 300;
+   font-family: Assistant, Roboto;
+  }
+  letter-spacing: 0;
+  color: #011627;
+  width: 100%;
+  text-align: left;
+  width: 90%;
+  margin: 30px 0% 5px 0%;
+  @media (min-width:  $breakpoint-mobile) {
+    h2, h3 {
+      margin: 18px 0px;
+    }
+    h3 {
+      font-size: 22px;
+      line-height: 28px;
+    }
+    h2 {
+      font: Bold 28px/37px Assistant;
+    }
+  }
+}
+
+.page__sub__text {
+  text-align: left;
+  font: Regular 16px/22px Assistant;
+  @media (min-width:  $breakpoint-mobile) {
+    font: Regular 22px/28px Assistant;
+  }
+}
+
+
+h1{
+  font-family: Assistant, roboto, sans-serif;
+  font-size: 1.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.title {
+  font-size: 22px;
+  padding-left: 20px;
+  padding-top: 20px;
+  @media (min-width:  $breakpoint-mobile) {
+    font-size: 30px;
+    padding-left: 40px;
+    padding-top: 40px;
+  }
+}
+
+
+label{
+  @include label__clasic
+}
+input[type=text], input[type=number], input[type=email], input[type=password], input[type=date] ,select, textarea{
+  @include input__clasic;
+  font-size: 16px;
+  padding-left: 20px;
+  background-color: white;
+  position: relative;
+  *{
+    background-color: transparent;
+  }
+  &.error {
+    border:  2px solid $alert-color !important;
+  }
+}
+
+.container {
+  background-color:  $color-secondary;
+  @media (min-width:  $breakpoint-mobile) {
+    padding: 0 3rem;
+    width: 100%;
+  }
+}
+
+.boxWrapper {
+  background-color: #F5F6FA;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height:  90vh;
+  background-color: #ffffff;
+  overflow: hidden;
+  
+  &--border {
+    padding: 0px 20px;
+  }
+  
+  @media (min-width:  $breakpoint-mobile) {
+    border: solid 3vw #fff;
+    border: none;
+    width: 90%;
+    background-color: #ffffff;
+  }
+
+  .boxWrapper__hr {
+    opacity: 0.4;
+    margin: 0px;
+  }
+}
+
+.user-picture {
+  display: block;
+  border-radius: 50%;
+  width: 20vw;
+  max-width: 100px;
+}
+
+.error-message {
+  color: $alert-color;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 4px 0; 
+  &::before {
+    position: absolute;
+    right: 17px;
+    top: -40px;
+    content: url('../assets/pictos/alert@2x.png');
+    display: block;
+  }
+}
+

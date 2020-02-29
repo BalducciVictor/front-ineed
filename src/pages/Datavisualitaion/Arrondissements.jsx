@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-function Arrondissements({ arrondissements }) {
+function Arrondissements ({ arrondissements }) {
   return (
     <div className="container__graphe">
       <div className="graphes">
@@ -14,21 +14,19 @@ function Arrondissements({ arrondissements }) {
         <div className="barres" />
       </div>
     </div>
-  );
+  )
 }
 
-export default Arrondissements;
-
+export default Arrondissements
 
 Arrondissements.propTypes = {
   arrondissements: PropTypes.shape({
-    number: PropTypes.string,
-  }),
-};
-
+    number: PropTypes.string
+  })
+}
 
 Arrondissements.defaultProps = {
   arrondissements: {
-    number: null,
-  },
-};
+    number: null
+  }
+}

@@ -1,0 +1,65 @@
+$breakpoint-mobile: 768px;
+$color-secondary : #F5F6FA; 
+$color-tree: #F5F6FA;
+$white: #F5F6FA;
+$color-gray: #D9D9D9;
+$black: #011627;
+$alert-color: #D92A2A;
+$blue: #0494FA;
+$orange: #FF8500;
+
+$border-clasic: 10px;
+
+@mixin input__clasic {
+  display: block;
+  height: 40px;
+  width:  99%;
+  border: 2px solid $blue;
+  border-radius: $border-clasic;
+  margin: 2% 0px;
+}
+
+@mixin button__clasic {
+  display: block;
+  height: 45px;
+  width: 100%;
+  background-color: $blue;
+  border-radius: $border-clasic;
+  font-family: Assistant, roboto, sans-serif;
+  font-size: 1.125rem;
+  color: $white;
+  border: none;
+  font-weight: bold;
+  
+}
+
+
+@mixin label__clasic {
+  font-family: Assistant, roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+
+@mixin absolute__centre {
+  top: 0px;
+left: 0px;
+right: 0px;
+bottom: 0px;
+position: absolute;
+}
+
+
+
+
+.col-primary {
+  color: $blue;
+}
+
+.col-secondary {
+  color: $orange;
+}
+
+.col-tree {
+  color: $black;
+}

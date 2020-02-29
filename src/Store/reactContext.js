@@ -1,28 +1,31 @@
-import React from 'react'
-import ApiRequest from '../Api/Api'
+import { createContext } from 'react'
+import apiRequest from '../Api/Api'
 
-const apiRequest = new ApiRequest()
+const contextUser = createContext({
+  userID: sessionStorage.getItem('id')
+})
 
-const context = React.createContext({
+const contextApi = createContext({
   $Get: (path, data) => {
     return apiRequest.get(path, data)
   },
+
   $Post: (path, data) => {
     return apiRequest.post(path, data)
   },
+
   $SignUp: (data) => {
     return new Promise((resolve, reject) => {
       apiRequest.signUp(data)
         .then((profile) => {
-          context.$profile = profile
           resolve(profile)
         })
         .catch((err) => {
-          console.log('ok', context.$profile, this, context)
           reject(err)
         })
     })
   },
+
   $SignIn: (data) => {
     return new Promise((resolve, reject) => {
       apiRequest.signIn(data)
@@ -36,4 +39,4 @@ const context = React.createContext({
   }
 })
 
-export default context
+export { contextApi, contextUser }

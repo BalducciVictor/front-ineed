@@ -1,0 +1,57 @@
+.container-pop {
+  position: absolute;
+  background-color: #878CA2D8;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  .pop-wrap {
+    background-color: hsl(0, 0%, 100%);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    position: absolute ;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 90vw;
+    max-width: 1056px;
+    height: 50vh;
+    max-height: 363px;
+
+    .cross {
+      cursor: pointer;
+      position: absolute;
+      right: 8px;
+      top: 10px;
+    }
+
+    .pop-content {
+
+      h2 {
+        margin-top: 100px;
+        text-align: center;
+        color: #011627;
+        font-size: 22px;
+      }
+
+      button {
+        max-width: 362px;
+        display: block;
+        margin: auto;
+        border-radius: 6px;
+        margin-top: 60px;
+      }
+
+      p {
+        cursor: pointer;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+        color: #011627;
+      }
+    }
+  }
+}
