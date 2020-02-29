@@ -30,20 +30,20 @@ button {
 .name {
   text-align: left;
   width: 100%;
-font: Bold 28px/37px Assistant;
-letter-spacing: 0;
-color: #011627;
-opacity: 1;
+  font: Bold 28px/37px Assistant;
+  letter-spacing: 0;
+  color: #011627;
+  opacity: 1;
 }
 
-.page__name {
+.page__name, .pop {
   h2 {
     font: Bold 22px/28px Assistant;
   }
   h3 {
-   font-size: 16;
-   font-weight: 300;
-   font-family: 'Assistant', Roboto;
+    font-size: 16;
+    font-weight: 300;
+    font-family: 'Assistant', Roboto;
   }
   letter-spacing: 0;
   color: #011627;
@@ -51,6 +51,9 @@ opacity: 1;
   text-align: left;
   width: 90%;
   margin: 30px 0% 5px 0%;
+  &.pop {
+    margin: a;
+  }
   @media (min-width:  $breakpoint-mobile) {
     h2, h3 {
       margin: 18px 0px;
@@ -142,7 +145,7 @@ input[type=text], input[type=number], input[type=email], input[type=password], i
     width: 90%;
     background-color: #ffffff;
   }
-
+  
   .boxWrapper__hr {
     opacity: 0.4;
     margin: 0px;
@@ -171,3 +174,53 @@ input[type=text], input[type=number], input[type=email], input[type=password], i
   }
 }
 
+.card__profile__add__fav {
+  width: 287px;
+  height: 163px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 8px #00000029;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  p {
+    padding-top: 10px;
+  }
+  &::after {
+    content: '';
+    display: block;
+    width: 34px;
+    height: 34px;
+    border: 4px solid $blue;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  &::before {
+    content: url('../assets/icons/check@3x.png');
+    position: absolute;
+    right: -5px;
+    top: -2px;
+    opacity: 0;
+    transform: scale(.7);
+    transition: 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  &.active {  
+    &::before {
+      opacity: 1;
+    }
+  }
+  img {
+    padding-top: 10px;
+    margin: auto;
+  }
+}
+
+.profile__card {
+  .buttons{
+    display: flex;
+    align-items: center;
+    button {
+      margin-right: 30px;
+    }
+  }
+}

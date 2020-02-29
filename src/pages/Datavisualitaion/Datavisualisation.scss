@@ -5,6 +5,12 @@
   .map__container {
     width: 100%;
   }
+  .ranger--label {
+    display: block;
+    color: $black;
+    font-size: 18px;
+    font-weight: 600;
+  }
   .ranger {
     display: flex;
     font-size: 18px;
@@ -153,4 +159,5 @@
 
 .relative {
   position: relative;
+  width: 100%;
 }

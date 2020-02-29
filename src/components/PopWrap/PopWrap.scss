@@ -1,10 +1,15 @@
 .container-pop {
-  position: absolute;
   background-color: #878CA2D8;
   width: 100vw;
   height: 100%;
   top: 0;
   left: 0;
+  position: fixed;
+  z-index: 100;
+
+  .page__name {
+    margin: auto;
+  }
 
   .pop-wrap {
     background-color: hsl(0, 0%, 100%);
@@ -19,6 +24,7 @@
     width: 90vw;
     max-width: 1056px;
     height: 50vh;
+    padding: 25px;
     max-height: 363px;
 
     .cross {

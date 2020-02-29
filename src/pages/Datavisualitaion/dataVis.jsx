@@ -73,7 +73,7 @@ const DataVis = function ({ specialites, setMode, setfiltreArrondisment }) {
         ranger.result.push(Math.round(r * i))
       }
 
-      console.log(ranger)
+      
       setRanger(ranger)
     }
   }
@@ -88,6 +88,7 @@ const DataVis = function ({ specialites, setMode, setfiltreArrondisment }) {
       <div>
 
       </div>
+      <p className="ranger--label">Concentration rate :</p>
       <section className="ranger">
         <div className="one"><span>0</span><span>-</span><span>{ranger && ranger.result && ranger.result[0]}</span> </div>
         <div className="two"><span>{ranger && ranger.result && ranger.result[0]}</span><span>-</span><span>{ranger && ranger.result && ranger.result[1]}</span> </div>

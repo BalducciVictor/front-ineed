@@ -6,6 +6,9 @@
   display: flex;
   margin: 40px 0px;
   justify-content: space-between;
+  &__toogle {
+    flex-direction: column;
+  }
   .picto {
     height: 17px;
   }
@@ -21,19 +24,36 @@
     margin: 10px auto ;
   }
   .cta {
-     &--primary{
-       background-color: $blue;
-     }
-     &--secondary {
+    cursor: pointer;
+    &--primary{
+      background-color: $blue;
+    }
+    &--secondary {
       background-color: $orange;
-     }
-     &--tree {
-       background-color: $black;
-     }
+    }
+    &--tree {
+      background-color: $black;
+    }
     &--remove{
       width: 29px;
       height: 167px;
     }
+    &.isAdd {
+      background-color: #D0D0D0;
+    }
+    &.cta--remove {
+      img {
+        padding-top: 13px;
+      }
+    } 
+    p {
+      color: white;
+      font-size: 18px;
+      margin: auto;
+      font-weight: 700;
+      padding: 6px;
+    }
+    
   }
   p {
     font: Medium 14px Roboto;

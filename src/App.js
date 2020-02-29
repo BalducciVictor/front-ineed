@@ -17,6 +17,7 @@ import './styleGlobaux/global.scss'
 const App = () => {
   const [userId, setUserId] = useState(sessionStorage.getItem('id'))
   const [isLog, setLog] = useState(false)
+  const [profiles, setProfiles] = useState(false)
 
   useEffect(() => {
     if (userId) {
@@ -24,7 +25,23 @@ const App = () => {
     } else {
       setLog(false)
     }
-  })
+  }, [])
+
+  useEffect(() => {
+    console.log('isLog', isLog)
+    if (isLog) {
+      Api.getProfils(userId)
+        .then(res => {
+          const profilsFromData = res.data['hydra:member']
+          // profilsFromData = clearUserData(profilsFromData)
+          setProfiles(profilsFromData)
+          console.log(profilsFromData)
+        })
+        .catch(err => {
+          console.log(err.response.data)
+        })
+    }
+  }, [isLog])
 
   const Routes = ({ value }) => {
     return (
@@ -53,7 +70,7 @@ const App = () => {
 
   return (
     <div className={'App'} >
-      <contextUser.Provider value={{ userID: userId, isLog: isLog, setLog: setLog, setUserId: setUserId }} >
+      <contextUser.Provider value={{ userID: userId, isLog, profiles, setProfiles, setLog, setUserId }} >
         <contextUser.Consumer>
           { value => <Routes value={value} /> }
         </contextUser.Consumer>

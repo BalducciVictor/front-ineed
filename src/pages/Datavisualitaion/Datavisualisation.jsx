@@ -6,6 +6,8 @@ import ListMap from '../../components/List/List'
 import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton'
 import ContextDataFiltre, { getStoreData, setStoreData, saveOnStore } from '../../Store/DataFiltre'
 import Api from '../../Api/Api'
+import PopWrap from '../../components/PopWrap/PopWrap'
+import UserPop from '../../components/UserPop'
 
 /**
 * This is all callApi and data.
@@ -33,6 +35,8 @@ const Datavisualisation = () => {
   const [filtreArrondisment, setfiltreArrondisment] = useState([])
   const [dataOrigin, setDataOrigin] = useState(localDataOrigin)
   const [init, setInit] = useState(0)
+  const [pop, setPop] = useState({ state: false })
+  const [idCardAdd, setIdCardAdd] = useState({ state: false })
 
   const buildParam = (parms, name) => {
     return parms.map((parm, i) => {
@@ -110,7 +114,6 @@ const Datavisualisation = () => {
   }, [filtreAll, filtreHospitals.length, filtrePharmacies.length, filtreCentres.length, filtreArrondisment.length])
 
   useEffect(() => {
-    console.log(init)
     if (mode === 'datavis' && init === 1) {
       setMode('mapGl')
     } else {
@@ -121,7 +124,7 @@ const Datavisualisation = () => {
   const MapGl = ({ list }) => {
     return (
       mode === 'mapGl' && <div className={'map__gl'} >
-        <ListMap key="map" HealthCenterList={dataOrigin.centres} PharmacyList={dataOrigin.pharmacies} HospitalList={dataOrigin.hospitals} />
+        <ListMap cardOnClick={(card) => { setPop({ state: true }); setIdCardAdd(card) }} toogle key="map" HealthCenterList={dataOrigin.centres} PharmacyList={dataOrigin.pharmacies} HospitalList={dataOrigin.hospitals} />
         <MapBox specialite={ dataOrigin } />
       </div>
     )
@@ -148,6 +151,9 @@ const Datavisualisation = () => {
         </div>
         <SwitchButton setMode={setMode} left={'Visualization'} rigth={'Map'} switchState={ mode == 'datavis' ? 0 : 1 } setNewSwitch={(val) => { setMode(val == 0 ? 'datavis' : 'mapGl') }} />
       </div>
+      <PopWrap data={pop} setData={(val) => { setPop({ state: val }) }} >
+        <UserPop closePop={(val) => { setPop({ state: val }) }} idCardAdd={idCardAdd}/>
+      </PopWrap>
     </div>
   )
 }

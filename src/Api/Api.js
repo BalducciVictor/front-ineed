@@ -23,8 +23,20 @@ class ApiRequest {
     }
   }
 
+  getProfils (userId) {
+    return axios.get(this.uri + '/api/profils?User=' + userId || {}, this.conf)
+  }
+
+  patch (path, data) {
+    return axios.patch(this.uri + (path || ''), data || {}, this.conf)
+  }
+
   post (path, data) {
     return axios.post(this.uri + (path || ''), data || {}, this.conf)
+  }
+
+  put (path, data) {
+    return axios.put(this.uri + (path || ''), data || {}, this.conf)
   }
 
   del (path, data) {
@@ -61,9 +73,10 @@ class ApiRequest {
 
   getAllFiltre (ulrs) {
     return Promise.all(ulrs.map((url) => url()))
-    // return new Promise((resolve, reject) => {
-    //   return (reject)
-    // })
+  }
+
+  all (endPoints) {
+    return Promise.all(endPoints.map((endPoint) => endPoint()))
   }
 
   signUp ({ email, password }) {
