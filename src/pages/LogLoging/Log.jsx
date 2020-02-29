@@ -6,7 +6,7 @@ import BoxWrapper from '../../components/BoxWrapper'
 const Log = () => {
   const [handler] = useState('singIn')
   return (
-    <BoxWrapper pageName={null} >
+    <BoxWrapper >
       <SignUp state={handler}/>
     </BoxWrapper>
   )

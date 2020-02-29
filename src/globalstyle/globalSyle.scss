@@ -144,6 +144,9 @@ input[type=text], input[type=number], input[type=email], input[type=password], i
     border: none;
     width: 90%;
     background-color: #ffffff;
+    &boxwrapper {
+      width: 100%;
+    }
   }
   
   .boxWrapper__hr {
@@ -216,6 +219,24 @@ input[type=text], input[type=number], input[type=email], input[type=password], i
 }
 
 .profile__card {
+  h3 {
+    font-size: 22px;
+    font-weight: 300;
+    margin-top: 70px;
+  }
+  &.pop-log {
+    p{
+      text-align: center;
+      padding-top: 40px;
+    }
+    button {
+      margin: 100px auto;
+      max-width: 362px;
+      width: 100%;
+      margin: auto;
+
+    }
+  }
   .buttons{
     display: flex;
     align-items: center;
@@ -223,4 +244,9 @@ input[type=text], input[type=number], input[type=email], input[type=password], i
       margin-right: 30px;
     }
   }
+}
+
+.profiles_list {
+  display: flex;
+  justify-content: space-evenly;
 }
