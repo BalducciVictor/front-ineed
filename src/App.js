@@ -46,7 +46,7 @@ const App = () => {
   const Routes = ({ value }) => {
     return (
       <Router>
-        <NavBrarre isLog={value.isLog} setUserId={setUserId} />
+        <NavBrarre setLog={setLog} isLog={value.isLog} setUserId={setUserId} />
         <boxWrapper>
           <Switch>
             <Route exact path="/log/:typeLog">

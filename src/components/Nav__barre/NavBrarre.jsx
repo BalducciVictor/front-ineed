@@ -3,14 +3,14 @@ import { useHistory, useLocation } from 'react-router-dom'
 import logo from '../../assets/logo_i_need.svg'
 import { contextUser } from '../../Store/reactContext'
 
-const PageContainer = ({ isLog, setUserId }) => {
+const PageContainer = ({ isLog, setUserId, setLog }) => {
   const [pathName, setPathName] = useState('')
   const history = useHistory()
 
   const DisconnectUser = () => {
     sessionStorage.setItem('id', '')
     setUserId('')
-    history.push('/')
+    setLog(false)
   }
 
   const NavConnected = () => {
@@ -20,7 +20,7 @@ const PageContainer = ({ isLog, setUserId }) => {
     }, [location])
     return (
       <nav className="connected">
-        <button className={'button button--secondary'} onClick={() => { DisconnectUser() }} >Disconnect</button>
+        <button className={'button button--secondary'} onClick={() => { DisconnectUser(); history.push('/log/signin') }} >Disconnect</button>
         { pathName !== '/profile' ? <button onClick={() => { history.push('/profile') }} className={'button button--blue'}>Show a profile</button> : ''}
         { pathName !== '/' ? <button className={'button button--blue'} onClick={() => { history.push('/') }} >Map</button> : ''}
       </nav>)
