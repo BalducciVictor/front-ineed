@@ -245,3 +245,8 @@ input[type=text], input[type=number], input[type=email], input[type=password], i
     }
   }
 }
+
+.profiles_list {
+  display: flex;
+  justify-content: space-evenly;
+}

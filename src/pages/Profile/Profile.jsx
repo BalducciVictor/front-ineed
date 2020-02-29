@@ -82,7 +82,7 @@ const Profils = () => {
   const Template = () => {
     return (
       <div className="list-profiles">
-        <div className="relative">
+        <div className="relative list-profiles">
           <button className="new-profile-button" onClick={() => { history.push('profile/new') } } >Create a new profile</button>
           { profils.length ? profils.map((profil, i) => {
             return <ShowProfile key={profil.id} removeProfile={openPop} name={profil.name} surname={profil.surname} id={profil.id} />
