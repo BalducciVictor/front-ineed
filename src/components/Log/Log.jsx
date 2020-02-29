@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import CatchPhrase from './modules/CatchPhrase'
 import Form from './modules/Form'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Home = function (props) {
   const { typeLog } = useParams()
@@ -38,7 +37,7 @@ const Home = function (props) {
   return (
     <div className="container__Sign" >
       <section className="form__Sign">
-        <p className="title__log" >{ mode === 1 ? 'WELCOME BACK !' : 'OPEN AN ACCOUNT' } <FontAwesomeIcon icon="check-square" /> </p>
+        <p className="title__log" >{ mode === 1 ? 'WELCOME BACK !' : 'OPEN AN ACCOUNT' }</p>
         <form action="">
           <Form form={form.list[mode]} setNewform={setNewform} setMode={setMode} mode={mode}/>
         </form>
