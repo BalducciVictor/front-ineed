@@ -24,7 +24,7 @@ const opitionArrondissement = [
   { value: 17, label: '17th' },
   { value: 18, label: '18th' },
   { value: 19, label: '19th' },
-  { value: 20, label: '28th' }
+  { value: 20, label: '20th' }
 ]
 
 const Filtre = ({ setFiltreAll, filtreAll, filtreHospitals, setFiltreHospitals, filtrePharmacies, setFlitresPharmacies, setFiltreCentres, filtreCentres, mode, filtreArrondisment, setfiltreArrondisment }) => {
