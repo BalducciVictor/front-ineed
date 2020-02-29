@@ -23,7 +23,7 @@ const DataVis = function ({ specialites, setMode, setfiltreArrondisment }) {
       }
 
       array.forEach(specialite => {
-        const numberArrondissement = specialite.Arrondissement.match(/(\d+)/)[0]
+        const numberArrondissement = specialite && specialite.Arrondissement.match(/(\d+)/)[0]
         if (!arrondisment[numberArrondissement]) {
           arrondisment[numberArrondissement] = [0]
         } else {
@@ -73,7 +73,6 @@ const DataVis = function ({ specialites, setMode, setfiltreArrondisment }) {
         ranger.result.push(Math.round(r * i))
       }
 
-      
       setRanger(ranger)
     }
   }
