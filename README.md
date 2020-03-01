@@ -7,11 +7,12 @@ URL : [ici](http://localhost:3000/) I-NEED
 Emma Cassagnettes  
 Victor Balducci  
 
-## Installation  
+## Installation
+
 **Cloner le projet**   
-`git clone` 
+`git clone`
 **Installer les packages:**  
-`npm i`  
+`npm i`
 **Pour lancer l'application en mode développement:**  
 `npm start`  
 **Pour lancer l'application en mode production:**  
