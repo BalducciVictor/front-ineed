@@ -11,7 +11,7 @@ import Log from './pages/LogLoging/Log'
 import Profile from './pages/Profile/Profile'
 import NewProfile from './pages/NewProfile/NewProfile'
 import PersonalInformation from './pages/PersonalInformation/PersonalInformation'
-import Datavisualitaion from './pages/Datavisualitaion/Datavisualisation'
+import Datavisualitaion from './pages/maps/PageMaps'
 import NavBrarre from './components/Nav__barre/NavBrarre'
 import './globalstyle/global.scss'
 

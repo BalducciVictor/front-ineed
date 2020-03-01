@@ -10,6 +10,7 @@ const MapCustom = ({ rangers, arrondissements, updateCurrentArrondissements }) =
     }
   }, [arrondissementsRef, arrondissements, rangers])
 
+  /// generate dynamique classeName and add click which sent to the good page
   const updateMap = (el) => {
     const colorClass = [
       'ranger-one', // 0
@@ -31,17 +32,13 @@ const MapCustom = ({ rangers, arrondissements, updateCurrentArrondissements }) =
         updateCurrentArrondissements([Number(number)])
       })
 
+      // part of generate class
       let memo = 0
       rangers.result.forEach(r => {
         if (arrondissements[number].length > r) {
           memo++
         }
       })
-
-      if (number === 16) {
-        console.log(colorClass[memo])
-      }
-
       elementArrondissements.classList.add(colorClass[memo])
     }
   }
