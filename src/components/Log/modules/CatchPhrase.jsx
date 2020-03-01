@@ -1,5 +1,7 @@
 import React from 'react'
 
+//Other section descption of login page
+
 const CatchPhrase = () => {
   return (
     <section className="description">

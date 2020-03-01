@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { contextUser, Context } from './Store/reactContext'
-import ContextDataFiltre, { getStoreData, setStoreData, saveOnStore } from './Store/DataFiltre'
-import ContextFiltre from './Store/ContextFiltre'
 import Api from './Api/Api'
-import fonts from './fonts/fontFace.css'
 
 // Components
 import Log from './pages/LogLoging/Log'

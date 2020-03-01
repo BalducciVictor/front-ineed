@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import FiltreButton from '../Buttons/FiltreButton'
 import InputSelect from '../InputSelect'
-import ContextFiltre from '../../Store/ContextFiltre'
 import Api from '../../Api/Api'
+
+//Component filter
 
 const opitionArrondissement = [
   { value: 1, label: '1th' },

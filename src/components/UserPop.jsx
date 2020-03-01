@@ -4,6 +4,8 @@ import { contextUser } from '../Store/reactContext'
 import { useHistory } from 'react-router-dom'
 import Api from '../Api/Api'
 
+//Pop-up to add my list
+
 const UserPop = ({ idCardAdd, closePop }) => {
   const [cardsSelected, setCardsSelected] = useState([])
   const [currentProfiles, setCurrentProfiles] = useState([])

@@ -1,5 +1,4 @@
 import React from 'react'
-import Api from '../../Api/Api'
 import iconePepoel from '../../assets/iconePepoel.svg'
 import { useHistory } from 'react-router-dom'
 

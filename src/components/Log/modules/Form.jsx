@@ -6,6 +6,8 @@ import { contextApi, contextUser } from '../../../Store/reactContext'
 import { useHistory } from 'react-router-dom'
 import Api from '../../../Api/Api'
 
+// Form for log
+
 const Home = function ({ form, setNewform, setMode, mode }) {
   const history = useHistory()
 

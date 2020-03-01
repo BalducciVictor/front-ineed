@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import arrow from '../../assets/img/arrow-back.png'
 import Api from '../../Api/Api'
 import ChronicDiseasesSelect from './select/ChronicDiseasesSelect'
-import ShowProfile from '../ShowProfile/ShowProfile'
-import Select from 'react-select'
 import BoxWrapper from '../../components/BoxWrapper'
 
 const Form = () => {
   const postDataNewProfil = (e) => {
     e.preventDefault()
 
-    // Data dans le formulaire
+    // Data in form
     const recupData = e.target.elements
 
     // tableau de data pour l'ajout de profil

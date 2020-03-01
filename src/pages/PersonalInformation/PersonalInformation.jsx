@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import SwitchButton from '../../components/Buttons/SwitchButton/SwitchButton'
 import MedicalProfile from '../../components/MedicalProfile/MedicalProfile'
-import FilterList from '../../components/FilterList/FilterList'
 import List from '../../components/List/List'
-import ShowProfileButton from '../../components/Buttons/ShowProfileButton/ShowProfileButton'
-import arrow from '../../assets/img/arrow-back.png'
 import BoxWrapper from '../../components/BoxWrapper'
 import { useHistory, useParams } from 'react-router-dom'
 

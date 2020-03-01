@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Api from '../../Api/Api'
-import logoHospistal from '../../assets/logo-hospital.png'
 import Card from '../card/cardsItems'
 import { contextUser } from '../../Store/reactContext'
+
+//List of elements selected
 
 const List = ({ PharmacyList, HospitalList, HealthCenterList, key, toogle, remove, cardOnClick }) => {
   const [cardSelected, setCardSelected] = useState([])

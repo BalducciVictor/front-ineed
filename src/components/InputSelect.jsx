@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Select from 'react-select'
-import style from './inputSelect.scss'
 
 const customStyles = {
   container: (base, state) => ({

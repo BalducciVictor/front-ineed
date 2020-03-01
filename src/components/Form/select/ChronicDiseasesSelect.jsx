@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Api from '../../../Api/Api'
 import Select from 'react-select'
 
+//Component select option chronic diseaes
+
 function ChronicDiseasesSelect () {
   // data API
   const [chronicDisease, setChronicDisease] = useState([])

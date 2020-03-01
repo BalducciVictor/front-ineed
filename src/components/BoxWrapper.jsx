@@ -1,5 +1,6 @@
-
 import React, { Component } from 'react'
+
+//Wrapper box content app
 
 class boxWrapper extends Component {
   render () {

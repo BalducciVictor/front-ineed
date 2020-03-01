@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import iconePepoel from '../../assets/iconePepoel.svg'
 
 const Card = ({ surname, name, active, toogleCard, id }) => {

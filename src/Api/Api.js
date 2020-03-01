@@ -1,6 +1,7 @@
 import axios from 'axios'
-import Context from '../Store/reactContext'
 import { getStoreData, setStoreData } from '../Store/DataFiltre'
+
+
 const PROTOCOLE = 'http'
 const IP = 'mbap.frontineedback.site'
 

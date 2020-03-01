@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import PropTypes from 'prop-types'
 import MapCustom from './mapSvg'
-import Arrondissements from './Arrondissements'
 
 const DataVis = function ({ specialites, setMode, setfiltreArrondisment }) {
   const [arrondissements, setArrondissements] = useState({})

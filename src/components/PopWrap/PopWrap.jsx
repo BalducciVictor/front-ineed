@@ -1,6 +1,8 @@
 import React from 'react'
 import cross from '../../assets/cross.png'
 
+//Wrapper pop-up 
+
 const PopWrap = ({ data, setData, children }) => {
   const closeData = () => {
     setData(false)

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import logo from '../../assets/logo_i_need.svg'
-import { contextUser } from '../../Store/reactContext'
 
 const PageContainer = ({ isLog, setUserId, setLog }) => {
   const [pathName, setPathName] = useState('')
