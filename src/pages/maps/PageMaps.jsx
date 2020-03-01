@@ -23,6 +23,7 @@ if (!getStoreData()) {
   setStoreData({})
 }
 
+/// set value at local storage for save a call api
 localDataOrigin = getStoreData()
 
 const Datavisualisation = () => {
@@ -38,6 +39,7 @@ const Datavisualisation = () => {
   const [pop, setPop] = useState({ state: false })
   const [idCardAdd, setIdCardAdd] = useState({ state: false })
 
+  /// build url for a good format || ?name[]=value
   const buildParam = (parms, name) => {
     return parms.map((parm, i) => {
       return `${name}[]=` + parm
@@ -52,6 +54,7 @@ const Datavisualisation = () => {
     }
   }
 
+  /// do a call to a back end generate the url
   const setRequests = () => {
     const requests = [
       {
@@ -71,11 +74,6 @@ const Datavisualisation = () => {
     return requests.map(({ filtre, endPoint, type }) => {
       if (filtre.length || filtre.includes('all') || filtreAll) {
         return () => { return endPoint(builParamsEndpoint(filtre, type)) }
-        // if (filtre.includes('all') || filtreAll) {
-        //   return endPoint
-        // } else {
-        //   // set Endpoint with the good parms
-        // }
       }
     }).filter((request) => request)
   }
@@ -83,6 +81,7 @@ const Datavisualisation = () => {
   useEffect(() => {
     if (filtreAll || filtreHospitals.length || filtrePharmacies.length || filtreCentres.length) {
       ///  order of send filtreHospitals || filtrePharmacies || filtreCentres
+      /// make a promise all
       Api.getAllFiltre(setRequests())
         .then((responses) => {
           const resClear = {}
@@ -121,6 +120,7 @@ const Datavisualisation = () => {
     }
   }, [filtreArrondisment.length])
 
+  // mapgl === google maps
   const MapGl = ({ list }) => {
     return (
       mode === 'mapGl' && <div className={'map__gl'} >
@@ -130,6 +130,7 @@ const Datavisualisation = () => {
     )
   }
 
+  // datavisualisation withe map svg
   const MapDavis = ({ specialites }) => {
     return (
       mode === 'datavis' && <div className={'view'}>
