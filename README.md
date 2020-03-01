@@ -9,15 +9,16 @@ Victor Balducci
 
 ## Installation
 
-**Cloner le projet**   
-`git clone`
-**Installer les packages:**  
-`npm i`
-**Pour lancer l'application en mode développement:**  
-`npm start`  
-**Pour lancer l'application en mode production:**  
-`npm build`  
-## Identifiants connexion  
+**Cloner le projet**
+`git clone`<br/>
+**Installer les packages:**
+`npm i`<br/>
+**Pour lancer l'application en mode développement:**
+`npm start`<br/>
+**Pour lancer l'application en mode production:**
+`npm build`<br/>
+
+## Identifiants connexion 
 
 Email : aymericmayeux@gmail.com Mot de passe : intervenant2020% <br/>
 Email : eric.priou@hetic.net Mot de passe : intervenant2020%  <br/>
