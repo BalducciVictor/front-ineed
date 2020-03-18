@@ -56,7 +56,10 @@ Notre application est accessible sans créer de compte. Si l'utilisateur veut st
 
 Nous avons réalisé notre interface avec `REACT.JS`, c'est une librairie JavaScript, déclarative, basée sur des composants qui permet de créer des interfaces utilisateurs.  
 Nous avons décidé de découper au maximum notre code en petits composants réutilisables (ex : `BoxWrapper` / `PopWrap`)  
-Pour notre data visualisation, aucune librairie n'a été nécessaire. Nous avons utilisé des `SVG` pour permettre l'affichage de la concentration des établissements de santé avec les différents arrondissements.  
+Pour notre data visualisation, aucune librairie n'a été nécessaire. Nous avons utilisé des `SVG` pour permettre l'affichage de la concentration des établissements de santé avec les différents arrondissements. Nous nous sommes tournés vers le SVG qui est un format d’images vectorielles. Il peut être redimensionné sans perte de qualité, quels que soient la taille de l’écran, le niveau de zoom ou la résolution de l’écran de l’utilisateur.
+Le SVG est pris en charge par la majorité des navigateurs.
+De plus, le SVG repose sur une syntaxe XML, son interprétation par un navigateur conduit à la construction d’un arbre DOM qui comprendra l’ensemble des éléments qui constituent l’image. D’un point de vue accessibilité, un arbre DOM sera visible par les technologies d’assistance. Notre application est destinée au plus grand nombre et surtout aux personnes atteintes de maladies chroniques, ce choix s’est imposé à nous.
+Le Canvas reste plus performant car une image dessinée via cette API ne donnera pas lieu à sa représentation dans un arbre DOM et ne requiert donc pas d’importantes ressources surtout en terme de mémoire.
 Pour notre seconde map, nous avons utilisé `Mapbox` afin de donner à nos utilisateurs la possibilité de trouver précisément un établissement de santé.  
 Cette librairie nous a permis de gérer au mieux la longitude et la latitude de nos points sur la carte. En comparaison de `GoogleMap`,  `MapBox` offre des options poussées de personnalisation, les cartes sont basées sur un projet OpenSource, c'est pour ces raisons que nous avons décidé de l'utiliser.  
 Concernant le déploiement nous n'avons pour le moment choisi aucune solution (next update).
